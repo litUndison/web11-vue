@@ -29,17 +29,20 @@ const mdContent = `# Отчёт по практической работе: Де
 
 **Выполнил:** Студент Eugene  
 **Проект:** TechNova Portal (Vue 3 + Vite + Tailwind CSS v3.4)  
-**Репозиторий:** Локальный репозиторий Git (ветка main) / Сборка в \`dist/\`  
-**Дата:** 4 ноября 2026 г.  
+**Репозиторий:** https://github.com/litUndison/web11-vue  
+**Опубликованный сайт:** https://litundison.github.io/web11-vue/  
+**Дата:** 11 ноября 2026 г.  
 
 ---
 
 ## ЧАСТЬ 1. Материалы по Заданию 1: Публикация и интеграция рекламного блока
 
 ### 1.1. Ссылка на сайт
-- **Продакшен-деплой (Cloudflare Pages):** [https://technova-web11.pages.dev](https://technova-web11.pages.dev)
+- **Опубликованный сайт (Production):** [https://litundison.github.io/web11-vue/](https://litundison.github.io/web11-vue/)
+- **Зеркало на Cloudflare Pages:** [https://web11-vue.pages.dev](https://web11-vue.pages.dev)
+- **Репозиторий проекта на GitHub:** [https://github.com/litUndison/web11-vue](https://github.com/litUndison/web11-vue)
 - **Локальный production-билд:** \`dist/index.html\` (содержит скомпилированные и оптимизированные бандлы CSS/JS с относительными путями \`base: './'\`).
-- **Исходный репозиторий:** инициализирован локальный Git-репозиторий, настроен пайплайн автоматического деплоя GitHub Actions в \`.github/workflows/deploy.yml\`.
+- **CI/CD:** настроен и успешно протестирован автоматический пайплайн GitHub Actions в \`.github/workflows/deploy.yml\`.
 
 ### 1.2. Название платформы и обоснование выбора
 В качестве основной платформы для публикации выбран сервис **Cloudflare Pages**.
@@ -289,8 +292,12 @@ async function createDocx() {
               new TextRun('Студент Eugene\n'),
               new TextRun({ text: 'Проект: ', bold: true }),
               new TextRun('TechNova Portal (Vue 3 + Vite + Tailwind CSS v3.4)\n'),
+              new TextRun({ text: 'Репозиторий GitHub: ', bold: true }),
+              new TextRun('https://github.com/litUndison/web11-vue\n'),
+              new TextRun({ text: 'Опубликованный сайт: ', bold: true }),
+              new TextRun('https://litundison.github.io/web11-vue/\n'),
               new TextRun({ text: 'Дата сдачи: ', bold: true }),
-              new TextRun('4 ноября 2026 г.')
+              new TextRun('11 ноября 2026 г.')
             ],
             spacing: { after: 300 }
           }),
