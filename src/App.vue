@@ -1,5 +1,10 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-200">
+  <div class="min-h-screen flex flex-col bg-[#f8fafc] dark:bg-[#030712] text-slate-800 dark:text-slate-100 transition-colors duration-300 relative overflow-x-hidden bg-grid-pattern">
+    <!-- Ambient background light blooms -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[450px] bg-gradient-to-b from-indigo-500/15 via-purple-500/5 to-transparent blur-3xl pointer-events-none -z-10"></div>
+    <div class="fixed top-[350px] -left-40 w-[600px] h-[600px] bg-purple-500/5 dark:bg-purple-900/15 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+    <div class="fixed top-[550px] -right-40 w-[600px] h-[600px] bg-indigo-500/5 dark:bg-indigo-900/15 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+
     <!-- Main Top Navbar with Tabs -->
     <Navbar
       :activeTab="activeTab"
@@ -9,7 +14,7 @@
     />
 
     <!-- Main Content Area with Dynamic Views -->
-    <main class="flex-1 max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+    <main class="flex-1 max-w-[1600px] w-full mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
       <!-- Transition wrapper for views -->
       <transition name="fade" mode="out-in">
         <component
@@ -30,7 +35,7 @@ import { ref, computed, onMounted } from 'vue'
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 
-// Import all views from web9-10 enhanced with Day 11 requirements
+// Import views
 import LandingView from './views/LandingView.vue'
 import DashboardView from './views/DashboardView.vue'
 import EcommerceView from './views/EcommerceView.vue'

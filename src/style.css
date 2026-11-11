@@ -8,20 +8,33 @@
   }
 
   body {
-    @apply selection:bg-indigo-500 selection:text-white transition-colors duration-200 antialiased min-h-screen;
+    @apply antialiased min-h-screen text-slate-800 dark:text-slate-100 bg-[#f8fafc] dark:bg-[#030712] selection:bg-indigo-500 selection:text-white transition-colors duration-300;
   }
+}
+
+/* Background grid ambient texture */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+}
+.dark .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
 }
 
 /* Custom sleek scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.35);
+  background: rgba(148, 163, 184, 0.3);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -30,30 +43,30 @@
 
 /* Glassmorphism helpers */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(226, 232, 240, 0.8);
 }
 .dark .glass-panel {
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(30, 41, 59, 0.8);
+  background: rgba(11, 17, 32, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(31, 41, 61, 0.8);
 }
 
 /* Design System component utility layers */
 @layer components {
   .heading-1 {
-    @apply text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white;
+    @apply text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white;
   }
 
   .heading-2 {
-    @apply text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white;
+    @apply text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white;
   }
 
   .heading-3 {
-    @apply text-xl sm:text-2xl font-semibold text-slate-800 dark:text-slate-100;
+    @apply text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100;
   }
 
   .body-text {
@@ -66,27 +79,27 @@
 
   /* Button Matrix */
   .btn-base {
-    @apply inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed select-none;
+    @apply inline-flex items-center justify-center font-bold rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed select-none;
   }
 
   .btn-primary {
-    @apply btn-base bg-gradient-to-r from-indigo-600 to-indigo-700 text-white shadow-md shadow-indigo-600/20 hover:from-indigo-500 hover:to-indigo-600 hover:shadow-indigo-600/30 focus:ring-indigo-500 active:scale-[0.98];
+    @apply btn-base bg-gradient-to-r from-indigo-500 via-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-500/25 hover:from-indigo-400 hover:via-indigo-500 hover:to-purple-500 hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] border border-white/10;
   }
 
   .btn-secondary {
-    @apply btn-base bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 focus:ring-slate-400 active:scale-[0.98];
+    @apply btn-base bg-slate-100 text-slate-800 hover:bg-slate-200 dark:bg-slate-800/90 dark:text-slate-200 dark:hover:bg-slate-700/90 border border-slate-200 dark:border-slate-700/60 active:scale-[0.98];
   }
 
   .btn-ghost {
-    @apply btn-base bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800/60 dark:hover:text-white focus:ring-slate-400;
+    @apply btn-base bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800/60 dark:hover:text-white;
   }
 
   .btn-danger {
-    @apply btn-base bg-rose-600 text-white shadow-md hover:bg-rose-700 focus:ring-rose-500 active:scale-[0.98];
+    @apply btn-base bg-gradient-to-r from-rose-500 to-rose-600 text-white shadow-md hover:from-rose-400 hover:to-rose-500 hover:shadow-rose-500/30 active:scale-[0.98];
   }
 
   .btn-outline {
-    @apply btn-base border border-slate-300 dark:border-slate-700 bg-transparent text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 focus:ring-slate-400;
+    @apply btn-base border border-slate-300 dark:border-slate-700/80 bg-white/50 dark:bg-slate-900/40 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:border-slate-400 dark:hover:border-slate-600;
   }
 
   .btn-sm {
@@ -103,15 +116,15 @@
 
   /* Inputs */
   .input-base {
-    @apply block w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all;
+    @apply block w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-300 dark:border-slate-700/80 bg-white dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 transition-all;
   }
 
   /* Cards */
   .card-base {
-    @apply bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm p-6 transition-all duration-200;
+    @apply bg-white/95 dark:bg-[#0b1120]/80 rounded-2xl border border-slate-200/90 dark:border-[#1f293d] shadow-sm p-6 transition-all duration-300 backdrop-blur-md;
   }
 
   .card-hover {
-    @apply hover:shadow-lg hover:border-indigo-200 dark:hover:border-indigo-900/60 hover:-translate-y-0.5;
+    @apply hover:border-indigo-500/50 dark:hover:border-indigo-500/40 hover:shadow-glow-indigo hover:-translate-y-1;
   }
 }
