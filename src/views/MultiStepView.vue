@@ -133,7 +133,7 @@ const formData = reactive({
   surname: 'Student',
   email: 'eugene@web-practice.dev',
   city: 'Москва',
-  street: 'ул. Веб-разработки, д. 11',
+  street: 'Пресненская наб., д. 12',
   plan: 'free'
 })
 

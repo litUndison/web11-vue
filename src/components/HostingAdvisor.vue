@@ -46,7 +46,7 @@
             </label>
             <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 cursor-pointer transition-colors" :class="answers.traffic === 'low' ? 'bg-indigo-600/30 border border-indigo-400' : ''">
               <input type="radio" v-model="answers.traffic" value="low" class="text-indigo-500 focus:ring-0">
-              <span>Небольшой учебный / портфолио (< 50 ГБ в месяц)</span>
+              <span>Небольшой персональный сайт / портфолио (< 50 ГБ в месяц)</span>
             </label>
           </div>
         </div>

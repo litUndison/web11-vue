@@ -99,10 +99,10 @@ const contacts = ref([
 const activeContact = ref(contacts.value[0])
 
 const messages = ref([
-  { id: 1, text: 'Привет! Как продвигается выполнение Дня 11?', isMine: false, time: '12:40' },
-  { id: 2, text: 'Привет! Всё отлично: создал компонент AdSlot, провёл анализ 5 платформ и развернул сайт на GitHub Pages!', isMine: true, time: '12:42' },
-  { id: 3, text: 'Супер! Проверь, чтобы в отчёте было от 600 до 1000 слов.', isMine: false, time: '12:44' },
-  { id: 4, text: 'Да, ровно 820 слов без учёта таблицы, всё строго по спецификации.', isMine: true, time: '12:45' }
+  { id: 1, text: 'Привет! Как продвигается запуск Tailwind UI Studio в продакшен?', isMine: false, time: '12:40' },
+  { id: 2, text: 'Привет! Всё готово: настроили модули AdSlot, проверили производительность и развернули проект на CDN!', isMine: true, time: '12:42' },
+  { id: 3, text: 'Супер! Как показатели Core Web Vitals и CLS при подгрузке баннеров?', isMine: false, time: '12:44' },
+  { id: 4, text: 'Идеально — нулевой Cumulative Layout Shift, компоненты полностью адаптивны.', isMine: true, time: '12:45' }
 ])
 
 const inputMsg = ref('')

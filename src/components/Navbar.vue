@@ -11,7 +11,7 @@
           <div>
             <div class="flex items-center gap-1.5">
               <span class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900 dark:text-white">Tailwind UI Studio</span>
-              <span class="px-1.5 py-0.5 text-[10px] font-bold rounded bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300">День 11</span>
+              <span class="px-1.5 py-0.5 text-[10px] font-bold rounded bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300">PRO v2.5</span>
             </div>
             <p class="text-[11px] text-slate-400 font-medium hidden md:block">
               Vue 3 • Tailwind CSS • AdSlot Integration
@@ -128,7 +128,7 @@ const tabs = [
   { id: 'messenger', name: 'Мессенджер', icon: '💬' },
   { id: 'multistep', name: 'Степпер', icon: '📝' },
   { id: 'design-system', name: 'UI Kit', icon: '🎨' },
-  { id: 'hosting-analysis', name: 'Хостинг & Отчёт', icon: '🌐', badge: 'День 11' }
+  { id: 'hosting-analysis', name: 'Cloud & Инфраструктура', icon: '🌐', badge: 'Cloud' }
 ]
 
 const toggleTheme = () => {

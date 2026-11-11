@@ -3,7 +3,7 @@
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
       <div>
         <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 mb-2">
-          Задание 2: Сравнительный анализ
+          Сравнительный анализ платформ
         </div>
         <h3 class="text-2xl font-bold text-slate-900 dark:text-white">
           Сравнение бесплатных хостинг-платформ (2026)
@@ -228,7 +228,7 @@ const platforms = [
     commercialText: 'СТРОГО НЕ-КОММЕРЧЕСКИЙ',
     adsPolicy: 'ЗАПРЕЩЕНА (риск бана)',
     adsBadgeClass: 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 border border-rose-300',
-    scenario: 'Некоммерческие учебные пет-проекты без монетизации и рекламы.',
+    scenario: 'Персональные некоммерческие проекты без сторонней монетизации.',
     riskLevel: 'Высокий риск',
     riskClass: 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300',
     riskDotClass: 'bg-rose-500',

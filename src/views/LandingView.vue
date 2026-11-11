@@ -31,7 +31,7 @@
         </h1>
 
         <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-          Полная дизайн-система и интерактивные модули из проекта <strong>Дни 9-10</strong>, объединенные в реактивную архитектуру <strong>Vue 3</strong> с интеграцией рекламных слотов <strong>AdSlot</strong> по спецификации <strong>Дня 11</strong>.
+          Комплексная дизайн-система и готовые модули на реактивной архитектуре <strong>Vue 3</strong> и <strong>Tailwind CSS</strong> со встроенными слотами рекламной монетизации <strong>AdSlot</strong> и оптимизацией Core Web Vitals.
         </p>
 
         <div class="pt-4 flex flex-wrap items-center justify-center gap-3">
@@ -45,7 +45,7 @@
             @click="$emit('switch-tab', 'hosting-analysis')"
             class="px-6 py-3 rounded-xl font-bold text-sm bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md transition-all hover:scale-105"
           >
-            Анализ хостингов (День 11)
+            Cloud & Хостинг
           </button>
         </div>
       </div>

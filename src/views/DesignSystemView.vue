@@ -55,7 +55,7 @@
       <div class="pt-2 grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
         <div class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2">
           <span>✓</span>
-          <span><strong>Успешно:</strong> Проект соответствует всем требованиям Дня 11!</span>
+          <span><strong>Успешно:</strong> Дизайн-система полностью протестирована и готова к продакшену!</span>
         </div>
         <div class="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800 flex items-center gap-2">
           <span>⚠️</span>

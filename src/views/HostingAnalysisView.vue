@@ -3,13 +3,13 @@
     <!-- Header -->
     <div class="pb-4 border-b border-slate-200 dark:border-slate-800">
       <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 mb-2">
-        Спецификация: День 11
+        Инфраструктура & Cloud
       </div>
       <h2 class="text-3xl font-black text-slate-900 dark:text-white">
-        Публикация сайта и анализ хостинг-платформ
+        Облачная инфраструктура и сравнительный анализ хостингов
       </h2>
       <p class="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-3xl">
-        Полный сравнительный отчёт, обоснование выбора хостинга для проекта со статической рекламой, интерактивный калькулятор и материалы для сдачи.
+        Комплексный анализ облачных платформ для статических приложений с рекламой, рекомендации по соблюдению правил монетизации и интерактивный калькулятор подбора сервиса.
       </p>
     </div>
 
@@ -60,7 +60,7 @@
     <!-- Materials for Submission (Task 1 Step 4) -->
     <div class="card-base p-6 sm:p-8 space-y-6">
       <h3 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-3">
-        Материалы для сдачи (Шаг 4 спецификации)
+        Параметры развёртывания и спецификация интеграции
       </h3>
 
       <!-- 1. Ссылка -->
