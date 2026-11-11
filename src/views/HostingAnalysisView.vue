@@ -126,3 +126,4 @@
 import HostingAdvisor from '../components/HostingAdvisor.vue'
 import HostingTable from '../components/HostingTable.vue'
 </script>
+

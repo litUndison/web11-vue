@@ -148,3 +148,4 @@ const filtered = computed(() => {
 const firstRowProducts = computed(() => filtered.value.slice(0, 3))
 const secondRowProducts = computed(() => filtered.value.slice(3))
 </script>
+

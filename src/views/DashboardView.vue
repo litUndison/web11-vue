@@ -167,3 +167,4 @@ const transactions = [
   { id: 4, sponsor: 'Vue Mastery', slot: 'Sidebar (300×250)', impressions: '17 550', income: '3 000 ₽', status: 'Выплачено' }
 ]
 </script>
+

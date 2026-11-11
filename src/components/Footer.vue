@@ -5,10 +5,10 @@
         <!-- Col 1 -->
         <div class="md:col-span-2 space-y-3">
           <div class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-extrabold text-sm">
-              TN
+            <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-extrabold text-xs">
+              TUI
             </div>
-            <span class="font-bold text-slate-900 dark:text-white text-base">TechNova Portal</span>
+            <span class="font-bold text-slate-900 dark:text-white text-base">Tailwind UI Studio</span>
           </div>
           <p class="text-xs text-slate-500 dark:text-slate-400 max-w-md leading-relaxed">
             Учебный проект по веб-разработке (День 11): «Публикация сайта и интеграция рекламного блока AdSlot». Выполнен с использованием Vue 3, Vite и Tailwind CSS v3.4.
@@ -58,7 +58,7 @@
       </div>
 
       <div class="pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-2">
-        <span>© 2026 TechNova Project. Все права защищены.</span>
+        <span>© 2026 Tailwind UI Studio. Все права защищены.</span>
         <span>Развернуто и протестировано для Cloudflare Pages & GitHub Pages</span>
       </div>
     </div>

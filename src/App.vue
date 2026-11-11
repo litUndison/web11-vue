@@ -9,7 +9,7 @@
     />
 
     <!-- Main Content Area with Dynamic Views -->
-    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+    <main class="flex-1 max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
       <!-- Transition wrapper for views -->
       <transition name="fade" mode="out-in">
         <component

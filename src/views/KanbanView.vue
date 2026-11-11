@@ -162,3 +162,4 @@ const addNewTask = () => {
   showNewTaskModal.value = false
 }
 </script>
+
