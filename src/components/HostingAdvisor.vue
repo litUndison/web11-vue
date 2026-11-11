@@ -1,13 +1,13 @@
 <template>
-  <div class="bg-gradient-to-br from-indigo-900 via-slate-900 to-purple-950 text-white rounded-2xl p-6 sm:p-8 shadow-xl border border-indigo-500/20 my-8">
+  <div class="bg-gradient-to-br from-[#081612] via-[#05110d] to-[#040d0a] text-white rounded-2xl p-6 sm:p-8 shadow-xl border border-[#17342b] my-8">
     <div class="max-w-3xl">
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 mb-3">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mb-3">
         Интерактивный мастер
       </div>
       <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
         Подбор идеального хостинга для вашего Vue 3 проекта
       </h3>
-      <p class="text-slate-300 text-sm mt-2">
+      <p class="text-emerald-100/70 text-sm mt-2">
         Ответьте на несколько вопросов, чтобы система автоматически проверила соответствие правилам платформ (ToS) и лимитам 2026 года.
       </p>
 
@@ -15,20 +15,20 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
         <!-- Question 1: Ads -->
         <div class="bg-white/5 border border-white/10 rounded-xl p-4">
-          <label class="block text-xs font-semibold text-indigo-300 uppercase tracking-wider mb-2">
+          <label class="block text-xs font-semibold text-emerald-300 uppercase tracking-wider mb-2">
             1. Планируете ли рекламу или баннеры?
           </label>
           <div class="space-y-1.5 text-xs">
-            <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 cursor-pointer transition-colors" :class="answers.ads === 'yes' ? 'bg-indigo-600/30 border border-indigo-400' : ''">
-              <input type="radio" v-model="answers.ads" value="yes" class="text-indigo-500 focus:ring-0">
+            <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 cursor-pointer transition-colors" :class="answers.ads === 'yes' ? 'bg-emerald-600/30 border border-emerald-400' : ''">
+              <input type="radio" v-model="answers.ads" value="yes" class="text-emerald-500 focus:ring-0">
               <span>Да, планируются рекламные блоки / AdSense / РСЯ</span>
             </label>
-            <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 cursor-pointer transition-colors" :class="answers.ads === 'moderate' ? 'bg-indigo-600/30 border border-indigo-400' : ''">
-              <input type="radio" v-model="answers.ads" value="moderate" class="text-indigo-500 focus:ring-0">
+            <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 cursor-pointer transition-colors" :class="answers.ads === 'moderate' ? 'bg-emerald-600/30 border border-emerald-400' : ''">
+              <input type="radio" v-model="answers.ads" value="moderate" class="text-emerald-500 focus:ring-0">
               <span>Только скромные логотипы спонсоров / донаты</span>
             </label>
-            <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 cursor-pointer transition-colors" :class="answers.ads === 'none' ? 'bg-indigo-600/30 border border-indigo-400' : ''">
-              <input type="radio" v-model="answers.ads" value="none" class="text-indigo-500 focus:ring-0">
+            <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 cursor-pointer transition-colors" :class="answers.ads === 'none' ? 'bg-emerald-600/30 border border-emerald-400' : ''">
+              <input type="radio" v-model="answers.ads" value="none" class="text-emerald-500 focus:ring-0">
               <span>Нет, проект строго некоммерческий</span>
             </label>
           </div>
@@ -36,16 +36,16 @@
 
         <!-- Question 2: Traffic -->
         <div class="bg-white/5 border border-white/10 rounded-xl p-4">
-          <label class="block text-xs font-semibold text-indigo-300 uppercase tracking-wider mb-2">
+          <label class="block text-xs font-semibold text-emerald-300 uppercase tracking-wider mb-2">
             2. Ожидаемый трафик
           </label>
           <div class="space-y-1.5 text-xs">
-            <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 cursor-pointer transition-colors" :class="answers.traffic === 'high' ? 'bg-indigo-600/30 border border-indigo-400' : ''">
-              <input type="radio" v-model="answers.traffic" value="high" class="text-indigo-500 focus:ring-0">
+            <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 cursor-pointer transition-colors" :class="answers.traffic === 'high' ? 'bg-emerald-600/30 border border-emerald-400' : ''">
+              <input type="radio" v-model="answers.traffic" value="high" class="text-emerald-500 focus:ring-0">
               <span>Потенциально высокий (> 100 ГБ / вирусный охват)</span>
             </label>
-            <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 cursor-pointer transition-colors" :class="answers.traffic === 'low' ? 'bg-indigo-600/30 border border-indigo-400' : ''">
-              <input type="radio" v-model="answers.traffic" value="low" class="text-indigo-500 focus:ring-0">
+            <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 cursor-pointer transition-colors" :class="answers.traffic === 'low' ? 'bg-emerald-600/30 border border-emerald-400' : ''">
+              <input type="radio" v-model="answers.traffic" value="low" class="text-emerald-500 focus:ring-0">
               <span>Небольшой персональный сайт / портфолио (< 50 ГБ в месяц)</span>
             </label>
           </div>
@@ -62,7 +62,7 @@
         </div>
         <h4 class="text-xl font-bold text-white flex items-center gap-2">
           <span>{{ adviceResult.name }}</span>
-          <span class="text-xs font-normal text-indigo-200">({{ adviceResult.tagline }})</span>
+          <span class="text-xs font-normal text-emerald-200">({{ adviceResult.tagline }})</span>
         </h4>
         <p class="text-xs sm:text-sm text-slate-200 mt-2 leading-relaxed">
           {{ adviceResult.reason }}
@@ -76,7 +76,7 @@
           <a
             :href="adviceResult.link"
             target="_blank"
-            class="text-indigo-300 hover:text-white font-semibold underline flex items-center gap-1"
+            class="text-emerald-300 hover:text-white font-semibold underline flex items-center gap-1"
           >
             Перейти к платформе
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

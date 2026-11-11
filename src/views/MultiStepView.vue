@@ -3,20 +3,20 @@
     <div class="mb-8">
       <h2 class="text-2xl font-black text-slate-900 dark:text-white">Многошаговая форма регистрации</h2>
       <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
-        Пошаговое оформление заказа и подписки на услуги хостинга (Task 4.2)
+        Пошаговое оформление заказа и подписки на платформу
       </p>
 
       <!-- Stepper Progress Bar -->
       <div class="mt-6">
         <div class="flex items-center justify-between text-xs font-bold text-slate-500 mb-2">
-          <span :class="currentStep >= 1 ? 'text-indigo-600 dark:text-indigo-400' : ''">1. Профиль</span>
-          <span :class="currentStep >= 2 ? 'text-indigo-600 dark:text-indigo-400' : ''">2. Адрес</span>
-          <span :class="currentStep >= 3 ? 'text-indigo-600 dark:text-indigo-400' : ''">3. Оплата</span>
-          <span :class="currentStep >= 4 ? 'text-indigo-600 dark:text-indigo-400' : ''">4. Финал</span>
+          <span :class="currentStep >= 1 ? 'text-emerald-600 dark:text-emerald-400' : ''">1. Профиль</span>
+          <span :class="currentStep >= 2 ? 'text-emerald-600 dark:text-emerald-400' : ''">2. Адрес</span>
+          <span :class="currentStep >= 3 ? 'text-emerald-600 dark:text-emerald-400' : ''">3. Оплата</span>
+          <span :class="currentStep >= 4 ? 'text-emerald-600 dark:text-emerald-400' : ''">4. Финал</span>
         </div>
-        <div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+        <div class="h-2 w-full bg-slate-100 dark:bg-[#0e221c] rounded-full overflow-hidden">
           <div
-            class="h-full bg-gradient-to-r from-indigo-500 to-purple-600 transition-all duration-300 rounded-full"
+            class="h-full bg-gradient-to-r from-emerald-500 to-teal-600 transition-all duration-300 rounded-full"
             :style="{ width: ((currentStep - 1) / 3 * 100) + '%' }"
           ></div>
         </div>
@@ -59,15 +59,15 @@
     <div v-if="currentStep === 3" class="space-y-4">
       <h3 class="text-base font-bold text-slate-900 dark:text-white">Шаг 3: Способ монетизации и оплаты</h3>
       <div class="space-y-2 text-xs">
-        <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50">
-          <input type="radio" v-model="formData.plan" value="free" name="plan" class="text-indigo-600" />
+        <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-[#17342b] cursor-pointer hover:bg-slate-50 dark:hover:bg-[#0e221c]/50">
+          <input type="radio" v-model="formData.plan" value="free" name="plan" class="text-emerald-500" />
           <div>
             <div class="font-bold text-slate-900 dark:text-white">Бесплатный тариф (0 ₽)</div>
             <div class="text-slate-500">Cloudflare Pages безлимитная полоса</div>
           </div>
         </label>
-        <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50">
-          <input type="radio" v-model="formData.plan" value="pro" name="plan" class="text-indigo-600" />
+        <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-[#17342b] cursor-pointer hover:bg-slate-50 dark:hover:bg-[#0e221c]/50">
+          <input type="radio" v-model="formData.plan" value="pro" name="plan" class="text-emerald-500" />
           <div>
             <div class="font-bold text-slate-900 dark:text-white">Pro Developer (1 490 ₽)</div>
             <div class="text-slate-500">Кастомный домен, SSL и интеграция РСЯ</div>
@@ -86,7 +86,7 @@
         <p class="text-xs text-slate-500 mt-1">Проверьте сводную информацию перед отправкой</p>
       </div>
 
-      <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 text-xs space-y-1.5 border border-slate-200 dark:border-slate-700">
+      <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#081612]/70 text-xs space-y-1.5 border border-slate-200 dark:border-[#17342b]">
         <p><strong>Пользователь:</strong> {{ formData.name || 'Eugene' }} {{ formData.surname || 'Student' }}</p>
         <p><strong>Email:</strong> {{ formData.email || 'eugene@example.com' }}</p>
         <p><strong>Адрес:</strong> {{ formData.city || 'Москва' }}, {{ formData.street || 'ул. Студенческая' }}</p>
@@ -95,7 +95,7 @@
     </div>
 
     <!-- Navigation Buttons -->
-    <div class="mt-8 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+    <div class="mt-8 pt-4 border-t border-slate-100 dark:border-[#17342b] flex items-center justify-between">
       <button
         v-if="currentStep > 1"
         @click="currentStep--"
@@ -115,7 +115,7 @@
       <button
         v-else
         @click="submitForm"
-        class="btn-primary btn-sm bg-emerald-600 hover:bg-emerald-700"
+        class="btn-primary btn-sm"
       >
         Завершить регистрацию
       </button>

@@ -1,14 +1,14 @@
 <template>
-  <div class="card-base p-6 sm:p-8 my-8 border-slate-200 dark:border-[#1f293d]">
+  <div class="card-base p-6 sm:p-8 my-8 border-slate-200 dark:border-[#17342b]">
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
       <div>
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-50 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 mb-2">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 dark:bg-[#0e221c] text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 mb-2">
           Сравнительный анализ платформ
         </div>
         <h3 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
           Сравнение облачных платформ (2026)
         </h3>
-        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-emerald-100/70 mt-1">
           Анализ тарифов, лимитов пропускной способности, совместимости с Vue 3 + Vite и рисков размещения рекламы
         </p>
       </div>
@@ -22,8 +22,8 @@
           @click="activeFilter = filter"
           class="px-3 py-1.5 text-xs rounded-xl font-bold transition-all"
           :class="activeFilter === filter
-            ? 'bg-indigo-600 text-white shadow-sm'
-            : 'bg-slate-100 dark:bg-[#030712] text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-[#1f293d]'"
+            ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 font-bold shadow-sm'
+            : 'bg-slate-100 dark:bg-[#040d0a] text-slate-600 dark:text-emerald-200 hover:bg-slate-200 dark:hover:bg-[#0e221c] border border-slate-200 dark:border-[#17342b]'"
         >
           {{ filter }}
         </button>
@@ -31,9 +31,9 @@
     </div>
 
     <!-- Table Container -->
-    <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-[#1f293d] shadow-sm">
+    <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-[#17342b] shadow-sm">
       <table class="w-full text-left text-xs sm:text-sm">
-        <thead class="bg-slate-100/70 dark:bg-[#070b14]/90 text-slate-700 dark:text-slate-200 uppercase font-black text-[10px] tracking-wider border-b border-slate-200 dark:border-[#1f293d]">
+        <thead class="bg-slate-100/70 dark:bg-[#081612]/90 text-slate-700 dark:text-emerald-200 uppercase font-black text-[10px] tracking-wider border-b border-slate-200 dark:border-[#17342b]">
           <tr>
             <th class="p-4">Платформа</th>
             <th class="p-4">Трафик / Полоса</th>
@@ -46,12 +46,12 @@
             <th class="p-4 text-center">Оценка риска</th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-slate-100 dark:divide-[#1f293d]/60 text-slate-600 dark:text-slate-300">
+        <tbody class="divide-y divide-slate-100 dark:divide-[#17342b]/60 text-slate-600 dark:text-emerald-100/80">
           <tr
             v-for="p in filteredPlatforms"
             :key="p.name"
             class="hover:bg-slate-50/60 dark:hover:bg-white/5 transition-colors"
-            :class="p.isRecommended ? 'bg-indigo-500/5 dark:bg-indigo-950/20' : ''"
+            :class="p.isRecommended ? 'bg-emerald-500/5 dark:bg-emerald-950/20' : ''"
           >
             <!-- Name & Badge -->
             <td class="p-4 font-black text-slate-900 dark:text-white whitespace-nowrap">

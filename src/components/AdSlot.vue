@@ -12,30 +12,30 @@
     <!-- Placeholder mode (according to task requirements, with high-end 2026 styling) -->
     <div
       v-if="!showCreativeMode"
-      class="flex flex-col items-center justify-center border-2 border-dashed border-slate-300 dark:border-indigo-500/30 bg-white/60 dark:bg-[#0b1120]/70 hover:bg-slate-50 dark:hover:bg-[#0f172a]/90 hover:border-indigo-500/60 rounded-2xl p-5 text-center transition-all duration-300 select-none shadow-sm hover:shadow-glow-indigo backdrop-blur-md relative overflow-hidden"
+      class="flex flex-col items-center justify-center border-2 border-dashed border-slate-300 dark:border-emerald-500/35 bg-white/60 dark:bg-[#081612]/70 hover:bg-slate-50 dark:hover:bg-[#0e221c]/90 hover:border-emerald-500/60 rounded-2xl p-5 text-center transition-all duration-300 select-none shadow-sm hover:shadow-glow-emerald backdrop-blur-md relative overflow-hidden"
       :style="customDimensions"
     >
       <!-- Top meta pill -->
       <div class="flex items-center gap-2 mb-2 z-10">
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60 shadow-xs">
-          <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-50 dark:bg-[#0e221c] text-emerald-800 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-700/60 shadow-xs">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
           {{ label }}
         </span>
-        <span class="text-[11px] font-mono text-slate-400 dark:text-slate-500 font-semibold">
+        <span class="text-[11px] font-mono text-slate-400 dark:text-emerald-300/60 font-semibold">
           {{ displayDimensions }}
         </span>
       </div>
 
       <!-- Icon & Label -->
-      <div class="flex items-center gap-2 text-slate-600 dark:text-slate-300 z-10">
-        <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div class="flex items-center gap-2 text-slate-600 dark:text-emerald-100 z-10">
+        <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <rect x="3" y="3" width="18" height="18" rx="2" stroke-width="2" stroke-dasharray="3 3"/>
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9h18M9 21V9"/>
         </svg>
         <span class="text-xs sm:text-sm font-extrabold tracking-wider uppercase">{{ slotTitle }}</span>
       </div>
 
-      <p class="text-[11px] text-slate-400 dark:text-slate-500 mt-1 max-w-sm z-10">
+      <p class="text-[11px] text-slate-400 dark:text-emerald-200/60 mt-1 max-w-sm z-10">
         {{ subDescription }}
       </p>
 
@@ -43,7 +43,7 @@
       <button
         type="button"
         @click="toggleMode"
-        class="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 transition-all border border-indigo-200 dark:border-indigo-800/80 hover:scale-105 active:scale-95 shadow-xs z-10"
+        class="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-[#0e221c] hover:bg-emerald-100 dark:hover:bg-[#16352b] transition-all border border-emerald-200 dark:border-emerald-700/70 hover:scale-105 active:scale-95 shadow-xs z-10"
         title="Переключить в режим симуляции реального рекламного креатива"
       >
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -57,11 +57,11 @@
     <!-- Simulated Real Creative (When toggled) -->
     <div
       v-else
-      class="relative overflow-hidden rounded-2xl border border-indigo-200 dark:border-indigo-500/30 bg-gradient-to-r from-indigo-50/90 via-white to-purple-50/90 dark:from-[#0b1120] dark:via-[#111827] dark:to-[#0b1120] p-5 shadow-lg hover:shadow-glow-indigo transition-all duration-300"
+      class="relative overflow-hidden rounded-2xl border border-emerald-200 dark:border-emerald-500/30 bg-gradient-to-r from-emerald-50/90 via-white to-teal-50/90 dark:from-[#081612] dark:via-[#0e221c] dark:to-[#081612] p-5 shadow-lg hover:shadow-glow-emerald transition-all duration-300"
       :style="customDimensions"
     >
       <!-- Background accent glow -->
-      <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-emerald-500/15 rounded-full blur-2xl pointer-events-none"></div>
 
       <!-- Ad Badge and Close/Info -->
       <div class="flex items-center justify-between mb-3">
@@ -75,7 +75,7 @@
         <div class="flex items-center gap-2 text-xs">
           <button
             @click="toggleMode"
-            class="text-indigo-600 dark:text-indigo-400 hover:underline text-[11px] font-semibold"
+            class="text-emerald-600 dark:text-emerald-400 hover:underline text-[11px] font-semibold"
             title="Вернуться к плейсхолдеру"
           >
             Режим сетки
@@ -100,14 +100,14 @@
         ]"
       >
         <div class="flex items-start gap-3.5">
-          <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white font-black text-sm shrink-0 shadow-md">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-cyan-500 flex items-center justify-center text-slate-950 font-black text-sm shrink-0 shadow-md">
             CF
           </div>
           <div>
             <h4 class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white leading-snug">
               {{ creativeData.title }}
             </h4>
-            <p class="text-xs text-slate-600 dark:text-slate-300 mt-1 line-clamp-2 leading-relaxed">
+            <p class="text-xs text-slate-600 dark:text-emerald-100/70 mt-1 line-clamp-2 leading-relaxed">
               {{ creativeData.description }}
             </p>
           </div>
@@ -118,7 +118,7 @@
             :href="creativeData.link"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white shadow-md shadow-indigo-600/30 transition-all hover:scale-105 active:scale-95"
+            class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-black shadow-md shadow-emerald-600/30 transition-all hover:scale-105 active:scale-95"
           >
             <span>{{ creativeData.buttonText }}</span>
             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -128,8 +128,8 @@
         </div>
       </div>
 
-      <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800 text-[10px] text-slate-400 dark:text-slate-500 flex items-center justify-between">
-        <span>Спонсор: <strong class="text-slate-600 dark:text-slate-300">{{ creativeData.sponsor }}</strong></span>
+      <div class="mt-3 pt-2 border-t border-slate-100 dark:border-[#17342b] text-[10px] text-slate-400 dark:text-emerald-300/60 flex items-center justify-between">
+        <span>Спонсор: <strong class="text-slate-600 dark:text-emerald-200">{{ creativeData.sponsor }}</strong></span>
         <span>Проверено CDN</span>
       </div>
     </div>

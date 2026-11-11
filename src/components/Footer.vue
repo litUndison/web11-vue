@@ -1,44 +1,44 @@
 <template>
-  <footer class="mt-16 border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-950/50 backdrop-blur-sm transition-colors duration-200">
+  <footer class="mt-16 border-t border-slate-200 dark:border-[#17342b] bg-white/50 dark:bg-[#040d0a]/80 backdrop-blur-sm transition-colors duration-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-sm">
         <!-- Col 1 -->
         <div class="md:col-span-2 space-y-3">
           <div class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-extrabold text-xs">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-slate-950 font-black text-xs shadow-glow-emerald">
               TUI
             </div>
             <span class="font-bold text-slate-900 dark:text-white text-base">Tailwind UI Studio</span>
           </div>
-          <p class="text-xs text-slate-500 dark:text-slate-400 max-w-md leading-relaxed">
+          <p class="text-xs text-slate-500 dark:text-emerald-100/70 max-w-md leading-relaxed">
             Tailwind UI Studio — комплексная платформа интерфейсных модулей на Vue 3 и Tailwind CSS со встроенной архитектурой рекламных слотов и оптимизацией Core Web Vitals.
           </p>
           <div class="text-[11px] text-slate-400">
-            Разработка: <span class="font-medium text-slate-600 dark:text-slate-300">Eugene</span> • Производственный релиз 2026
+            Разработка: <span class="font-medium text-slate-600 dark:text-emerald-300">Eugene</span> • Производственный релиз 2026
           </div>
         </div>
 
         <!-- Col 2: Terms of Service Quick Links -->
         <div class="space-y-2">
           <h5 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">Политики хостингов</h5>
-          <ul class="space-y-1.5 text-xs text-slate-500 dark:text-slate-400">
+          <ul class="space-y-1.5 text-xs text-slate-500 dark:text-emerald-200/70">
             <li>
-              <a href="https://www.cloudflare.com/terms/" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+              <a href="https://www.cloudflare.com/terms/" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
                 Cloudflare Terms of Use
               </a>
             </li>
             <li>
-              <a href="https://docs.github.com/en/site-policy/acceptable-use-policies/github-acceptable-use-policies" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+              <a href="https://docs.github.com/en/site-policy/acceptable-use-policies/github-acceptable-use-policies" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
                 GitHub Acceptable Use Policy
               </a>
             </li>
             <li>
-              <a href="https://vercel.com/legal/terms" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+              <a href="https://vercel.com/legal/terms" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
                 Vercel Terms of Service (Hobby)
               </a>
             </li>
             <li>
-              <a href="https://www.netlify.com/legal/terms-of-use/" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+              <a href="https://www.netlify.com/legal/terms-of-use/" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
                 Netlify Terms of Service
               </a>
             </li>
@@ -48,7 +48,7 @@
         <!-- Col 3: AdSlot specs -->
         <div class="space-y-2">
           <h5 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">Спецификация AdSlot</h5>
-          <ul class="space-y-1.5 text-xs text-slate-500 dark:text-slate-400 font-mono">
+          <ul class="space-y-1.5 text-xs text-slate-500 dark:text-emerald-200/70 font-mono">
             <li>• IAB Leaderboard (728×90)</li>
             <li>• Medium Rectangle (300×250)</li>
             <li>• In-Feed Native Card (Fluid)</li>
@@ -57,7 +57,7 @@
         </div>
       </div>
 
-      <div class="pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-2">
+      <div class="pt-6 border-t border-slate-200 dark:border-[#17342b] flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-2">
         <span>© 2026 Tailwind UI Studio. Все права защищены.</span>
         <span>Высокопроизводительная доставка через глобальную сеть Cloudflare & GitHub CDN</span>
       </div>

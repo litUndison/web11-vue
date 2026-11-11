@@ -1,15 +1,15 @@
 <template>
   <div class="space-y-8">
     <!-- Topbar info -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-[#1f293d]">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-[#17342b]">
       <div>
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-50 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 mb-2">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 dark:bg-[#0e221c] text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 mb-2">
           Аналитический центр
         </div>
         <h2 class="text-3xl font-black text-slate-900 dark:text-white flex items-center gap-2">
           <span>Дашборд производительности</span>
         </h2>
-        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-emerald-100/70 mt-1">
           Мониторинг ключевых показателей трафика, доходов от AdSlot и конверсий в реальном времени
         </p>
       </div>
@@ -21,7 +21,7 @@
           :key="p"
           @click="selectedPeriod = p"
           class="px-3 py-1.5 text-xs rounded-xl font-bold transition-all"
-          :class="selectedPeriod === p ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white dark:bg-[#0b1120] text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-[#1f293d]'"
+          :class="selectedPeriod === p ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 font-bold shadow-sm' : 'bg-white dark:bg-[#081612] text-slate-600 dark:text-emerald-200 hover:bg-slate-100 dark:hover:bg-[#0e221c] border border-slate-200 dark:border-[#17342b]'"
         >
           {{ p }}
         </button>
@@ -31,9 +31,9 @@
     <!-- Stat Cards Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       <div v-for="stat in stats" :key="stat.title" class="card-base card-hover p-6 relative overflow-hidden group">
-        <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-3">
+        <div class="flex items-center justify-between text-xs text-slate-500 dark:text-emerald-200/70 mb-3">
           <span class="font-bold tracking-wider uppercase text-[11px]">{{ stat.title }}</span>
-          <span class="w-8 h-8 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-base shadow-xs">
+          <span class="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-[#0e221c] text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-base shadow-xs border border-emerald-500/20">
             {{ stat.icon }}
           </span>
         </div>
@@ -70,7 +70,7 @@
           <div class="h-48 flex items-end gap-2.5 pt-4">
             <div v-for="(val, idx) in chartData" :key="idx" class="flex-1 flex flex-col items-center gap-2 group">
               <div
-                class="w-full rounded-t-xl bg-gradient-to-t from-indigo-600 via-indigo-500 to-purple-500 group-hover:from-indigo-400 group-hover:to-pink-400 transition-all duration-300 cursor-pointer shadow-md group-hover:shadow-glow-indigo"
+                class="w-full rounded-t-xl bg-gradient-to-t from-emerald-600 via-emerald-500 to-teal-400 group-hover:from-emerald-400 group-hover:to-teal-300 transition-all duration-300 cursor-pointer shadow-md group-hover:shadow-glow-emerald"
                 :style="{ height: val + '%' }"
                 :title="'Показатель: ' + val + '%'"
               ></div>
@@ -88,7 +88,7 @@
           
           <div class="overflow-x-auto">
             <table class="w-full text-left text-xs sm:text-sm">
-              <thead class="text-slate-400 uppercase font-black text-[10px] tracking-wider border-b border-slate-200 dark:border-[#1f293d]">
+              <thead class="text-slate-400 uppercase font-black text-[10px] tracking-wider border-b border-slate-200 dark:border-[#17342b]">
                 <tr>
                   <th class="pb-3">Партнёр / Сеть</th>
                   <th class="pb-3">Формат слота</th>
@@ -97,10 +97,10 @@
                   <th class="pb-3 text-right">Статус</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-slate-100 dark:divide-[#1f293d]/60 text-slate-700 dark:text-slate-300">
+              <tbody class="divide-y divide-slate-100 dark:divide-[#17342b]/60 text-slate-700 dark:text-emerald-100/80">
                 <tr v-for="t in transactions" :key="t.id" class="hover:bg-slate-50/60 dark:hover:bg-white/5 transition-colors">
                   <td class="py-3.5 font-bold text-slate-900 dark:text-white flex items-center gap-2.5">
-                    <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-emerald-400 to-teal-400"></span>
                     {{ t.sponsor }}
                   </td>
                   <td class="py-3.5 font-mono text-slate-500 text-xs">{{ t.slot }}</td>
@@ -125,8 +125,8 @@
         <!-- Sidebar AdSlot -->
         <div class="card-base p-5">
           <div class="flex items-center justify-between text-xs text-slate-400 mb-3">
-            <span class="font-black uppercase tracking-wider text-[11px] text-slate-500 dark:text-slate-400">Сайдбар-блок</span>
-            <span class="font-mono text-[11px] font-bold text-indigo-500">300 × 250</span>
+            <span class="font-black uppercase tracking-wider text-[11px] text-slate-500 dark:text-emerald-200/60">Сайдбар-блок</span>
+            <span class="font-mono text-[11px] font-bold text-emerald-400">300 × 250</span>
           </div>
 
           <AdSlot
@@ -139,11 +139,11 @@
         </div>
 
         <!-- Infrastructure Summary Card -->
-        <div class="card-base p-6 bg-gradient-to-br from-indigo-500/5 via-transparent to-purple-500/5 border-indigo-500/20">
-          <h4 class="font-black text-xs uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-2 flex items-center gap-2">
+        <div class="card-base p-6 bg-gradient-to-br from-emerald-500/5 via-transparent to-teal-500/5 border-emerald-500/20">
+          <h4 class="font-black text-xs uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-2 flex items-center gap-2">
             <span>⚡ Облачная инфраструктура</span>
           </h4>
-          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+          <p class="text-xs text-slate-600 dark:text-emerald-100/70 leading-relaxed font-normal">
             Проект оптимизирован под глобальную сеть CDN с поддержкой Edge Caching. Бесперебойная отдача статики без рисков перерасхода трафика.
           </p>
         </div>

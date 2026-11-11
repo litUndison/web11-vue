@@ -1,14 +1,14 @@
 <template>
   <div class="space-y-8">
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-[#1f293d]">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-[#17342b]">
       <div>
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-50 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 mb-2">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 dark:bg-[#0e221c] text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 mb-2">
           Управление задачами
         </div>
         <h2 class="text-3xl font-black text-slate-900 dark:text-white flex items-center gap-2">
           <span>Канбан-доска спринта</span>
         </h2>
-        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-emerald-100/70 mt-1">
           Интерактивное перемещение карточек между этапами разработки и релиза
         </p>
       </div>
@@ -22,27 +22,27 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
       
       <!-- Column: To Do -->
-      <div class="card-base p-5 bg-white/70 dark:bg-[#070b14]/70 border-slate-200 dark:border-[#1f293d]">
+      <div class="card-base p-5 bg-white/70 dark:bg-[#081612]/70 border-slate-200 dark:border-[#17342b]">
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center gap-2">
             <span class="w-3 h-3 rounded-full bg-slate-400"></span>
             <h3 class="font-black text-xs uppercase tracking-wider text-slate-700 dark:text-slate-200">К выполнению</h3>
           </div>
-          <span class="px-2.5 py-0.5 text-xs rounded-full bg-slate-200 dark:bg-[#1f293d] text-slate-700 dark:text-slate-300 font-black">
+          <span class="px-2.5 py-0.5 text-xs rounded-full bg-slate-200 dark:bg-[#17342b] text-slate-700 dark:text-emerald-200 font-black">
             {{ todoTasks.length }}
           </span>
         </div>
 
         <div class="space-y-3.5">
-          <div v-for="task in todoTasks" :key="task.id" class="card-base card-hover p-4 bg-white dark:bg-[#0b1120] shadow-sm border border-slate-200 dark:border-[#1f293d] border-l-4 border-l-slate-400">
+          <div v-for="task in todoTasks" :key="task.id" class="card-base card-hover p-4 bg-white dark:bg-[#0e221c] shadow-sm border border-slate-200 dark:border-[#17342b] border-l-4 border-l-slate-400">
             <div class="flex items-center justify-between mb-2">
               <span class="px-2 py-0.5 rounded text-[10px] font-bold" :class="task.tagClass">{{ task.tag }}</span>
               <span class="text-[11px] text-slate-400 font-mono">{{ task.estimate }}</span>
             </div>
             <h4 class="font-bold text-xs sm:text-sm text-slate-900 dark:text-white leading-snug">{{ task.title }}</h4>
-            <div class="mt-3 pt-2.5 border-t border-slate-100 dark:border-[#1f293d]/80 flex items-center justify-between text-xs">
+            <div class="mt-3 pt-2.5 border-t border-slate-100 dark:border-[#17342b]/80 flex items-center justify-between text-xs">
               <span class="text-slate-400 text-[11px] font-medium">{{ task.assignee }}</span>
-              <button @click="moveTask(task.id, 'inProgress')" class="text-indigo-600 dark:text-indigo-400 hover:underline font-bold text-[11px] flex items-center gap-1">
+              <button @click="moveTask(task.id, 'inProgress')" class="text-emerald-600 dark:text-emerald-400 hover:underline font-bold text-[11px] flex items-center gap-1">
                 <span>В работу</span>
                 <span>→</span>
               </button>
@@ -52,7 +52,7 @@
       </div>
 
       <!-- Column: In Progress -->
-      <div class="card-base p-5 bg-white/70 dark:bg-[#070b14]/70 border-slate-200 dark:border-[#1f293d]">
+      <div class="card-base p-5 bg-white/70 dark:bg-[#081612]/70 border-slate-200 dark:border-[#17342b]">
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center gap-2">
             <span class="w-3 h-3 rounded-full bg-amber-500 animate-pulse"></span>
@@ -64,13 +64,13 @@
         </div>
 
         <div class="space-y-3.5">
-          <div v-for="task in inProgressTasks" :key="task.id" class="card-base card-hover p-4 bg-white dark:bg-[#0b1120] shadow-sm border border-slate-200 dark:border-[#1f293d] border-l-4 border-l-amber-500">
+          <div v-for="task in inProgressTasks" :key="task.id" class="card-base card-hover p-4 bg-white dark:bg-[#0e221c] shadow-sm border border-slate-200 dark:border-[#17342b] border-l-4 border-l-amber-500">
             <div class="flex items-center justify-between mb-2">
               <span class="px-2 py-0.5 rounded text-[10px] font-bold" :class="task.tagClass">{{ task.tag }}</span>
               <span class="text-[11px] text-slate-400 font-mono">{{ task.estimate }}</span>
             </div>
             <h4 class="font-bold text-xs sm:text-sm text-slate-900 dark:text-white leading-snug">{{ task.title }}</h4>
-            <div class="mt-3 pt-2.5 border-t border-slate-100 dark:border-[#1f293d]/80 flex items-center justify-between text-xs">
+            <div class="mt-3 pt-2.5 border-t border-slate-100 dark:border-[#17342b]/80 flex items-center justify-between text-xs">
               <button @click="moveTask(task.id, 'todo')" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-[11px] font-semibold">
                 ← Назад
               </button>
@@ -84,7 +84,7 @@
       </div>
 
       <!-- Column: Done -->
-      <div class="card-base p-5 bg-white/70 dark:bg-[#070b14]/70 border-slate-200 dark:border-[#1f293d]">
+      <div class="card-base p-5 bg-white/70 dark:bg-[#081612]/70 border-slate-200 dark:border-[#17342b]">
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center gap-2">
             <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
@@ -96,13 +96,13 @@
         </div>
 
         <div class="space-y-3.5">
-          <div v-for="task in doneTasks" :key="task.id" class="card-base p-4 bg-white dark:bg-[#0b1120] shadow-sm border border-slate-200 dark:border-[#1f293d] border-l-4 border-l-emerald-500 opacity-90">
+          <div v-for="task in doneTasks" :key="task.id" class="card-base p-4 bg-white dark:bg-[#0e221c] shadow-sm border border-slate-200 dark:border-[#17342b] border-l-4 border-l-emerald-500 opacity-90">
             <div class="flex items-center justify-between mb-2">
               <span class="px-2 py-0.5 rounded text-[10px] font-bold" :class="task.tagClass">{{ task.tag }}</span>
               <span class="text-[11px] text-emerald-500 font-black">Завершено</span>
             </div>
             <h4 class="font-bold text-xs sm:text-sm text-slate-700 dark:text-slate-300 line-through leading-snug">{{ task.title }}</h4>
-            <div class="mt-3 pt-2.5 border-t border-slate-100 dark:border-[#1f293d]/80 flex items-center justify-between text-xs">
+            <div class="mt-3 pt-2.5 border-t border-slate-100 dark:border-[#17342b]/80 flex items-center justify-between text-xs">
               <span class="text-slate-400 text-[11px]">{{ task.assignee }}</span>
               <button @click="moveTask(task.id, 'inProgress')" class="text-slate-400 hover:underline text-[11px] font-semibold">
                 Вернуть
@@ -116,7 +116,7 @@
 
     <!-- Quick Add Modal -->
     <div v-if="showNewTaskModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4">
-      <div class="card-base max-w-md w-full p-6 space-y-4 border border-indigo-500/30 shadow-2xl">
+      <div class="card-base max-w-md w-full p-6 space-y-4 border border-emerald-500/30 shadow-2xl">
         <h3 class="text-lg font-black text-slate-900 dark:text-white">Новая задача спринта</h3>
         <input v-model="newTaskTitle" type="text" placeholder="Введите название задачи..." class="input-base" />
         <div class="flex justify-end gap-2 pt-2">

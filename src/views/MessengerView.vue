@@ -1,19 +1,19 @@
 <template>
-  <div class="card-base p-0 overflow-hidden flex flex-col md:flex-row h-[600px] border border-slate-200 dark:border-slate-800">
+  <div class="card-base p-0 overflow-hidden flex flex-col md:flex-row h-[600px] border border-slate-200 dark:border-[#17342b]">
     <!-- Left: Dialogs List -->
-    <div class="w-full md:w-80 border-r border-slate-200 dark:border-slate-800 flex flex-col bg-slate-50/50 dark:bg-slate-900/50">
-      <div class="p-4 border-b border-slate-200 dark:border-slate-800">
+    <div class="w-full md:w-80 border-r border-slate-200 dark:border-[#17342b] flex flex-col bg-slate-50/50 dark:bg-[#081612]/70">
+      <div class="p-4 border-b border-slate-200 dark:border-[#17342b]">
         <h3 class="font-bold text-sm text-slate-900 dark:text-white">Сообщения</h3>
         <input type="search" placeholder="Поиск контактов..." class="input-base text-xs py-1.5 mt-2" />
       </div>
 
-      <div class="flex-1 overflow-y-auto divide-y divide-slate-100 dark:divide-slate-800/60">
+      <div class="flex-1 overflow-y-auto divide-y divide-slate-100 dark:divide-[#17342b]/60">
         <div
           v-for="c in contacts"
           :key="c.id"
           @click="activeContact = c"
           class="p-3.5 flex items-center gap-3 cursor-pointer transition-colors"
-          :class="activeContact.id === c.id ? 'bg-indigo-50/80 dark:bg-indigo-950/40 border-l-4 border-indigo-600' : 'hover:bg-slate-100/60 dark:hover:bg-slate-800/40'"
+          :class="activeContact.id === c.id ? 'bg-emerald-50/80 dark:bg-[#0e221c] border-l-4 border-emerald-500' : 'hover:bg-slate-100/60 dark:hover:bg-white/5'"
         >
           <div class="relative">
             <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-xs" :class="c.color">
@@ -33,9 +33,9 @@
     </div>
 
     <!-- Right: Chat Area -->
-    <div class="flex-1 flex flex-col bg-white dark:bg-slate-950">
+    <div class="flex-1 flex flex-col bg-white dark:bg-[#040d0a]">
       <!-- Chat Header -->
-      <div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+      <div class="p-4 border-b border-slate-200 dark:border-[#17342b] flex items-center justify-between">
         <div class="flex items-center gap-3">
           <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-white text-xs" :class="activeContact.color">
             {{ activeContact.name[0] }}
@@ -59,11 +59,11 @@
           <div
             class="max-w-xs sm:max-w-md px-4 py-2.5 rounded-2xl text-xs sm:text-sm shadow-sm"
             :class="msg.isMine
-              ? 'bg-indigo-600 text-white rounded-br-sm'
-              : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-bl-sm border border-slate-200/50 dark:border-slate-700/50'"
+              ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 font-semibold rounded-br-sm shadow-glow-emerald'
+              : 'bg-slate-100 dark:bg-[#0e221c] text-slate-800 dark:text-emerald-100 rounded-bl-sm border border-slate-200/50 dark:border-[#17342b]'"
           >
             <p>{{ msg.text }}</p>
-            <span class="block text-[10px] mt-1 text-right" :class="msg.isMine ? 'text-indigo-200' : 'text-slate-400'">
+            <span class="block text-[10px] mt-1 text-right" :class="msg.isMine ? 'text-slate-900 font-bold' : 'text-slate-400'">
               {{ msg.time }}
             </span>
           </div>
@@ -71,7 +71,7 @@
       </div>
 
       <!-- Input Bar -->
-      <div class="p-3 border-t border-slate-200 dark:border-slate-800 flex items-center gap-2">
+      <div class="p-3 border-t border-slate-200 dark:border-[#17342b] flex items-center gap-2">
         <input
           v-model="inputMsg"
           @keyup.enter="sendMessage"
