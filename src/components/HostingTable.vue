@@ -265,3 +265,4 @@ const filteredPlatforms = computed(() => {
   return platforms
 })
 </script>
+
