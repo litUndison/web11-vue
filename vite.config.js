@@ -9,7 +9,10 @@ export default defineConfig({
   base: process.env.VITE_BASE || './',
   server: {
     port: 5173,
-    host: true
+    host: true,
+    watch: {
+      ignored: ['**/.vs/**', '**/.git/**']
+    }
   },
   build: {
     outDir: 'dist',
