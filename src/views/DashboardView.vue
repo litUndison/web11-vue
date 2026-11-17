@@ -82,12 +82,15 @@
         <!-- Transactions Table -->
         <div class="card-base p-7">
           <div class="flex items-center justify-between mb-5">
-            <h3 class="font-extrabold text-base text-slate-900 dark:text-white">История начислений</h3>
-            <span class="text-xs text-slate-400">Всего 4 записи</span>
+            <div>
+              <h3 class="font-extrabold text-base text-slate-900 dark:text-white">История начислений и выплат</h3>
+              <p class="text-xs text-slate-400 mt-0.5">Автоматический клиринг по партнерским сетям и AdSlot</p>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">5 транзакций</span>
           </div>
           
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs sm:text-sm">
+          <div class="overflow-x-auto rounded-xl">
+            <table class="w-full min-w-[580px] text-left text-xs sm:text-sm">
               <thead class="text-slate-400 uppercase font-black text-[10px] tracking-wider border-b border-slate-200 dark:border-[#17342b]">
                 <tr>
                   <th class="pb-3">Партнёр / Сеть</th>
@@ -176,9 +179,10 @@ const stats = [
 const chartData = [35, 45, 60, 52, 78, 65, 88, 92, 80, 95]
 
 const transactions = [
-  { id: 1, sponsor: 'Cloudflare Pro', slot: 'Sidebar (300×250)', impressions: '42 100', income: '8 420 ₽', status: 'Выплачено' },
-  { id: 2, sponsor: 'Vite Developer Tool', slot: 'Top Leaderboard', impressions: '54 300', income: '11 200 ₽', status: 'Выплачено' },
-  { id: 3, sponsor: 'Tailwind UI Studio', slot: 'In-Feed Slot', impressions: '28 900', income: '5 780 ₽', status: 'Выплачено' },
-  { id: 4, sponsor: 'Vue Mastery', slot: 'Sidebar (300×250)', impressions: '17 550', income: '3 000 ₽', status: 'Выплачено' }
+  { id: 1, sponsor: 'Cloudflare Enterprise CDN', slot: 'Top Leaderboard (728×90)', impressions: '54 300', income: '11 200 ₽', status: 'Выплачено' },
+  { id: 2, sponsor: 'JetBrains Partner Network', slot: 'Sidebar (300×250)', impressions: '42 100', income: '8 420 ₽', status: 'Выплачено' },
+  { id: 3, sponsor: 'Яндекс Рекламная Сеть (РСЯ)', slot: 'In-Feed Native Card', impressions: '28 900', income: '5 780 ₽', status: 'Выплачено' },
+  { id: 4, sponsor: 'Google AdSense Premium', slot: 'Sidebar (300×250)', impressions: '17 550', income: '3 510 ₽', status: 'Выплачено' },
+  { id: 5, sponsor: 'Stripe Marketplace Billing', slot: 'Checkout Banner', impressions: '9 400', income: '2 850 ₽', status: 'В обработке' }
 ]
 </script>

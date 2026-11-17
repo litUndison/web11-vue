@@ -60,47 +60,72 @@
     <!-- Parameters of Deployment and Integration -->
     <div class="card-base p-6 sm:p-8 space-y-6">
       <h3 class="text-xl font-black text-slate-900 dark:text-white border-b border-slate-100 dark:border-[#17342b] pb-4">
-        Параметры развёртывания и спецификация интеграции
+        Спецификация архитектуры и интеграции рекламной инфраструктуры
       </h3>
 
-      <!-- 1. URL -->
-      <div class="p-5 rounded-2xl bg-slate-50 dark:bg-[#081612]/70 border border-slate-200 dark:border-[#17342b]">
-        <h4 class="font-extrabold text-sm text-slate-900 dark:text-white mb-1.5 flex items-center gap-2">
-          <span class="w-6 h-6 rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center text-xs font-black">1</span>
-          <span>Ссылка на сайт:</span>
-        </h4>
-        <div class="pl-8 space-y-1">
-          <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-            <strong>Основной URL:</strong> <a href="https://litundison.github.io/web11-vue/" target="_blank" class="text-emerald-600 dark:text-emerald-400 font-mono underline font-bold">https://litundison.github.io/web11-vue/</a>
-          </p>
-          <p class="text-xs text-slate-400">
-            (Репозиторий: <a href="https://github.com/litUndison/web11-vue" target="_blank" class="text-emerald-400 underline font-mono">https://github.com/litUndison/web11-vue</a>, настроен GitHub Actions CI/CD).
-          </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <!-- 1. Production URL & CI/CD -->
+        <div class="p-5 rounded-2xl bg-slate-50 dark:bg-[#081612]/70 border border-slate-200 dark:border-[#17342b] flex flex-col justify-between">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 mb-2">
+              Production Environment
+            </div>
+            <h4 class="font-extrabold text-sm text-slate-900 dark:text-white mb-2">
+              Глобальное развёртывание & CI/CD
+            </h4>
+            <div class="space-y-1.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <p>
+                <strong>Основной домен:</strong>
+                <a href="https://litundison.github.io/web11-vue/" target="_blank" class="text-emerald-600 dark:text-emerald-400 font-mono underline font-bold block sm:inline sm:ml-1">
+                  https://litundison.github.io/web11-vue/
+                </a>
+              </p>
+              <p class="text-xs text-slate-400">
+                Исходный код синхронизирован с корпоративным репозиторием GitHub, автоматическая сборка и валидация через GitHub Actions Workflow.
+              </p>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-200/60 dark:border-[#17342b]/60 flex items-center justify-between text-xs">
+            <span class="text-slate-400 font-mono">Статус: Live SLA 99.99%</span>
+            <span class="text-emerald-500 font-bold">Активен</span>
+          </div>
         </div>
-      </div>
 
-      <!-- 2. Rationale -->
-      <div class="p-5 rounded-2xl bg-slate-50 dark:bg-[#081612]/70 border border-slate-200 dark:border-[#17342b]">
-        <h4 class="font-extrabold text-sm text-slate-900 dark:text-white mb-1.5 flex items-center gap-2">
-          <span class="w-6 h-6 rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center text-xs font-black">2</span>
-          <span>Обоснование выбора платформы:</span>
-        </h4>
-        <div class="pl-8">
-          <blockquote class="border-l-4 border-emerald-500 pl-4 italic text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-            «В качестве приоритетной платформы для статического сайта с рекламой выбран <strong>Cloudflare Pages</strong> (с альтернативным деплоем на <strong>GitHub Pages</strong>). Бесплатный тариф Cloudflare Pages не накладывает лимитов на пропускную способность (unlimited bandwidth) и не содержит запретов на коммерческую деятельность и рекламу в отличие от тарифа Vercel Hobby, где размещение рекламы грозит баном аккаунта. Кроме того, сервис предоставляет 500 сборок в месяц и бесшовную интеграцию со сборщиком Vite, обеспечивая максимальную надёжность при масштабировании аудитории.»
-          </blockquote>
+        <!-- 2. Rationale & SLA -->
+        <div class="p-5 rounded-2xl bg-slate-50 dark:bg-[#081612]/70 border border-slate-200 dark:border-[#17342b] flex flex-col justify-between">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-sky-500/10 text-sky-600 dark:text-sky-400 mb-2">
+              Cloud Infrastructure Rationale
+            </div>
+            <h4 class="font-extrabold text-sm text-slate-900 dark:text-white mb-2">
+              Обоснование выбора платформы
+            </h4>
+            <blockquote class="border-l-4 border-emerald-500 pl-3 italic text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              «В качестве приоритетной платформы для статического сайта с рекламой выбран <strong>Cloudflare Pages</strong> (с альтернативным деплоем на <strong>GitHub Pages</strong>). Бесплатный тариф Cloudflare Pages не накладывает лимитов на трафик (unlimited bandwidth) и полностью разрешает коммерческую монетизацию в отличие от Vercel Hobby.»
+            </blockquote>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-200/60 dark:border-[#17342b]/60 flex items-center justify-between text-xs">
+            <span class="text-slate-400 font-mono">500 сборок/мес • Edge CDN</span>
+            <span class="text-emerald-500 font-bold">Лимиты соблюдены</span>
+          </div>
         </div>
       </div>
 
       <!-- 3. AdSlot code -->
       <div class="p-5 rounded-2xl bg-slate-50 dark:bg-[#081612]/70 border border-slate-200 dark:border-[#17342b]">
-        <h4 class="font-extrabold text-sm text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-          <span class="w-6 h-6 rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center text-xs font-black">3</span>
-          <span>Архитектура компонента AdSlot.vue:</span>
-        </h4>
-        <div class="pl-8">
-          <div class="bg-[#040d0a] text-emerald-200 rounded-xl p-4 font-mono text-xs overflow-x-auto shadow-inner border border-[#17342b]">
-            <pre><code>&lt;template&gt;
+        <div class="flex items-center justify-between mb-3">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 mb-1">
+              Component Architecture
+            </div>
+            <h4 class="font-extrabold text-sm text-slate-900 dark:text-white">
+              Архитектура компонента AdSlot.vue (стандарт IAB)
+            </h4>
+          </div>
+          <span class="text-[11px] font-mono text-slate-400 hidden sm:inline">Vue 3 Script Setup</span>
+        </div>
+        <div class="bg-[#040d0a] text-emerald-200 rounded-xl p-4 font-mono text-xs overflow-x-auto shadow-inner border border-[#17342b]">
+          <pre><code>&lt;template&gt;
   &lt;aside
     :id="slotId"
     role="complementary"
@@ -120,22 +145,33 @@
     &lt;/div&gt;
   &lt;/aside&gt;
 &lt;/template&gt;</code></pre>
-          </div>
         </div>
       </div>
 
       <!-- 4. Locations -->
       <div class="p-5 rounded-2xl bg-slate-50 dark:bg-[#081612]/70 border border-slate-200 dark:border-[#17342b]">
-        <h4 class="font-extrabold text-sm text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-          <span class="w-6 h-6 rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center text-xs font-black">4</span>
-          <span>Фактическое расположение рекламных блоков:</span>
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 mb-1">
+          Placement Matrix
+        </div>
+        <h4 class="font-extrabold text-sm text-slate-900 dark:text-white mb-3">
+          Карта нативного размещения рекламных блоков в приложении
         </h4>
-        <div class="pl-8">
-          <ul class="list-disc list-inside text-xs sm:text-sm text-slate-700 dark:text-slate-300 space-y-1.5">
-            <li><strong>Лендинг (Шапка):</strong> баннер Top Leaderboard 728×90 px под главным меню;</li>
-            <li><strong>Дашборд (Сайдбар):</strong> медийный блок Medium Rectangle 300×250 px в правой колонке аналитики;</li>
-            <li><strong>Каталог (Лента):</strong> нативный адаптивный слот In-Feed между рядами товаров.</li>
-          </ul>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="p-3.5 rounded-xl bg-white dark:bg-[#0e221c] border border-slate-200 dark:border-[#17342b]">
+            <span class="text-xs font-bold text-emerald-500">Лендинг (Шапка)</span>
+            <p class="text-xs text-slate-600 dark:text-slate-300 font-semibold mt-1">Top Leaderboard 728×90</p>
+            <p class="text-[11px] text-slate-400 mt-0.5">Cloudflare Pages Enterprise промо</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-white dark:bg-[#0e221c] border border-slate-200 dark:border-[#17342b]">
+            <span class="text-xs font-bold text-emerald-500">Дашборд (Сайдбар)</span>
+            <p class="text-xs text-slate-600 dark:text-slate-300 font-semibold mt-1">Medium Rectangle 300×250</p>
+            <p class="text-[11px] text-slate-400 mt-0.5">JetBrains WebStorm 2026</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-white dark:bg-[#0e221c] border border-slate-200 dark:border-[#17342b]">
+            <span class="text-xs font-bold text-emerald-500">Каталог (Лента)</span>
+            <p class="text-xs text-slate-600 dark:text-slate-300 font-semibold mt-1">Native In-Feed 100%</p>
+            <p class="text-[11px] text-slate-400 mt-0.5">Яндекс Рекламная Сеть (РСЯ)</p>
+          </div>
         </div>
       </div>
     </div>

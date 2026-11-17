@@ -41,7 +41,10 @@
             </div>
             <h4 class="font-bold text-xs sm:text-sm text-slate-900 dark:text-white leading-snug">{{ task.title }}</h4>
             <div class="mt-3 pt-2.5 border-t border-slate-100 dark:border-[#17342b]/80 flex items-center justify-between text-xs">
-              <span class="text-slate-400 text-[11px] font-medium">{{ task.assignee }}</span>
+              <div class="flex items-center gap-1.5">
+                <img :src="task.avatar" class="w-4 h-4 rounded-full object-cover" />
+                <span class="text-slate-400 text-[11px] font-medium">{{ task.assignee }}</span>
+              </div>
               <button @click="moveTask(task.id, 'inProgress')" class="text-emerald-600 dark:text-emerald-400 hover:underline font-bold text-[11px] flex items-center gap-1">
                 <span>В работу</span>
                 <span>→</span>
@@ -74,6 +77,10 @@
               <button @click="moveTask(task.id, 'todo')" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-[11px] font-semibold">
                 ← Назад
               </button>
+              <div class="flex items-center gap-1.5">
+                <img :src="task.avatar" class="w-4 h-4 rounded-full object-cover" />
+                <span class="text-slate-400 text-[11px] font-medium">{{ task.assignee }}</span>
+              </div>
               <button @click="moveTask(task.id, 'done')" class="text-emerald-600 dark:text-emerald-400 hover:underline font-bold text-[11px] flex items-center gap-1">
                 <span>Готово</span>
                 <span>✓</span>
@@ -103,7 +110,10 @@
             </div>
             <h4 class="font-bold text-xs sm:text-sm text-slate-700 dark:text-slate-300 line-through leading-snug">{{ task.title }}</h4>
             <div class="mt-3 pt-2.5 border-t border-slate-100 dark:border-[#17342b]/80 flex items-center justify-between text-xs">
-              <span class="text-slate-400 text-[11px]">{{ task.assignee }}</span>
+              <div class="flex items-center gap-1.5">
+                <img :src="task.avatar" class="w-4 h-4 rounded-full object-cover" />
+                <span class="text-slate-400 text-[11px]">{{ task.assignee }}</span>
+              </div>
               <button @click="moveTask(task.id, 'inProgress')" class="text-slate-400 hover:underline text-[11px] font-semibold">
                 Вернуть
               </button>
@@ -135,11 +145,56 @@ const showNewTaskModal = ref(false)
 const newTaskTitle = ref('')
 
 const tasks = ref([
-  { id: 1, title: 'Реализовать компонент AdSlot с поддержкой IAB', status: 'done', tag: 'Frontend', tagClass: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300', estimate: '3ч', assignee: 'Eugene' },
-  { id: 2, title: 'Провести сравнительный анализ облачных платформ', status: 'done', tag: 'Архитектура', tagClass: 'bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300', estimate: '4ч', assignee: 'Eugene' },
-  { id: 3, title: 'Настроить CI/CD пайплайн в GitHub Actions', status: 'done', tag: 'DevOps', tagClass: 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300', estimate: '2ч', assignee: 'Eugene' },
-  { id: 4, title: 'Проверить CLS и плавность загрузки баннеров', status: 'inProgress', tag: 'QA', tagClass: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300', estimate: '1.5ч', assignee: 'Eugene' },
-  { id: 5, title: 'Оптимизировать скорость отклика Edge CDN', status: 'todo', tag: 'Cloud', tagClass: 'bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300', estimate: '1ч', assignee: 'Eugene' }
+  {
+    id: 1,
+    title: 'Реализовать компонент AdSlot с поддержкой спецификаций IAB',
+    status: 'done',
+    tag: 'Frontend',
+    tagClass: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300',
+    estimate: '3ч',
+    assignee: 'Алексей Соколов',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 2,
+    title: 'Архитектурный аудит и бенчмаркинг Cloudflare Pages vs GitHub Pages',
+    status: 'done',
+    tag: 'DevOps',
+    tagClass: 'bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300',
+    estimate: '4ч',
+    assignee: 'Михаил Смирнов',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 3,
+    title: 'Настроить автоматический CI/CD релизный пайплайн в GitHub Actions',
+    status: 'done',
+    tag: 'Инфраструктура',
+    tagClass: 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300',
+    estimate: '2ч',
+    assignee: 'Елена Васильева',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 4,
+    title: 'Стресс-тестирование Cumulative Layout Shift (CLS) рекламных креативов',
+    status: 'inProgress',
+    tag: 'QA / Performance',
+    tagClass: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300',
+    estimate: '1.5ч',
+    assignee: 'Екатерина Романова',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 5,
+    title: 'Оптимизация кэширования статических ассетов на Edge CDN',
+    status: 'todo',
+    tag: 'Edge CDN',
+    tagClass: 'bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300',
+    estimate: '2.5ч',
+    assignee: 'Дмитрий Морозов',
+    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&auto=format&fit=crop&q=80'
+  }
 ])
 
 const todoTasks = computed(() => tasks.value.filter(t => t.status === 'todo'))
@@ -160,7 +215,8 @@ const addNewTask = () => {
     tag: 'Спринт',
     tagClass: 'bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300',
     estimate: '2ч',
-    assignee: 'Eugene'
+    assignee: 'Алексей Соколов',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80'
   })
   newTaskTitle.value = ''
   showNewTaskModal.value = false

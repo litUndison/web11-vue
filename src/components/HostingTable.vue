@@ -13,50 +13,63 @@
         </p>
       </div>
 
-      <!-- Quick Platform Filter -->
-      <div class="flex items-center gap-2">
-        <span class="text-xs text-slate-400 font-bold">Фильтр:</span>
-        <button
-          v-for="filter in ['Все', 'Безопасные для рекламы', 'Рискованные']"
-          :key="filter"
-          @click="activeFilter = filter"
-          class="px-3 py-1.5 text-xs rounded-xl font-bold transition-all"
-          :class="activeFilter === filter
-            ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 font-bold shadow-sm'
-            : 'bg-slate-100 dark:bg-[#040d0a] text-slate-600 dark:text-emerald-200 hover:bg-slate-200 dark:hover:bg-[#0e221c] border border-slate-200 dark:border-[#17342b]'"
-        >
-          {{ filter }}
-        </button>
+      <!-- Quick Platform Filter & Search -->
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+        <div class="relative w-full sm:w-60">
+          <input
+            v-model="searchQuery"
+            type="search"
+            placeholder="Поиск платформы..."
+            class="input-base text-xs py-1.5 pl-8"
+          />
+          <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+
+        <div class="flex items-center gap-1.5 flex-wrap">
+          <button
+            v-for="filter in ['Все', 'Безопасные для рекламы', 'Рискованные']"
+            :key="filter"
+            @click="activeFilter = filter"
+            class="px-3 py-1.5 text-xs rounded-xl font-bold transition-all"
+            :class="activeFilter === filter
+              ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 font-bold shadow-sm'
+              : 'bg-slate-100 dark:bg-[#040d0a] text-slate-600 dark:text-emerald-200 hover:bg-slate-200 dark:hover:bg-[#0e221c] border border-slate-200 dark:border-[#17342b]'"
+          >
+            {{ filter }}
+          </button>
+        </div>
       </div>
     </div>
 
-    <!-- Table Container -->
-    <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-[#17342b] shadow-sm">
-      <table class="w-full text-left text-xs sm:text-sm">
-        <thead class="bg-slate-100/70 dark:bg-[#081612]/90 text-slate-700 dark:text-emerald-200 uppercase font-black text-[10px] tracking-wider border-b border-slate-200 dark:border-[#17342b]">
+    <!-- Desktop Table View (Full Matrix, min-w-1050px, sticky platform column) -->
+    <div class="hidden lg:block overflow-x-auto rounded-2xl border border-slate-200 dark:border-[#17342b] shadow-sm">
+      <table class="w-full min-w-[1050px] text-left text-xs sm:text-sm border-collapse">
+        <thead class="bg-slate-100/80 dark:bg-[#081612] text-slate-700 dark:text-emerald-200 uppercase font-black text-[10px] tracking-wider border-b border-slate-200 dark:border-[#17342b]">
           <tr>
-            <th class="p-4">Платформа</th>
-            <th class="p-4">Трафик / Полоса</th>
-            <th class="p-4">Лимиты сборок</th>
-            <th class="p-4">Коммерция</th>
-            <th class="p-4">Политика рекламы</th>
-            <th class="p-4">Домен + SSL</th>
-            <th class="p-4">Git-деплой</th>
-            <th class="p-4 min-w-[200px]">Подходящий сценарий</th>
-            <th class="p-4 text-center">Оценка риска</th>
+            <th class="p-4 sticky left-0 bg-slate-100/90 dark:bg-[#081612] z-20 shadow-[2px_0_8px_rgba(0,0,0,0.06)] min-w-[190px]">Платформа</th>
+            <th class="p-4 min-w-[140px]">Трафик / Полоса</th>
+            <th class="p-4 min-w-[130px]">Лимиты сборок</th>
+            <th class="p-4 min-w-[130px]">Коммерция</th>
+            <th class="p-4 min-w-[150px]">Политика рекламы</th>
+            <th class="p-4 min-w-[110px]">Домен + SSL</th>
+            <th class="p-4 min-w-[110px]">Git-деплой</th>
+            <th class="p-4 min-w-[220px]">Подходящий сценарий</th>
+            <th class="p-4 text-center min-w-[120px]">Оценка риска</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-slate-100 dark:divide-[#17342b]/60 text-slate-600 dark:text-emerald-100/80">
           <tr
             v-for="p in filteredPlatforms"
             :key="p.name"
-            class="hover:bg-slate-50/60 dark:hover:bg-white/5 transition-colors"
+            class="hover:bg-slate-50/70 dark:hover:bg-white/5 transition-colors group"
             :class="p.isRecommended ? 'bg-emerald-500/5 dark:bg-emerald-950/20' : ''"
           >
-            <!-- Name & Badge -->
-            <td class="p-4 font-black text-slate-900 dark:text-white whitespace-nowrap">
+            <!-- Name & Badge (Sticky on scroll) -->
+            <td class="p-4 font-black text-slate-900 dark:text-white whitespace-nowrap sticky left-0 bg-white/95 dark:bg-[#081612] z-10 shadow-[2px_0_8px_rgba(0,0,0,0.06)] group-hover:bg-slate-50 dark:group-hover:bg-[#0b1b16] transition-colors">
               <div class="flex items-center gap-2">
-                <span>{{ p.name }}</span>
+                <span class="text-sm font-black">{{ p.name }}</span>
                 <span
                   v-if="p.isRecommended"
                   class="px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-emerald-100 text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-300 border border-emerald-500/30 shadow-xs"
@@ -123,7 +136,7 @@
             </td>
 
             <!-- Scenario -->
-            <td class="p-4 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+            <td class="p-4 text-xs text-slate-500 dark:text-emerald-100/70 leading-relaxed">
               {{ p.scenario }}
             </td>
 
@@ -140,6 +153,58 @@
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <!-- Mobile Responsive Cards View (for phones & tablets) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:hidden">
+      <div
+        v-for="p in filteredPlatforms"
+        :key="'mob-' + p.name"
+        class="card-base p-5 space-y-3.5 border transition-all"
+        :class="p.isRecommended ? 'border-emerald-500/60 ring-2 ring-emerald-500/20' : 'border-slate-200 dark:border-[#17342b]'"
+      >
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <h4 class="font-black text-base text-slate-900 dark:text-white">{{ p.name }}</h4>
+            <span
+              v-if="p.isRecommended"
+              class="px-2 py-0.5 rounded-full text-[9px] font-black uppercase bg-emerald-100 text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-300"
+            >
+              №1 выбор
+            </span>
+          </div>
+          <span
+            class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-black uppercase"
+            :class="p.riskClass"
+          >
+            <span class="w-1.5 h-1.5 rounded-full" :class="p.riskDotClass"></span>
+            {{ p.riskLevel }}
+          </span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 text-xs pt-1 border-t border-slate-100 dark:border-[#17342b]/60">
+          <div>
+            <span class="text-slate-400 block text-[10px] uppercase font-bold">Трафик / Полоса:</span>
+            <span class="font-bold text-slate-800 dark:text-white" :class="p.bandwidthHighlight">{{ p.bandwidth }}</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block text-[10px] uppercase font-bold">Сборки в месяц:</span>
+            <span class="font-medium text-slate-700 dark:text-emerald-200">{{ p.builds }}</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block text-[10px] uppercase font-bold">Коммерция:</span>
+            <span class="font-bold" :class="p.commercialAllowed ? 'text-emerald-500' : 'text-rose-500'">{{ p.commercialText }}</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block text-[10px] uppercase font-bold">Реклама:</span>
+            <span class="font-semibold text-slate-700 dark:text-emerald-200">{{ p.adsPolicy }}</span>
+          </div>
+        </div>
+
+        <p class="text-xs text-slate-500 dark:text-emerald-100/70 pt-2 border-t border-slate-100 dark:border-[#17342b]/60 leading-relaxed">
+          {{ p.scenario }}
+        </p>
+      </div>
     </div>
 
     <!-- Alert Box: Policies Nuances -->
@@ -166,6 +231,7 @@
 import { ref, computed } from 'vue'
 
 const activeFilter = ref('Все')
+const searchQuery = ref('')
 
 const platforms = [
   {
@@ -256,12 +322,16 @@ const platforms = [
 ]
 
 const filteredPlatforms = computed(() => {
+  let list = platforms
   if (activeFilter.value === 'Безопасные для рекламы') {
-    return platforms.filter(p => p.riskType === 'safe')
+    list = list.filter(p => p.riskType === 'safe')
+  } else if (activeFilter.value === 'Рискованные') {
+    list = list.filter(p => p.riskType === 'risky' || p.riskType === 'neutral')
   }
-  if (activeFilter.value === 'Рискованные') {
-    return platforms.filter(p => p.riskType === 'risky' || p.riskType === 'neutral')
+  if (searchQuery.value.trim()) {
+    const q = searchQuery.value.toLowerCase().trim()
+    list = list.filter(p => p.name.toLowerCase().includes(q) || p.scenario.toLowerCase().includes(q) || p.adsPolicy.toLowerCase().includes(q))
   }
-  return platforms
+  return list
 })
 </script>

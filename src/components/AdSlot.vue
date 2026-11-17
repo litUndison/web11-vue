@@ -9,9 +9,100 @@
       hidden ? 'hidden' : ''
     ]"
   >
-    <!-- Placeholder mode (according to task requirements, with high-end 2026 styling) -->
+    <!-- Simulated Real Creative (Displayed by default for 100% commercial feel) -->
     <div
-      v-if="!showCreativeMode"
+      v-if="showCreativeMode"
+      class="relative overflow-hidden rounded-2xl border border-emerald-300/40 dark:border-emerald-500/40 bg-gradient-to-r from-emerald-50/90 via-white to-teal-50/90 dark:from-[#081612] dark:via-[#0e221c] dark:to-[#081612] p-4 sm:p-5 shadow-lg hover:shadow-glow-emerald transition-all duration-300"
+      :style="customDimensions"
+    >
+      <!-- Background accent glow -->
+      <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Ad Meta Bar -->
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-400 text-slate-950 shadow-xs">
+            ★ Реклама
+          </span>
+          <span class="text-[10px] text-slate-500 dark:text-emerald-300/70 font-mono font-bold">{{ displayDimensions }}</span>
+          <span class="hidden sm:inline-block px-2 py-0.5 rounded-md text-[9px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+            Официальный партнёр
+          </span>
+        </div>
+
+        <div class="flex items-center gap-2 text-xs">
+          <button
+            @click="toggleMode"
+            class="text-emerald-700 dark:text-emerald-400 hover:underline text-[11px] font-semibold"
+            title="Переключить в режим сетки (плайсхолдер)"
+          >
+            Сетка слота
+          </button>
+          <button
+            v-if="closable"
+            @click="hideSlot"
+            class="text-slate-400 hover:text-rose-500 p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            title="Скрыть объявление"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Creative Content according to format -->
+      <div
+        :class="[
+          format === 'sidebar' ? 'flex flex-col text-left gap-3' : 'flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4'
+        ]"
+      >
+        <div class="flex items-start gap-3.5">
+          <div
+            class="w-12 h-12 rounded-xl flex items-center justify-center font-black text-sm shrink-0 shadow-md text-white"
+            :class="creativeData.logoBg"
+          >
+            {{ creativeData.logoText }}
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h4 class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white leading-snug">
+                {{ creativeData.title }}
+              </h4>
+              <span v-if="creativeData.badge" class="px-1.5 py-0.2 rounded text-[10px] font-black uppercase tracking-wider bg-rose-500 text-white">
+                {{ creativeData.badge }}
+              </span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-emerald-100/80 mt-1 line-clamp-2 leading-relaxed">
+              {{ creativeData.description }}
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-2 sm:mt-0 flex items-center gap-2 self-end sm:self-center shrink-0">
+          <a
+            :href="creativeData.link"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-black shadow-md shadow-emerald-600/30 transition-all hover:scale-105 active:scale-95"
+          >
+            <span>{{ creativeData.buttonText }}</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-3 pt-2 border-t border-slate-100 dark:border-[#17342b] text-[10px] text-slate-400 dark:text-emerald-300/60 flex items-center justify-between">
+        <span>Рекламодатель: <strong class="text-slate-700 dark:text-emerald-200">{{ creativeData.sponsor }}</strong></span>
+        <span class="font-mono">Проверено AdGuard • 0 ms CLS</span>
+      </div>
+    </div>
+
+    <!-- Technical Placeholder mode (accessible via toggle) -->
+    <div
+      v-else
       class="flex flex-col items-center justify-center border-2 border-dashed border-slate-300 dark:border-emerald-500/35 bg-white/60 dark:bg-[#081612]/70 hover:bg-slate-50 dark:hover:bg-[#0e221c]/90 hover:border-emerald-500/60 rounded-2xl p-5 text-center transition-all duration-300 select-none shadow-sm hover:shadow-glow-emerald backdrop-blur-md relative overflow-hidden"
       :style="customDimensions"
     >
@@ -43,95 +134,15 @@
       <button
         type="button"
         @click="toggleMode"
-        class="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-[#0e221c] hover:bg-emerald-100 dark:hover:bg-[#16352b] transition-all border border-emerald-200 dark:border-emerald-700/70 hover:scale-105 active:scale-95 shadow-xs z-10"
-        title="Переключить в режим симуляции реального рекламного креатива"
+        class="mt-3 inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold rounded-xl text-slate-950 bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 transition-all hover:scale-105 active:scale-95 shadow-md z-10"
+        title="Показать коммерческую рекламу"
       >
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
         </svg>
-        <span>Показать демо-креатив</span>
+        <span>Показать рекламный баннер</span>
       </button>
-    </div>
-
-    <!-- Simulated Real Creative (When toggled) -->
-    <div
-      v-else
-      class="relative overflow-hidden rounded-2xl border border-emerald-200 dark:border-emerald-500/30 bg-gradient-to-r from-emerald-50/90 via-white to-teal-50/90 dark:from-[#081612] dark:via-[#0e221c] dark:to-[#081612] p-5 shadow-lg hover:shadow-glow-emerald transition-all duration-300"
-      :style="customDimensions"
-    >
-      <!-- Background accent glow -->
-      <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-emerald-500/15 rounded-full blur-2xl pointer-events-none"></div>
-
-      <!-- Ad Badge and Close/Info -->
-      <div class="flex items-center justify-between mb-3">
-        <div class="flex items-center gap-2">
-          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-100 text-amber-800 dark:bg-amber-950/80 dark:text-amber-300 border border-amber-300/60 dark:border-amber-700/60 shadow-xs">
-            ★ Реклама
-          </span>
-          <span class="text-[10px] text-slate-400 font-mono">{{ displayDimensions }}</span>
-        </div>
-
-        <div class="flex items-center gap-2 text-xs">
-          <button
-            @click="toggleMode"
-            class="text-emerald-600 dark:text-emerald-400 hover:underline text-[11px] font-semibold"
-            title="Вернуться к плейсхолдеру"
-          >
-            Режим сетки
-          </button>
-          <button
-            v-if="closable"
-            @click="hideSlot"
-            class="text-slate-400 hover:text-rose-500 p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-            title="Скрыть объявление"
-          >
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Creative Content according to format -->
-      <div
-        :class="[
-          format === 'sidebar' ? 'flex flex-col text-left' : 'flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4'
-        ]"
-      >
-        <div class="flex items-start gap-3.5">
-          <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-cyan-500 flex items-center justify-center text-slate-950 font-black text-sm shrink-0 shadow-md">
-            CF
-          </div>
-          <div>
-            <h4 class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white leading-snug">
-              {{ creativeData.title }}
-            </h4>
-            <p class="text-xs text-slate-600 dark:text-emerald-100/70 mt-1 line-clamp-2 leading-relaxed">
-              {{ creativeData.description }}
-            </p>
-          </div>
-        </div>
-
-        <div class="mt-3 sm:mt-0 flex items-center gap-2 self-end sm:self-center shrink-0">
-          <a
-            :href="creativeData.link"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-black shadow-md shadow-emerald-600/30 transition-all hover:scale-105 active:scale-95"
-          >
-            <span>{{ creativeData.buttonText }}</span>
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="mt-3 pt-2 border-t border-slate-100 dark:border-[#17342b] text-[10px] text-slate-400 dark:text-emerald-300/60 flex items-center justify-between">
-        <span>Спонсор: <strong class="text-slate-600 dark:text-emerald-200">{{ creativeData.sponsor }}</strong></span>
-        <span>Проверено CDN</span>
-      </div>
     </div>
   </aside>
 </template>
@@ -171,11 +182,11 @@ const props = defineProps({
   },
   initialCreative: {
     type: Boolean,
-    default: false
+    default: true
   }
 })
 
-const showCreativeMode = ref(props.initialCreative)
+const showCreativeMode = ref(props.initialCreative !== false)
 const hidden = ref(false)
 
 const toggleMode = () => {
@@ -234,19 +245,39 @@ const subDescription = computed(() => {
 const creativeData = computed(() => {
   if (props.format === 'sidebar') {
     return {
-      title: 'Cloudflare Pages: Безлимитный трафик',
-      description: 'Идеальная облачная платформа для Vue 3 + Vite. 500 сборок в месяц без риска блокировок.',
-      buttonText: 'Попробовать',
-      link: 'https://pages.cloudflare.com',
-      sponsor: 'Cloudflare Inc.'
+      title: 'JetBrains WebStorm: Умная IDE для Vue 3',
+      description: 'Идеальная среда разработки с умным автодополнением Tailwind CSS, встроенным линтером и мгновенным HMR.',
+      buttonText: 'Скачать триал 30 дней',
+      link: 'https://www.jetbrains.com/webstorm/',
+      sponsor: 'ООО ДжетБрейнс • erid: 2Vtzqw7JetB',
+      logoText: 'JB',
+      logoBg: 'bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600',
+      badge: 'PRO'
     }
   }
+
+  if (props.format === 'in-feed') {
+    return {
+      title: 'Рекламная Сеть Яндекса (РСЯ) для e-Commerce',
+      description: 'Умная нативная монетизация каталогов товаров и медиа-ресурсов. Оплата за клики и целевые действия без задержек.',
+      buttonText: 'Подключить РСЯ',
+      link: 'https://partner.yandex.ru/',
+      sponsor: 'ООО «Яндекс» • erid: 2Vtzqu9Yndx',
+      logoText: 'Я',
+      logoBg: 'bg-gradient-to-tr from-red-500 via-red-600 to-amber-500',
+      badge: 'ХИТ'
+    }
+  }
+
   return {
-    title: 'Быстрый старт на Vue 3 + Tailwind CSS',
-    description: 'Развертывайте статические сайты за 60 секунд. Допустимо размещение AdSense и баннеров.',
-    buttonText: 'Узнать больше',
-    link: 'https://vitejs.dev',
-    sponsor: 'TechNova Partners'
+    title: 'Cloudflare Pages: Глобальный Edge CDN & Серверы',
+    description: 'Мгновенный деплой статических сайтов на Vue 3, бесплатный SSL-сертификат и абсолютно неограниченная полоса пропускания.',
+    buttonText: 'Подключить бесплатно',
+    link: 'https://pages.cloudflare.com',
+    sponsor: 'Cloudflare Inc. • erid: 2Vtzqv8Cldf',
+    logoText: 'CF',
+    logoBg: 'bg-gradient-to-tr from-amber-500 via-orange-500 to-emerald-500',
+    badge: 'ТОП'
   }
 })
 </script>

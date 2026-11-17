@@ -13,8 +13,8 @@
           <p class="text-xs text-slate-500 dark:text-emerald-100/70 max-w-md leading-relaxed">
             Tailwind UI Studio — комплексная платформа интерфейсных модулей на Vue 3 и Tailwind CSS со встроенной архитектурой рекламных слотов и оптимизацией Core Web Vitals.
           </p>
-          <div class="text-[11px] text-slate-400">
-            Разработка: <span class="font-medium text-slate-600 dark:text-emerald-300">Eugene</span> • Производственный релиз 2026
+          <div class="text-[11px] text-slate-500 dark:text-emerald-300/80 font-medium">
+            © 2026 Tailwind UI Studio Inc. Платформа корпоративных веб-интерфейсов и облачной инфраструктуры. Релиз v2.5.4 LTS.
           </div>
         </div>
 

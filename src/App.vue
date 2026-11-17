@@ -46,7 +46,7 @@ import DesignSystemView from './views/DesignSystemView.vue'
 import HostingAnalysisView from './views/HostingAnalysisView.vue'
 
 const activeTab = ref('landing')
-const allCreativeMode = ref(false)
+const allCreativeMode = ref(true)
 
 const viewMap = {
   landing: LandingView,

@@ -38,7 +38,7 @@
       </div>
       <div>
         <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Электронная почта</label>
-        <input v-model="formData.email" type="email" placeholder="eugene@example.com" class="input-base" />
+        <input v-model="formData.email" type="email" placeholder="a.voronov@technova.io" class="input-base" />
       </div>
     </div>
 
@@ -51,7 +51,7 @@
       </div>
       <div>
         <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Улица и дом</label>
-        <input v-model="formData.street" type="text" placeholder="ул. Ленина, д. 10" class="input-base" />
+        <input v-model="formData.street" type="text" placeholder="Пресненская наб., д. 12" class="input-base" />
       </div>
     </div>
 
@@ -69,8 +69,8 @@
         <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-[#17342b] cursor-pointer hover:bg-slate-50 dark:hover:bg-[#0e221c]/50">
           <input type="radio" v-model="formData.plan" value="pro" name="plan" class="text-emerald-500" />
           <div>
-            <div class="font-bold text-slate-900 dark:text-white">Pro Developer (1 490 ₽)</div>
-            <div class="text-slate-500">Кастомный домен, SSL и интеграция РСЯ</div>
+            <div class="font-bold text-slate-900 dark:text-white">Pro Enterprise (1 490 ₽/мес)</div>
+            <div class="text-slate-500">Кастомный домен, SSL, AdSlot SDK и РСЯ</div>
           </div>
         </label>
       </div>
@@ -87,10 +87,10 @@
       </div>
 
       <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#081612]/70 text-xs space-y-1.5 border border-slate-200 dark:border-[#17342b]">
-        <p><strong>Пользователь:</strong> {{ formData.name || 'Eugene' }} {{ formData.surname || 'Student' }}</p>
-        <p><strong>Email:</strong> {{ formData.email || 'eugene@example.com' }}</p>
-        <p><strong>Адрес:</strong> {{ formData.city || 'Москва' }}, {{ formData.street || 'ул. Студенческая' }}</p>
-        <p><strong>Выбранный план:</strong> {{ formData.plan === 'pro' ? 'Pro Developer' : 'Бесплатный тариф' }}</p>
+        <p><strong>Пользователь:</strong> {{ formData.name || 'Александр' }} {{ formData.surname || 'Воронов' }}</p>
+        <p><strong>Email:</strong> {{ formData.email || 'a.voronov@technova.io' }}</p>
+        <p><strong>Адрес:</strong> {{ formData.city || 'Москва' }}, {{ formData.street || 'Пресненская наб., д. 12' }}</p>
+        <p><strong>Выбранный план:</strong> {{ formData.plan === 'pro' ? 'Pro Enterprise' : 'Бесплатный тариф' }}</p>
       </div>
     </div>
 
@@ -129,12 +129,12 @@ import { ref, reactive } from 'vue'
 const currentStep = ref(1)
 
 const formData = reactive({
-  name: 'Eugene',
-  surname: 'Student',
-  email: 'eugene@web-practice.dev',
+  name: 'Александр',
+  surname: 'Воронов',
+  email: 'a.voronov@technova.io',
   city: 'Москва',
-  street: 'Пресненская наб., д. 12',
-  plan: 'free'
+  street: 'Пресненская наб., д. 12 (Москва-Сити)',
+  plan: 'pro'
 })
 
 const submitForm = () => {

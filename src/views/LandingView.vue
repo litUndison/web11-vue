@@ -237,6 +237,80 @@
       </div>
     </section>
 
+    <!-- Comparative Table Section (Prominently featured on the main commercial page) -->
+    <section class="max-w-7xl mx-auto px-2">
+      <HostingTable />
+    </section>
+
+    <!-- Testimonials Section with Real Photos -->
+    <section class="max-w-7xl mx-auto px-2">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-black uppercase tracking-widest text-emerald-400">Отзывы клиентов</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mt-1">
+          Нам доверяют лидеры индустрии
+        </h2>
+        <p class="text-sm text-slate-500 dark:text-emerald-100/70 mt-2">
+          Более 5 000 разработчиков и продуктовых команд создают масштабируемые SaaS-приложения
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="card-base p-6 space-y-4">
+          <div class="flex items-center gap-3">
+            <img
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&auto=format&fit=crop&q=80"
+              alt="Екатерина Романова"
+              class="w-12 h-12 rounded-full object-cover ring-2 ring-emerald-500/30"
+            />
+            <div>
+              <h4 class="font-extrabold text-sm text-slate-900 dark:text-white">Екатерина Романова</h4>
+              <p class="text-xs text-slate-400">Head of Product, FinTech Cloud</p>
+            </div>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-emerald-100/80 leading-relaxed italic">
+            «Архитектура AdSlot позволила интегрировать нативные промо-блоки с нулевым сдвигом верстки. Core Web Vitals выросли до 99/100 в Lighthouse.»
+          </p>
+          <div class="flex text-amber-400 text-xs">★★★★★</div>
+        </div>
+
+        <div class="card-base p-6 space-y-4">
+          <div class="flex items-center gap-3">
+            <img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80"
+              alt="Алексей Соколов"
+              class="w-12 h-12 rounded-full object-cover ring-2 ring-emerald-500/30"
+            />
+            <div>
+              <h4 class="font-extrabold text-sm text-slate-900 dark:text-white">Алексей Соколов</h4>
+              <p class="text-xs text-slate-400">VP of Engineering, RetailHub</p>
+            </div>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-emerald-100/80 leading-relaxed italic">
+            «Перенос витрины на Cloudflare Pages с Vue 3 занял меньше часа. Безлимитный трафик спас нас во время распродажи Black Friday.»
+          </p>
+          <div class="flex text-amber-400 text-xs">★★★★★</div>
+        </div>
+
+        <div class="card-base p-6 space-y-4">
+          <div class="flex items-center gap-3">
+            <img
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80"
+              alt="Елена Васильева"
+              class="w-12 h-12 rounded-full object-cover ring-2 ring-emerald-500/30"
+            />
+            <div>
+              <h4 class="font-extrabold text-sm text-slate-900 dark:text-white">Елена Васильева</h4>
+              <p class="text-xs text-slate-400">Lead UX Architect, DataStream</p>
+            </div>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-emerald-100/80 leading-relaxed italic">
+            «Темная неоновая палитра Cyber Emerald выглядит феноменально. Пользователи отмечают премиальное качество интерфейса.»
+          </p>
+          <div class="flex text-amber-400 text-xs">★★★★★</div>
+        </div>
+      </div>
+    </section>
+
     <!-- FAQ Section -->
     <section class="max-w-4xl mx-auto px-2 py-4">
       <div class="text-center mb-8">
@@ -271,6 +345,7 @@
 
 <script setup>
 import AdSlot from '../components/AdSlot.vue'
+import HostingTable from '../components/HostingTable.vue'
 
 defineProps({
   allCreative: {
