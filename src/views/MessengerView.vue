@@ -1,47 +1,47 @@
 <template>
-  <div class="card-base p-0 overflow-hidden flex flex-col md:flex-row h-[600px] border border-slate-200 dark:border-[#17342b]">
+  <div class="card-base p-0 overflow-hidden flex flex-col md:flex-row h-[600px] border-zinc-200 dark:border-zinc-800">
     <!-- Left: Dialogs List -->
-    <div class="w-full md:w-80 border-r border-slate-200 dark:border-[#17342b] flex flex-col bg-slate-50/50 dark:bg-[#081612]/70">
-      <div class="p-4 border-b border-slate-200 dark:border-[#17342b]">
-        <h3 class="font-bold text-sm text-slate-900 dark:text-white">Сообщения</h3>
-        <input type="search" placeholder="Поиск контактов..." class="input-base text-xs py-1.5 mt-2" />
+    <div class="w-full md:w-80 border-r border-zinc-200 dark:border-zinc-800 flex flex-col bg-zinc-50/50 dark:bg-zinc-900/50">
+      <div class="p-3.5 border-b border-zinc-200 dark:border-zinc-800">
+        <h3 class="font-semibold text-xs text-zinc-900 dark:text-zinc-100">Сообщения</h3>
+        <input type="search" placeholder="Поиск диалогов..." class="input-base text-xs py-1.5 mt-2" />
       </div>
 
-      <div class="flex-1 overflow-y-auto divide-y divide-slate-100 dark:divide-[#17342b]/60">
+      <div class="flex-1 overflow-y-auto divide-y divide-zinc-100 dark:divide-zinc-800/60">
         <div
           v-for="c in contacts"
           :key="c.id"
           @click="activeContact = c"
-          class="p-3.5 flex items-center gap-3 cursor-pointer transition-colors"
-          :class="activeContact.id === c.id ? 'bg-emerald-50/80 dark:bg-[#0e221c] border-l-4 border-emerald-500' : 'hover:bg-slate-100/60 dark:hover:bg-white/5'"
+          class="p-3 flex items-center gap-3 cursor-pointer transition-colors"
+          :class="activeContact.id === c.id ? 'bg-zinc-100 dark:bg-zinc-800/80 border-l-2 border-indigo-600' : 'hover:bg-zinc-100/60 dark:hover:bg-zinc-800/40'"
         >
-          <div class="relative">
-            <img :src="c.avatar" :alt="c.name" class="w-10 h-10 rounded-full object-cover shadow-sm border border-slate-200 dark:border-[#17342b]" />
-            <span v-if="c.online" class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-slate-900"></span>
+          <div class="relative shrink-0">
+            <img :src="c.avatar" :alt="c.name" class="w-9 h-9 rounded-full object-cover border border-zinc-200 dark:border-zinc-700" />
+            <span v-if="c.online" class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-zinc-900"></span>
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex items-center justify-between text-xs">
-              <span class="font-bold text-slate-900 dark:text-white truncate">{{ c.name }}</span>
-              <span class="text-[10px] text-slate-400 font-mono">{{ c.time }}</span>
+              <span class="font-medium text-zinc-900 dark:text-zinc-100 truncate">{{ c.name }}</span>
+              <span class="text-[10px] text-zinc-400 font-mono">{{ c.time }}</span>
             </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400 truncate mt-0.5">{{ c.lastMessage }}</p>
+            <p class="text-xs text-zinc-500 truncate mt-0.5">{{ c.lastMessage }}</p>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Right: Chat Area -->
-    <div class="flex-1 flex flex-col bg-white dark:bg-[#040d0a]">
+    <div class="flex-1 flex flex-col bg-white dark:bg-[#121217]">
       <!-- Chat Header -->
-      <div class="p-4 border-b border-slate-200 dark:border-[#17342b] flex items-center justify-between">
+      <div class="p-3.5 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <img :src="activeContact.avatar" :alt="activeContact.name" class="w-9 h-9 rounded-full object-cover shadow-sm border border-slate-200 dark:border-[#17342b]" />
+          <img :src="activeContact.avatar" :alt="activeContact.name" class="w-8 h-8 rounded-full object-cover border border-zinc-200 dark:border-zinc-700" />
           <div>
-            <h4 class="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">{{ activeContact.name }}</h4>
-            <span class="text-[11px] text-emerald-500 font-medium">{{ activeContact.role || 'В сети' }}</span>
+            <h4 class="font-semibold text-xs sm:text-sm text-zinc-900 dark:text-zinc-100">{{ activeContact.name }}</h4>
+            <span class="text-[11px] text-zinc-400 font-mono">{{ activeContact.role }}</span>
           </div>
         </div>
-        <span class="text-xs text-slate-400">Шифрование сообщений E2E</span>
+        <span class="text-[11px] text-zinc-400 font-mono">Шифрование E2E</span>
       </div>
 
       <!-- Messages Stream -->
@@ -53,13 +53,13 @@
           :class="msg.isMine ? 'justify-end' : 'justify-start'"
         >
           <div
-            class="max-w-xs sm:max-w-md px-4 py-2.5 rounded-2xl text-xs sm:text-sm shadow-sm"
+            class="max-w-xs sm:max-w-md px-3.5 py-2 rounded-xl text-xs sm:text-sm"
             :class="msg.isMine
-              ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 font-semibold rounded-br-sm shadow-glow-emerald'
-              : 'bg-slate-100 dark:bg-[#0e221c] text-slate-800 dark:text-emerald-100 rounded-bl-sm border border-slate-200/50 dark:border-[#17342b]'"
+              ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 rounded-br-xs'
+              : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 rounded-bl-xs border border-zinc-200/50 dark:border-zinc-700/50'"
           >
             <p>{{ msg.text }}</p>
-            <span class="block text-[10px] mt-1 text-right" :class="msg.isMine ? 'text-slate-900 font-bold' : 'text-slate-400'">
+            <span class="block text-[10px] mt-1 text-right" :class="msg.isMine ? 'opacity-70 font-mono' : 'text-zinc-400 font-mono'">
               {{ msg.time }}
             </span>
           </div>
@@ -67,7 +67,7 @@
       </div>
 
       <!-- Input Bar -->
-      <div class="p-3 border-t border-slate-200 dark:border-[#17342b] flex items-center gap-2">
+      <div class="p-3 border-t border-zinc-200 dark:border-zinc-800 flex items-center gap-2 bg-zinc-50/50 dark:bg-zinc-900/30">
         <input
           v-model="inputMsg"
           @keyup.enter="sendMessage"
@@ -75,7 +75,7 @@
           placeholder="Напишите сообщение..."
           class="input-base text-xs py-2 flex-1"
         />
-        <button @click="sendMessage" class="btn-primary btn-sm px-4">
+        <button @click="sendMessage" class="btn-primary btn-sm px-4 py-2">
           Отправить
         </button>
       </div>
@@ -109,7 +109,7 @@ const contacts = ref([
     id: 3,
     name: 'Cloudflare Enterprise Support',
     role: 'Корпоративная поддержка',
-    lastMessage: 'SLA 99.99% подтвержден для всех глобальных PoP-узлов.',
+    lastMessage: 'SLA 99.99% подтвержден для всех PoP-узлов.',
     time: 'Вчера',
     online: false,
     avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&auto=format&fit=crop&q=80'
@@ -119,10 +119,10 @@ const contacts = ref([
 const activeContact = ref(contacts.value[0])
 
 const messages = ref([
-  { id: 1, text: 'Привет! Как продвигается запуск Tailwind UI Studio в продакшен?', isMine: false, time: '12:40' },
-  { id: 2, text: 'Привет! Всё готово: настроили модули AdSlot, проверили производительность и развернули проект на CDN!', isMine: true, time: '12:42' },
-  { id: 3, text: 'Супер! Как показатели Core Web Vitals и CLS при подгрузке баннеров?', isMine: false, time: '12:44' },
-  { id: 4, text: 'Идеально — нулевой Cumulative Layout Shift, компоненты полностью адаптивны и удерживают 99/100 в Lighthouse.', isMine: true, time: '12:45' }
+  { id: 1, text: 'Привет! Как показатели Core Web Vitals после запуска рекламных блоков?', isMine: false, time: '12:40' },
+  { id: 2, text: 'Привет! Нулевой Cumulative Layout Shift, компоненты AdSlot полностью удерживают 99/100 в Lighthouse.', isMine: true, time: '12:42' },
+  { id: 3, text: 'Отлично! Скорость отдачи статики через Cloudflare Pages стабильная?', isMine: false, time: '12:44' },
+  { id: 4, text: 'Да, время отклика менее 25 мс по всему миру, лимитов на полосу нет.', isMine: true, time: '12:45' }
 ])
 
 const inputMsg = ref('')
@@ -141,11 +141,10 @@ const sendMessage = () => {
   setTimeout(() => {
     messages.value.push({
       id: Date.now() + 1,
-      text: 'Отлично! Архитектура подтверждена, аудит SLA 99.99% и монетизация активны 🚀',
+      text: 'Принято! Архитектура и SLA подтверждены 🚀',
       isMine: false,
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     })
   }, 1000)
 }
 </script>
-

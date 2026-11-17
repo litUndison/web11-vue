@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-16">
     <!-- Top Advertisement Slot (Leaderboard 728x90) -->
-    <div class="max-w-5xl mx-auto px-2">
+    <div class="max-w-4xl mx-auto">
       <AdSlot
         format="banner"
         label="Спонсорский блок (Leaderboard)"
@@ -11,330 +11,321 @@
       />
     </div>
 
-    <!-- Hero Section (Ultra-Modern High-Tech 2026 Redesign) -->
-    <section class="relative overflow-hidden rounded-3xl bg-gradient-to-b from-[#081612] via-[#05110d] to-[#040d0a] text-white p-8 sm:p-20 border border-[#17342b]/80 shadow-2xl">
-      <!-- Glow ambient background light -->
-      <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-emerald-500/20 rounded-full blur-[100px] pointer-events-none"></div>
-      <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-teal-500/15 rounded-full blur-[90px] pointer-events-none"></div>
+    <!-- Hero Section -->
+    <section class="relative text-center max-w-4xl mx-auto pt-6 pb-12 space-y-6">
+      <!-- Minimalist Status Pill -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700/60 shadow-2xs">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span>Tailwind UI Studio v2.5</span>
+        <span class="text-zinc-400">•</span>
+        <span class="text-zinc-500 dark:text-zinc-400">Enterprise Ready</span>
+      </div>
 
-      <div class="relative z-10 max-w-4xl mx-auto text-center space-y-8">
-        <!-- Floating Pill Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white/5 border border-white/10 backdrop-blur-md shadow-xs">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span class="text-emerald-300 font-extrabold">Tailwind UI Studio</span>
-          <span class="text-emerald-600">•</span>
-          <span class="text-slate-300">Cyber Emerald 2026</span>
+      <!-- Main Headline -->
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.15]">
+        Платформа веб-интерфейсов и монетизации на Vue 3
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+        Готовая архитектура компонентов корпоративного уровня со встроенной поддержкой рекламных форматов IAB, интерактивной аналитикой и нулевым сдвигом верстки.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
+        <button
+          @click="$emit('switch-tab', 'dashboard')"
+          class="btn-primary btn-md px-5 py-2.5 text-sm font-semibold shadow-sm"
+        >
+          <span>Открыть дашборд</span>
+          <span class="text-xs">→</span>
+        </button>
+        <button
+          @click="$emit('switch-tab', 'hosting-analysis')"
+          class="btn-secondary btn-md px-5 py-2.5 text-sm"
+        >
+          <span>Cloud & Инфраструктура</span>
+        </button>
+      </div>
+
+      <!-- Key Performance Metrics Strip -->
+      <div class="pt-10 grid grid-cols-2 sm:grid-cols-4 gap-6 border-t border-zinc-200 dark:border-zinc-800/80 max-w-3xl mx-auto">
+        <div class="text-center">
+          <div class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">100%</div>
+          <div class="text-xs text-zinc-500 mt-0.5">Vue 3 Composition</div>
         </div>
-
-        <!-- Big Radiant Heading -->
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1]">
-          Передовой веб-интерфейс на
-          <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-300 via-teal-200 to-emerald-400 block mt-2">
-            Vue 3 & Tailwind CSS
-          </span>
-        </h1>
-
-        <!-- Subtitle -->
-        <p class="text-emerald-100/80 text-base sm:text-xl leading-relaxed max-w-2xl mx-auto font-normal">
-          Единая платформа компонентов корпоративного уровня со встроенной поддержкой монетизации, аналитическим дашбордом и нулевым сдвигом верстки (CLS = 0).
-        </p>
-
-        <!-- CTA Buttons -->
-        <div class="pt-2 flex flex-wrap items-center justify-center gap-4">
-          <button
-            @click="$emit('switch-tab', 'dashboard')"
-            class="px-8 py-4 rounded-2xl font-black text-sm bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-slate-950 shadow-glow-emerald transition-all hover:scale-105 active:scale-95 border border-emerald-400/30 flex items-center gap-2"
-          >
-            <span>Открыть Дашборд</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-            </svg>
-          </button>
-          <button
-            @click="$emit('switch-tab', 'hosting-analysis')"
-            class="px-8 py-4 rounded-2xl font-bold text-sm bg-white/5 hover:bg-white/10 text-white border border-white/10 backdrop-blur-xl transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
-          >
-            <span>Cloud & Хостинг</span>
-            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">CDN</span>
-          </button>
+        <div class="text-center">
+          <div class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">0 ms</div>
+          <div class="text-xs text-zinc-500 mt-0.5">CLS Сдвиг макета</div>
         </div>
-
-        <!-- Live Metrics Bar inside Hero -->
-        <div class="pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-          <div>
-            <div class="text-2xl sm:text-3xl font-black text-white">100%</div>
-            <div class="text-xs text-slate-400 mt-0.5 font-medium">Vue 3 Composition</div>
-          </div>
-          <div>
-            <div class="text-2xl sm:text-3xl font-black text-white">0 ms</div>
-            <div class="text-xs text-slate-400 mt-0.5 font-medium">CLS Задержка</div>
-          </div>
-          <div>
-            <div class="text-2xl sm:text-3xl font-black text-white">v3.4+</div>
-            <div class="text-xs text-slate-400 mt-0.5 font-medium">Tailwind CSS Core</div>
-          </div>
-          <div>
-            <div class="text-2xl sm:text-3xl font-black text-emerald-400">99.9%</div>
-            <div class="text-xs text-slate-400 mt-0.5 font-medium">SLA Доступность</div>
-          </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">99.99%</div>
+          <div class="text-xs text-zinc-500 mt-0.5">SLA Доступность</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">&lt;30 ms</div>
+          <div class="text-xs text-zinc-500 mt-0.5">Edge CDN Latency</div>
         </div>
       </div>
     </section>
 
-    <!-- Bento Grid Features Section -->
-    <section class="max-w-7xl mx-auto px-2">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-xs font-black uppercase tracking-widest text-emerald-400">Возможности платформы</span>
-        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mt-1">
-          Всё для построения современного SaaS
+    <!-- Features Bento Grid -->
+    <section class="max-w-6xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          Возможности архитектуры
         </h2>
-        <p class="text-sm text-slate-500 dark:text-emerald-100/70 mt-2">
-          Модульная архитектура, оптимизация производительности и передовые стандарты безопасности
+        <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+          Модульная система компонентов, строгая типизация и соблюдение веб-стандартов
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <!-- Feature 1 -->
-        <div class="card-base card-hover p-7 relative overflow-hidden group">
-          <div class="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-[#0e221c] text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-sm border border-emerald-500/20">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="card-base p-6 space-y-3 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-extrabold text-slate-900 dark:text-white mb-2">Аналитический дашборд</h3>
-          <p class="text-xs sm:text-sm text-slate-500 dark:text-emerald-100/70 leading-relaxed">
-            Метрики выручки, графики активности, таблица транзакций со статусами и встроенный сайдбар-слот монетизации 300×250 px.
+          <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+            Аналитический дашборд
+          </h3>
+          <p class="text-xs sm:text-sm text-zinc-500 leading-relaxed">
+            Интерактивный векторный график метрик, динамический переключатель периодов и журнал расчётов с рекламодателями.
           </p>
         </div>
 
         <!-- Feature 2 -->
-        <div class="card-base card-hover p-7 relative overflow-hidden group">
-          <div class="w-14 h-14 rounded-2xl bg-teal-50 dark:bg-teal-950/80 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-sm border border-teal-500/20">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="card-base p-6 space-y-3 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-extrabold text-slate-900 dark:text-white mb-2">Каталог товаров & E-Com</h3>
-          <p class="text-xs sm:text-sm text-slate-500 dark:text-emerald-100/70 leading-relaxed">
-            Интерактивная сетка товаров с фильтрацией по категориям, поиском, корзиной и нативным спонсорским слотом в ленте.
+          <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+            Каталог e-Commerce
+          </h3>
+          <p class="text-xs sm:text-sm text-zinc-500 leading-relaxed">
+            Адаптивная витрина товаров со студийными фотографиями, фильтрами категорий, корзиной и нативной рекламой In-Feed.
           </p>
         </div>
 
         <!-- Feature 3 -->
-        <div class="card-base card-hover p-7 relative overflow-hidden group">
-          <div class="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-sm border border-emerald-500/20">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        <div class="card-base p-6 space-y-3 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-extrabold text-slate-900 dark:text-white mb-2">Архитектура AdSlot</h3>
-          <p class="text-xs sm:text-sm text-slate-500 dark:text-emerald-100/70 leading-relaxed">
-            Поддержка мировых стандартов IAB (Leaderboard, Medium Rectangle, In-Feed), предсказуемые габариты и нулевой сдвиг макета.
+          <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+            Стандарты IAB AdSlot
+          </h3>
+          <p class="text-xs sm:text-sm text-zinc-500 leading-relaxed">
+            Поддержка форматов Leaderboard (728×90), Medium Rectangle (300×250) и Fluid In-Feed с гарантией нулевого CLS.
           </p>
         </div>
       </div>
     </section>
 
     <!-- Pricing Section -->
-    <section class="max-w-7xl mx-auto px-2">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-xs font-black uppercase tracking-widest text-emerald-400">Тарифы и подписка</span>
-        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mt-1">
-          Прозрачные условия без скрытых комиссий
+    <section class="max-w-6xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          Тарифные планы
         </h2>
-        <p class="text-sm text-slate-500 dark:text-emerald-100/70 mt-2">
-          Масштабируйтесь от небольших сайтов до миллионов посетителей в месяц
+        <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+          Гибкие варианты подключения для стартапов и корпоративных команд
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-        <!-- Basic -->
-        <div class="card-base p-8 flex flex-col justify-between">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        <!-- Starter Plan -->
+        <div class="card-base p-6 flex flex-col justify-between">
           <div>
-            <span class="text-xs font-black uppercase tracking-widest text-slate-400">Стартовый</span>
-            <h3 class="text-2xl font-black text-slate-900 dark:text-white mt-1">Basic</h3>
-            <div class="mt-4 flex items-baseline gap-1">
-              <span class="text-4xl font-black text-slate-900 dark:text-white">0 ₽</span>
-              <span class="text-xs text-slate-400 font-semibold">/ навсегда</span>
+            <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Стартовый</div>
+            <h3 class="text-xl font-bold text-zinc-900 dark:text-zinc-100 mt-1">Free Tier</h3>
+            <div class="mt-3 flex items-baseline gap-1">
+              <span class="text-3xl font-bold text-zinc-900 dark:text-zinc-100">0 ₽</span>
+              <span class="text-xs text-zinc-400">/ навсегда</span>
             </div>
-            <ul class="mt-6 space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
-              <li class="flex items-center gap-2.5">
-                <span class="text-emerald-400 font-bold">✓</span>
+            <ul class="mt-6 space-y-2.5 text-xs text-zinc-600 dark:text-zinc-400">
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-500 font-bold">✓</span>
                 <span>До 10 000 просмотров/мес</span>
               </li>
-              <li class="flex items-center gap-2.5">
-                <span class="text-emerald-400 font-bold">✓</span>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-500 font-bold">✓</span>
                 <span>Базовые пресеты AdSlot</span>
               </li>
-              <li class="flex items-center gap-2.5">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span>Публикация на GitHub Pages</span>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Деплой на GitHub Pages</span>
               </li>
             </ul>
           </div>
-          <button class="btn-outline w-full mt-8 py-3 text-xs font-bold">Выбрать тариф</button>
+          <button class="btn-secondary btn-sm w-full mt-6 py-2">Выбрать Free</button>
         </div>
 
-        <!-- Pro (Featured) -->
-        <div class="card-base p-8 flex flex-col justify-between relative ring-2 ring-emerald-500 dark:ring-emerald-400 shadow-glow-emerald bg-gradient-to-b from-emerald-500/10 via-white to-white dark:from-emerald-950/40 dark:via-[#081612] dark:to-[#081612] lg:-translate-y-3">
-          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 shadow-md">
-            Рекомендуемый выбор
+        <!-- Pro Plan (Featured) -->
+        <div class="card-base p-6 flex flex-col justify-between border-indigo-500/80 dark:border-indigo-400/80 ring-1 ring-indigo-500/30 relative">
+          <div class="absolute -top-2.5 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-indigo-600 text-white shadow-xs">
+            Рекомендуемый
           </div>
           <div>
-            <span class="text-xs font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-400">Профессиональный</span>
-            <h3 class="text-2xl font-black text-slate-900 dark:text-white mt-1">Pro Developer</h3>
-            <div class="mt-4 flex items-baseline gap-1">
-              <span class="text-4xl font-black text-emerald-600 dark:text-emerald-400">1 490 ₽</span>
-              <span class="text-xs text-slate-400 font-semibold">/ месяц</span>
+            <div class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">Профессиональный</div>
+            <h3 class="text-xl font-bold text-zinc-900 dark:text-zinc-100 mt-1">Pro Developer</h3>
+            <div class="mt-3 flex items-baseline gap-1">
+              <span class="text-3xl font-bold text-zinc-900 dark:text-zinc-100">1 490 ₽</span>
+              <span class="text-xs text-zinc-400">/ месяц</span>
             </div>
-            <ul class="mt-6 space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-200">
-              <li class="flex items-center gap-2.5 font-medium">
-                <span class="text-emerald-400 font-black">✓</span>
+            <ul class="mt-6 space-y-2.5 text-xs text-zinc-700 dark:text-zinc-300">
+              <li class="flex items-center gap-2">
+                <span class="text-indigo-600 dark:text-indigo-400 font-bold">✓</span>
                 <span>Все модули (Дашборд, Чат, Канбан, E-com)</span>
               </li>
-              <li class="flex items-center gap-2.5 font-medium">
-                <span class="text-emerald-400 font-black">✓</span>
+              <li class="flex items-center gap-2">
+                <span class="text-indigo-600 dark:text-indigo-400 font-bold">✓</span>
                 <span>Безлимитная полоса Cloudflare Pages</span>
               </li>
-              <li class="flex items-center gap-2.5 font-medium">
-                <span class="text-emerald-400 font-black">✓</span>
-                <span>Подключение сетей РСЯ / AdSense</span>
+              <li class="flex items-center gap-2">
+                <span class="text-indigo-600 dark:text-indigo-400 font-bold">✓</span>
+                <span>Интеграция сетей РСЯ / AdSense</span>
               </li>
-              <li class="flex items-center gap-2.5 font-medium">
-                <span class="text-emerald-400 font-black">✓</span>
-                <span>Кастомный домен и бесплатный Auto-SSL</span>
+              <li class="flex items-center gap-2">
+                <span class="text-indigo-600 dark:text-indigo-400 font-bold">✓</span>
+                <span>Кастомный домен и Auto-SSL</span>
               </li>
             </ul>
           </div>
-          <button class="btn-primary w-full mt-8 py-3 text-xs font-black tracking-wide">Подключить Pro</button>
+          <button class="btn-primary btn-sm w-full mt-6 py-2 font-semibold">Подключить Pro</button>
         </div>
 
-        <!-- Enterprise -->
-        <div class="card-base p-8 flex flex-col justify-between">
+        <!-- Enterprise Plan -->
+        <div class="card-base p-6 flex flex-col justify-between">
           <div>
-            <span class="text-xs font-black uppercase tracking-widest text-slate-400">Корпоративный</span>
-            <h3 class="text-2xl font-black text-slate-900 dark:text-white mt-1">Enterprise</h3>
-            <div class="mt-4 flex items-baseline gap-1">
-              <span class="text-4xl font-black text-slate-900 dark:text-white">По запросу</span>
+            <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Корпоративный</div>
+            <h3 class="text-xl font-bold text-zinc-900 dark:text-zinc-100 mt-1">Enterprise</h3>
+            <div class="mt-3 flex items-baseline gap-1">
+              <span class="text-3xl font-bold text-zinc-900 dark:text-zinc-100">По запросу</span>
             </div>
-            <ul class="mt-6 space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
-              <li class="flex items-center gap-2.5">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span>Индивидуальная интеграция монетизации</span>
+            <ul class="mt-6 space-y-2.5 text-xs text-zinc-600 dark:text-zinc-400">
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Выделенный SLA 99.99%</span>
               </li>
-              <li class="flex items-center gap-2.5">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span>Выделенный SLA 99.99% доступности</span>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Кастомные размеры рекламных сеток</span>
               </li>
-              <li class="flex items-center gap-2.5">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span>Приоритетная поддержка 24/7</span>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Поддержка 24/7 с персональным менеджером</span>
               </li>
             </ul>
           </div>
-          <button class="btn-outline w-full mt-8 py-3 text-xs font-bold">Связаться с нами</button>
+          <button class="btn-secondary btn-sm w-full mt-6 py-2">Связаться с нами</button>
         </div>
       </div>
     </section>
 
-    <!-- Comparative Table Section (Prominently featured on the main commercial page) -->
-    <section class="max-w-7xl mx-auto px-2">
+    <!-- Prominently Featured Comparison Table -->
+    <section class="max-w-6xl mx-auto">
       <HostingTable />
     </section>
 
-    <!-- Testimonials Section with Real Photos -->
-    <section class="max-w-7xl mx-auto px-2">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-xs font-black uppercase tracking-widest text-emerald-400">Отзывы клиентов</span>
-        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mt-1">
-          Нам доверяют лидеры индустрии
+    <!-- Testimonials Section with Real Photography -->
+    <section class="max-w-6xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          Отзывы пользователей
         </h2>
-        <p class="text-sm text-slate-500 dark:text-emerald-100/70 mt-2">
-          Более 5 000 разработчиков и продуктовых команд создают масштабируемые SaaS-приложения
+        <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+          Мнения команд разработчиков и продуктовых специалистов
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="card-base p-6 space-y-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="card-base p-5 space-y-3">
           <div class="flex items-center gap-3">
             <img
               src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&auto=format&fit=crop&q=80"
               alt="Екатерина Романова"
-              class="w-12 h-12 rounded-full object-cover ring-2 ring-emerald-500/30"
+              class="w-10 h-10 rounded-full object-cover border border-zinc-200 dark:border-zinc-700"
             />
             <div>
-              <h4 class="font-extrabold text-sm text-slate-900 dark:text-white">Екатерина Романова</h4>
-              <p class="text-xs text-slate-400">Head of Product, FinTech Cloud</p>
+              <h4 class="font-semibold text-xs text-zinc-900 dark:text-zinc-100">Екатерина Романова</h4>
+              <p class="text-[11px] text-zinc-400">Head of Product, FinTech Cloud</p>
             </div>
           </div>
-          <p class="text-xs sm:text-sm text-slate-600 dark:text-emerald-100/80 leading-relaxed italic">
-            «Архитектура AdSlot позволила интегрировать нативные промо-блоки с нулевым сдвигом верстки. Core Web Vitals выросли до 99/100 в Lighthouse.»
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            «Архитектура AdSlot позволила интегрировать нативные промо-блоки с нулевым сдвигом верстки. Показатели Core Web Vitals выросли до 99/100 в Lighthouse.»
           </p>
-          <div class="flex text-amber-400 text-xs">★★★★★</div>
+          <div class="text-amber-500 text-xs">★★★★★</div>
         </div>
 
-        <div class="card-base p-6 space-y-4">
+        <div class="card-base p-5 space-y-3">
           <div class="flex items-center gap-3">
             <img
               src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80"
               alt="Алексей Соколов"
-              class="w-12 h-12 rounded-full object-cover ring-2 ring-emerald-500/30"
+              class="w-10 h-10 rounded-full object-cover border border-zinc-200 dark:border-zinc-700"
             />
             <div>
-              <h4 class="font-extrabold text-sm text-slate-900 dark:text-white">Алексей Соколов</h4>
-              <p class="text-xs text-slate-400">VP of Engineering, RetailHub</p>
+              <h4 class="font-semibold text-xs text-zinc-900 dark:text-zinc-100">Алексей Соколов</h4>
+              <p class="text-[11px] text-zinc-400">VP of Engineering, RetailHub</p>
             </div>
           </div>
-          <p class="text-xs sm:text-sm text-slate-600 dark:text-emerald-100/80 leading-relaxed italic">
-            «Перенос витрины на Cloudflare Pages с Vue 3 занял меньше часа. Безлимитный трафик спас нас во время распродажи Black Friday.»
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            «Перенос витрины на Cloudflare Pages с Vue 3 занял меньше часа. Неограниченный трафик обеспечил надежность во время сезонных распродаж.»
           </p>
-          <div class="flex text-amber-400 text-xs">★★★★★</div>
+          <div class="text-amber-500 text-xs">★★★★★</div>
         </div>
 
-        <div class="card-base p-6 space-y-4">
+        <div class="card-base p-5 space-y-3">
           <div class="flex items-center gap-3">
             <img
               src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80"
               alt="Елена Васильева"
-              class="w-12 h-12 rounded-full object-cover ring-2 ring-emerald-500/30"
+              class="w-10 h-10 rounded-full object-cover border border-zinc-200 dark:border-zinc-700"
             />
             <div>
-              <h4 class="font-extrabold text-sm text-slate-900 dark:text-white">Елена Васильева</h4>
-              <p class="text-xs text-slate-400">Lead UX Architect, DataStream</p>
+              <h4 class="font-semibold text-xs text-zinc-900 dark:text-zinc-100">Елена Васильева</h4>
+              <p class="text-[11px] text-zinc-400">Lead UX Architect, DataStream</p>
             </div>
           </div>
-          <p class="text-xs sm:text-sm text-slate-600 dark:text-emerald-100/80 leading-relaxed italic">
-            «Темная неоновая палитра Cyber Emerald выглядит феноменально. Пользователи отмечают премиальное качество интерфейса.»
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            «Минималистичный дизайн в стиле Linear выглядит солидно и профессионально. Пользователи отмечают безупречную скорость загрузки интерфейса.»
           </p>
-          <div class="flex text-amber-400 text-xs">★★★★★</div>
+          <div class="text-amber-500 text-xs">★★★★★</div>
         </div>
       </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="max-w-4xl mx-auto px-2 py-4">
-      <div class="text-center mb-8">
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
-          Вопросы и ответы (FAQ)
+    <section class="max-w-3xl mx-auto pb-6">
+      <div class="text-center mb-6">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          Часто задаваемые вопросы
         </h2>
       </div>
-      <div class="space-y-4">
-        <details class="group card-base p-5 cursor-pointer">
-          <summary class="font-extrabold text-sm sm:text-base text-slate-900 dark:text-white flex items-center justify-between list-none">
+      <div class="space-y-3">
+        <details class="group card-base p-4 cursor-pointer">
+          <summary class="font-semibold text-xs sm:text-sm text-zinc-900 dark:text-zinc-100 flex items-center justify-between list-none">
             <span>Допускается ли размещение сторонней рекламы на Cloudflare Pages?</span>
-            <span class="w-6 h-6 rounded-full bg-slate-100 dark:bg-[#0e221c] flex items-center justify-center text-xs text-emerald-400 group-open:rotate-180 transition-transform">▼</span>
+            <span class="text-xs text-zinc-400 group-open:rotate-180 transition-transform">▼</span>
           </summary>
-          <p class="text-xs sm:text-sm text-slate-600 dark:text-emerald-100/70 mt-3 leading-relaxed">
-            Да. Условия обслуживания бесплатного тарифа Cloudflare Pages не накладывают ограничений на стороннюю баннерную рекламу или монетизацию статических веб-сайтов, а полоса пропускания не лимитируется.
+          <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2.5 leading-relaxed">
+            Да. Условия обслуживания бесплатного тарифа Cloudflare Pages не накладывают ограничений на стороннюю баннерную рекламу или коммерческую монетизацию статических веб-сайтов, а полоса пропускания не лимитируется.
           </p>
         </details>
 
-        <details class="group card-base p-5 cursor-pointer">
-          <summary class="font-extrabold text-sm sm:text-base text-slate-900 dark:text-white flex items-center justify-between list-none">
+        <details class="group card-base p-4 cursor-pointer">
+          <summary class="font-semibold text-xs sm:text-sm text-zinc-900 dark:text-zinc-100 flex items-center justify-between list-none">
             <span>Каковы риски размещения рекламных баннеров на платформе Vercel?</span>
-            <span class="w-6 h-6 rounded-full bg-slate-100 dark:bg-[#0e221c] flex items-center justify-center text-xs text-emerald-400 group-open:rotate-180 transition-transform">▼</span>
+            <span class="text-xs text-zinc-400 group-open:rotate-180 transition-transform">▼</span>
           </summary>
-          <p class="text-xs sm:text-sm text-slate-600 dark:text-emerald-100/70 mt-3 leading-relaxed">
+          <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2.5 leading-relaxed">
             Пункт 1.2 Terms of Service тарифа Vercel Hobby строго запрещает любую коммерческую эксплуатацию ресурса. Размещение рекламы квалифицируется как коммерческая деятельность, что ведёт к блокировке аккаунта.
           </p>
         </details>
@@ -350,7 +341,7 @@ import HostingTable from '../components/HostingTable.vue'
 defineProps({
   allCreative: {
     type: Boolean,
-    default: false
+    default: true
   }
 })
 

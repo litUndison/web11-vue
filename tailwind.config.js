@@ -9,23 +9,25 @@ export default {
     extend: {
       colors: {
         brand: {
-          50: '#ecfdf5',
-          100: '#d1fae5',
-          200: '#a7f3d0',
-          300: '#6ee7b7',
-          400: '#34d399',
-          500: '#10b981',
-          600: '#059669',
-          700: '#047857',
-          800: '#065f46',
-          900: '#064e3b',
-          950: '#022c22',
+          50: '#eef2ff',
+          100: '#e0e7ff',
+          200: '#c7d2fe',
+          300: '#a5b4fc',
+          400: '#818cf8',
+          500: '#6366f1', // Indigo / Cobalt
+          600: '#4f46e5',
+          700: '#4338ca',
+          800: '#3730a3',
+          900: '#312e81',
+          950: '#1e1b4b',
         },
         surface: {
-          dark: '#040d0a',
-          cardDark: '#081612',
-          cardHover: '#0e221c',
-          borderDark: '#17342b',
+          light: '#ffffff',
+          lightMuted: '#f8fafc',
+          dark: '#09090b', // Deep obsidian zinc
+          darkCard: '#121217',
+          darkHover: '#181820',
+          darkBorder: '#27272a',
         }
       },
       fontFamily: {
@@ -33,21 +35,13 @@ export default {
         mono: ['JetBrains Mono', 'Fira Code', 'monospace']
       },
       boxShadow: {
-        'glow-indigo': '0 0 35px -5px rgba(99, 102, 241, 0.35)',
-        'glow-purple': '0 0 35px -5px rgba(168, 85, 247, 0.35)',
-        'glow-emerald': '0 0 35px -5px rgba(16, 185, 129, 0.35)',
-        'inner-bevel': 'inset 0 1px 0 0 rgba(255, 255, 255, 0.08)',
-        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
-      },
-      animation: {
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
-        }
+        '2xs': '0 1px 1px 0 rgba(0, 0, 0, 0.03)',
+        'xs': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.08)',
+        'card-hover': '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+        'dropdown': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
+        'accent': '0 4px 14px 0 rgba(99, 102, 241, 0.25)',
       }
     },
   },
