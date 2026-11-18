@@ -1,27 +1,32 @@
 <template>
   <div class="space-y-6">
     <!-- Шапка раздела и корзина -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-amber-500/20">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-zinc-200 dark:border-amber-500/20">
       <div>
-        <h1 class="heading-gothic text-2xl font-bold tracking-tight text-zinc-100">
+        <h1 class="heading-gothic text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
           Лавка Торговца & Игровой Арсенал
         </h1>
-        <p class="text-xs sm:text-sm text-zinc-400 mt-0.5">
+        <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-0.5">
           Официальные дополнения (DLC), мобильные геймпады и золотые яйца выживших
         </p>
       </div>
 
       <div class="flex items-center gap-3">
-        <!-- Индикатор корзины -->
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-amber-500/30 bg-zinc-900/90 text-xs font-bold text-amber-300 shadow-gold">
-          <span>🛒 Корзина:</span>
+        <!-- Индикатор корзины с векторной иконкой -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-amber-500/40 bg-zinc-100 dark:bg-zinc-900/90 text-xs font-bold text-amber-700 dark:text-amber-300 shadow-gold">
+          <svg class="w-4 h-4 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1" />
+            <circle cx="20" cy="21" r="1" />
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+          </svg>
+          <span>Корзина:</span>
           <span class="bg-amber-500 text-zinc-950 px-2 py-0.5 rounded-full text-[11px] font-bold">{{ cartCount }}</span>
         </div>
       </div>
     </div>
 
     <!-- Панель фильтров и поиска -->
-    <div class="card-base p-3.5 flex flex-wrap items-center justify-between gap-3 border-amber-500/20 bg-zinc-900/80">
+    <div class="card-base p-3.5 flex flex-wrap items-center justify-between gap-3 border-zinc-200 dark:border-amber-500/20 bg-white dark:bg-zinc-900/80 shadow-xs">
       <div class="flex items-center gap-1.5 flex-wrap">
         <button
           v-for="cat in ['Все', 'DLC Дополнения', 'Оборудование', 'Реликвии']"
@@ -30,7 +35,7 @@
           class="px-3 py-1 rounded-md text-xs font-bold transition-all"
           :class="selectedCategory === cat
             ? 'bg-amber-500 text-zinc-950 shadow-gold'
-            : 'text-zinc-400 hover:text-amber-300 hover:bg-zinc-800'"
+            : 'text-zinc-600 hover:text-amber-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:text-amber-300 dark:hover:bg-zinc-800'"
         >
           {{ cat }}
         </button>
@@ -51,11 +56,11 @@
       <div
         v-for="item in firstRowProducts"
         :key="item.id"
-        class="card-base p-4 flex flex-col justify-between border-amber-500/20 hover:border-amber-500/40 transition-colors group bg-zinc-900/80"
+        class="card-base p-4 flex flex-col justify-between border-zinc-200 dark:border-amber-500/20 hover:border-amber-500/40 transition-colors group bg-white dark:bg-zinc-900/80 shadow-xs"
       >
         <div>
           <!-- Изображение товара и метки -->
-          <div class="relative overflow-hidden rounded-lg bg-zinc-950 aspect-video flex items-center justify-center mb-3 border border-zinc-800">
+          <div class="relative overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-950 aspect-video flex items-center justify-center mb-3 border border-zinc-200 dark:border-zinc-800">
             <img
               :src="item.image"
               :alt="item.name"
@@ -70,20 +75,22 @@
             </span>
           </div>
 
-          <div class="flex items-center gap-1.5 text-xs text-amber-400 mb-1">
-            <span>★</span>
-            <span class="font-bold text-zinc-100">{{ item.rating }}</span>
-            <span class="text-zinc-400 text-[11px]">({{ item.reviews }} отзывов)</span>
+          <div class="flex items-center gap-1.5 text-xs text-amber-500 mb-1">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+            <span class="font-bold text-zinc-900 dark:text-zinc-100">{{ item.rating }}</span>
+            <span class="text-zinc-500 dark:text-zinc-400 text-[11px]">({{ item.reviews }} отзывов)</span>
           </div>
 
-          <h3 class="font-bold text-sm text-zinc-100 leading-snug">{{ item.name }}</h3>
-          <p class="text-xs text-zinc-400 mt-1 line-clamp-2 leading-relaxed">{{ item.desc }}</p>
+          <h3 class="font-bold text-sm text-zinc-900 dark:text-zinc-100 leading-snug">{{ item.name }}</h3>
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1 line-clamp-2 leading-relaxed">{{ item.desc }}</p>
         </div>
 
-        <div class="mt-4 pt-3 border-t border-zinc-800 flex items-center justify-between">
+        <div class="mt-4 pt-3 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
           <div>
-            <div class="text-base font-bold font-mono text-amber-400">{{ item.price }} ₽</div>
-            <div v-if="item.oldPrice" class="text-xs text-zinc-500 line-through font-mono">{{ item.oldPrice }} ₽</div>
+            <div class="text-base font-bold font-mono text-amber-600 dark:text-amber-400">{{ item.price }} ₽</div>
+            <div v-if="item.oldPrice" class="text-xs text-zinc-400 dark:text-zinc-500 line-through font-mono">{{ item.oldPrice }} ₽</div>
           </div>
           <button @click="addToCart(item)" class="btn-gold btn-sm px-3.5 py-1.5">
             В корзину
@@ -108,11 +115,11 @@
       <div
         v-for="item in secondRowProducts"
         :key="item.id"
-        class="card-base p-4 flex flex-col justify-between border-amber-500/20 hover:border-amber-500/40 transition-colors group bg-zinc-900/80"
+        class="card-base p-4 flex flex-col justify-between border-zinc-200 dark:border-amber-500/20 hover:border-amber-500/40 transition-colors group bg-white dark:bg-zinc-900/80 shadow-xs"
       >
         <div>
           <!-- Изображение товара и метки -->
-          <div class="relative overflow-hidden rounded-lg bg-zinc-950 aspect-video flex items-center justify-center mb-3 border border-zinc-800">
+          <div class="relative overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-950 aspect-video flex items-center justify-center mb-3 border border-zinc-200 dark:border-zinc-800">
             <img
               :src="item.image"
               :alt="item.name"
@@ -127,20 +134,22 @@
             </span>
           </div>
 
-          <div class="flex items-center gap-1.5 text-xs text-amber-400 mb-1">
-            <span>★</span>
-            <span class="font-bold text-zinc-100">{{ item.rating }}</span>
-            <span class="text-zinc-400 text-[11px]">({{ item.reviews }} отзывов)</span>
+          <div class="flex items-center gap-1.5 text-xs text-amber-500 mb-1">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+            <span class="font-bold text-zinc-900 dark:text-zinc-100">{{ item.rating }}</span>
+            <span class="text-zinc-500 dark:text-zinc-400 text-[11px]">({{ item.reviews }} отзывов)</span>
           </div>
 
-          <h3 class="font-bold text-sm text-zinc-100 leading-snug">{{ item.name }}</h3>
-          <p class="text-xs text-zinc-400 mt-1 line-clamp-2 leading-relaxed">{{ item.desc }}</p>
+          <h3 class="font-bold text-sm text-zinc-900 dark:text-zinc-100 leading-snug">{{ item.name }}</h3>
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1 line-clamp-2 leading-relaxed">{{ item.desc }}</p>
         </div>
 
-        <div class="mt-4 pt-3 border-t border-zinc-800 flex items-center justify-between">
+        <div class="mt-4 pt-3 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
           <div>
-            <div class="text-base font-bold font-mono text-amber-400">{{ item.price }} ₽</div>
-            <div v-if="item.oldPrice" class="text-xs text-zinc-500 line-through font-mono">{{ item.oldPrice }} ₽</div>
+            <div class="text-base font-bold font-mono text-amber-600 dark:text-amber-400">{{ item.price }} ₽</div>
+            <div v-if="item.oldPrice" class="text-xs text-zinc-400 dark:text-zinc-500 line-through font-mono">{{ item.oldPrice }} ₽</div>
           </div>
           <button @click="addToCart(item)" class="btn-gold btn-sm px-3.5 py-1.5">
             В корзину
