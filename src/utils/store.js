@@ -1,15 +1,18 @@
 import { reactive, ref } from 'vue';
 import { playCoinSound, playClickSound, playLevelUpSound, playChestFanfare } from './audio.js';
 
+// Баланс золота игрока
 const savedGold = localStorage.getItem('vamp_player_gold');
 export const playerGold = ref(savedGold ? parseInt(savedGold, 10) : 294600);
 
+// Добавление золота
 export const addGold = (amount) => {
   playerGold.value += amount;
   localStorage.setItem('vamp_player_gold', playerGold.value.toString());
   playCoinSound();
 };
 
+// Списание золота
 export const spendGold = (amount) => {
   if (playerGold.value >= amount) {
     playerGold.value -= amount;
@@ -20,10 +23,12 @@ export const spendGold = (amount) => {
   return false;
 };
 
-// Toast notification management
+// Хранилище всплывающих уведомлений
 export const toasts = reactive([]);
 
 let toastCounter = 0;
+
+// Добавление уведомления
 export const pushToast = ({ title, message, type = 'gold', duration = 3500 }) => {
   const id = ++toastCounter;
   toasts.push({ id, title, message, type });
@@ -44,29 +49,33 @@ export const pushToast = ({ title, message, type = 'gold', duration = 3500 }) =>
   }, duration);
 };
 
-// Modals control
+// Состояние модальных окон
 export const isChestModalOpen = ref(false);
 export const isCommandPaletteOpen = ref(false);
 
+// Открытие окна сундука
 export const openChestModal = () => {
   isChestModalOpen.value = true;
   playClickSound();
 };
 
+// Закрытие окна сундука
 export const closeChestModal = () => {
   isChestModalOpen.value = false;
 };
 
+// Открытие палитры команд
 export const openCommandPalette = () => {
   isCommandPaletteOpen.value = true;
   playClickSound();
 };
 
+// Закрытие палитры команд
 export const closeCommandPalette = () => {
   isCommandPaletteOpen.value = false;
 };
 
-// Fullscreen toggle
+// Переключение полноэкранного режима
 export const toggleFullscreen = () => {
   if (!document.fullscreenElement) {
     document.documentElement.requestFullscreen().catch(err => {
@@ -74,7 +83,7 @@ export const toggleFullscreen = () => {
     });
     pushToast({
       title: 'Полноэкранный режим',
-      message: 'Веб-приложение развернуто на весь экран (Esc для выхода)',
+      message: 'Приложение развернуто на весь экран (Esc для выхода)',
       type: 'info'
     });
   } else {

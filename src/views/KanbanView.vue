@@ -15,10 +15,10 @@
       </button>
     </div>
 
-    <!-- 3 Columns Grid -->
+    <!-- Сетка из трёх колонок канбан-доски -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
       
-      <!-- Column: To Do -->
+      <!-- Колонка: В планах -->
       <div class="rounded-xl border border-amber-500/20 bg-zinc-900/60 p-4">
         <div class="flex items-center justify-between mb-3">
           <div class="flex items-center gap-2">
@@ -55,7 +55,7 @@
         </div>
       </div>
 
-      <!-- Column: In Progress -->
+      <!-- Колонка: В разработке -->
       <div class="rounded-xl border border-amber-500/30 bg-zinc-900/60 p-4">
         <div class="flex items-center justify-between mb-3">
           <div class="flex items-center gap-2">
@@ -95,7 +95,7 @@
         </div>
       </div>
 
-      <!-- Column: Done -->
+      <!-- Колонка: Выполнено -->
       <div class="rounded-xl border border-emerald-500/30 bg-zinc-900/60 p-4">
         <div class="flex items-center justify-between mb-3">
           <div class="flex items-center gap-2">

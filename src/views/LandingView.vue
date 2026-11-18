@@ -1,6 +1,6 @@
 <template>
   <div class="space-y-16">
-    <!-- Top Advertisement Slot (Leaderboard 728x90) -->
+    <!-- Рекламный блок в шапке -->
     <div class="max-w-4xl mx-auto">
       <AdSlot
         format="banner"
@@ -11,9 +11,9 @@
       />
     </div>
 
-    <!-- Hero Section with Background Atmosphere -->
+    <!-- Главный баннер -->
     <section class="relative rounded-2xl overflow-hidden border border-amber-500/20 bg-zinc-950 shadow-card">
-      <!-- Background Image with Gradient Overlay -->
+      <!-- Фоновое изображение -->
       <div class="absolute inset-0 z-0 opacity-25 pointer-events-none">
         <img
           src="../assets/img/hero-bg.jpg"
@@ -25,7 +25,7 @@
       </div>
 
       <div class="relative z-10 max-w-5xl mx-auto px-6 py-12 sm:py-16 text-center space-y-6">
-        <!-- Badge -->
+        <!-- Метка релиза -->
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-gold">
           <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
           <span>Официальный мобильный релиз • Версия 1.10</span>
@@ -33,7 +33,7 @@
           <span class="text-amber-200">100% Бесплатно</span>
         </div>
 
-        <!-- Headline -->
+        <!-- Заголовок -->
         <h1 class="heading-gothic text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-zinc-100 leading-[1.1]">
           ВЫЖИВИ В АДУ <br />
           <span class="bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 bg-clip-text text-transparent">
@@ -41,12 +41,12 @@
           </span>
         </h1>
 
-        <!-- Subtitle -->
+        <!-- Подзаголовок -->
         <p class="text-sm sm:text-base text-zinc-300 max-w-2xl mx-auto leading-relaxed">
           Культовый инди-хит от Poncle теперь в твоем смартфоне. Уничтожай орды ночной нежити одним пальцем, открывай рецепты в Гримуаре и создавай ультимативные билды выживания.
         </p>
 
-        <!-- CTAs -->
+        <!-- Кнопки действий -->
         <div class="pt-2 flex flex-wrap items-center justify-center gap-4">
           <a
             href="https://apps.apple.com/app/vampire-survivors/id6444525702"
@@ -89,7 +89,7 @@
           </button>
         </div>
 
-        <!-- Phone Gameplay Mockup -->
+        <!-- Макет экрана смартфона -->
         <div class="pt-8 max-w-xl mx-auto">
           <div class="relative rounded-2xl p-2.5 bg-gradient-to-b from-amber-500/40 via-zinc-800 to-amber-700/40 shadow-2xl border border-amber-500/30">
             <div class="relative rounded-xl overflow-hidden aspect-video bg-zinc-950">
@@ -98,7 +98,7 @@
                 alt="Геймплей мобильной версии Vampire Survivors"
                 class="w-full h-full object-cover"
               />
-              <!-- Gameplay In-game HUD Simulation -->
+              <!-- Интерфейс геймплея -->
               <div class="absolute top-2 left-2 right-2 flex items-center justify-between text-[11px] font-mono text-white bg-black/60 backdrop-blur-xs px-2.5 py-1 rounded">
                 <div class="flex items-center gap-2">
                   <span class="text-amber-400 font-bold">LV 99</span>
@@ -114,7 +114,7 @@
           </div>
         </div>
 
-        <!-- Performance Stats -->
+        <!-- Статистика игры -->
         <div class="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-zinc-800/80 max-w-3xl mx-auto">
           <div class="text-center p-3 rounded-lg bg-zinc-900/60 border border-zinc-800">
             <div class="text-2xl font-bold heading-gothic text-amber-400">100 000+</div>
@@ -136,7 +136,7 @@
       </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- Особенности игры -->
     <section class="max-w-6xl mx-auto space-y-8">
       <div class="text-center max-w-xl mx-auto">
         <h2 class="heading-gothic text-2xl sm:text-3xl font-bold text-zinc-100">
@@ -148,7 +148,7 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-        <!-- Feature 1 -->
+        <!-- Преимущество 1 -->
         <div class="card-base p-5 space-y-3 border-amber-500/20 hover:border-amber-500/40 transition-colors">
           <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center text-lg">
             👆
@@ -159,7 +159,7 @@
           </p>
         </div>
 
-        <!-- Feature 2 -->
+        <!-- Преимущество 2 -->
         <div class="card-base p-5 space-y-3 border-amber-500/20 hover:border-amber-500/40 transition-colors">
           <div class="w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 flex items-center justify-center text-lg">
             ⚡
@@ -170,7 +170,7 @@
           </p>
         </div>
 
-        <!-- Feature 3 -->
+        <!-- Преимущество 3 -->
         <div class="card-base p-5 space-y-3 border-amber-500/20 hover:border-amber-500/40 transition-colors">
           <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center text-lg">
             📖
@@ -181,7 +181,7 @@
           </p>
         </div>
 
-        <!-- Feature 4 -->
+        <!-- Преимущество 4 -->
         <div class="card-base p-5 space-y-3 border-amber-500/20 hover:border-amber-500/40 transition-colors">
           <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-lg">
             ☁️
@@ -194,7 +194,7 @@
       </div>
     </section>
 
-    <!-- Interactive Survivors (Characters) Showcase -->
+    <!-- Выбор персонажей -->
     <section class="max-w-6xl mx-auto space-y-8" id="characters">
       <div class="text-center max-w-xl mx-auto">
         <h2 class="heading-gothic text-2xl sm:text-3xl font-bold text-zinc-100">
@@ -207,7 +207,7 @@
 
       <div class="card-base p-6 border-amber-500/30">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-          <!-- Left: Image Showcase -->
+          <!-- Изображение персонажей -->
           <div class="lg:col-span-6 relative rounded-xl overflow-hidden border border-amber-500/30 shadow-card">
             <img
               src="../assets/img/characters.jpg"
@@ -219,9 +219,9 @@
             </div>
           </div>
 
-          <!-- Right: Interactive Character Selector -->
+          <!-- Интерактивный переключатель -->
           <div class="lg:col-span-6 space-y-5">
-            <!-- Selector Tabs -->
+            <!-- Вкладки персонажей -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
               <button
                 v-for="(char, idx) in characterList"
@@ -237,7 +237,7 @@
               </button>
             </div>
 
-            <!-- Active Character Details -->
+            <!-- Детали активного персонажа -->
             <div class="p-5 rounded-xl border border-amber-500/20 bg-zinc-900/80 space-y-4">
               <div class="flex items-center justify-between">
                 <div>
@@ -255,7 +255,7 @@
                 {{ activeChar.description }}
               </p>
 
-              <!-- Attributes Bar -->
+              <!-- Характеристики -->
               <div class="grid grid-cols-3 gap-3 text-xs pt-2 border-t border-zinc-800">
                 <div>
                   <span class="text-zinc-500 block text-[10px] uppercase font-mono">Базовое HP</span>
@@ -276,7 +276,7 @@
       </div>
     </section>
 
-    <!-- Grimoire of Weapon Evolutions -->
+    <!-- Гримуар эволюций оружия -->
     <section class="max-w-6xl mx-auto space-y-8" id="weapons">
       <div class="text-center max-w-xl mx-auto">
         <h2 class="heading-gothic text-2xl sm:text-3xl font-bold text-zinc-100">
@@ -288,7 +288,7 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Recipe 1: Whip -> Bloody Tear -->
+        <!-- Рецепт 1: Кнут -->
         <div class="card-base p-5 border-amber-500/20 hover:border-amber-500/40 transition-all flex flex-col justify-between space-y-4">
           <div>
             <div class="flex items-center justify-between text-xs font-mono text-zinc-400 mb-2">
@@ -320,7 +320,7 @@
           </div>
         </div>
 
-        <!-- Recipe 2: Magic Wand -> Holy Wand -->
+        <!-- Рецепт 2: Волшебная палочка -->
         <div class="card-base p-5 border-amber-500/20 hover:border-amber-500/40 transition-all flex flex-col justify-between space-y-4">
           <div>
             <div class="flex items-center justify-between text-xs font-mono text-zinc-400 mb-2">
@@ -352,7 +352,7 @@
           </div>
         </div>
 
-        <!-- Recipe 3: Garlic -> Soul Eater -->
+        <!-- Рецепт 3: Чеснок -->
         <div class="card-base p-5 border-amber-500/20 hover:border-amber-500/40 transition-all flex flex-col justify-between space-y-4">
           <div>
             <div class="flex items-center justify-between text-xs font-mono text-zinc-400 mb-2">
@@ -387,7 +387,7 @@
       </div>
     </section>
 
-    <!-- Embedded Game Cloud Infrastructure Comparative Table -->
+    <!-- Сравнительная таблица облачной инфраструктуры -->
     <section class="max-w-6xl mx-auto space-y-4">
       <div class="text-center max-w-xl mx-auto">
         <h2 class="heading-gothic text-2xl sm:text-3xl font-bold text-zinc-100">
@@ -401,7 +401,7 @@
       <HostingTable />
     </section>
 
-    <!-- Accolades & Press Reviews -->
+    <!-- Отзывы и награды -->
     <section class="max-w-6xl mx-auto space-y-8" id="reviews">
       <div class="text-center max-w-xl mx-auto">
         <h2 class="heading-gothic text-2xl sm:text-3xl font-bold text-zinc-100">
@@ -447,7 +447,7 @@
       </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- Часто задаваемые вопросы -->
     <section class="max-w-3xl mx-auto space-y-6 pb-6" id="faq">
       <div class="text-center">
         <h2 class="heading-gothic text-2xl sm:text-3xl font-bold text-zinc-100">
@@ -501,7 +501,7 @@
       </div>
     </section>
 
-    <!-- Bottom Download Banner -->
+    <!-- Нижний баннер загрузки -->
     <section class="max-w-4xl mx-auto">
       <div class="rounded-2xl p-8 border border-amber-500/30 bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 text-center space-y-4 shadow-card">
         <h3 class="heading-gothic text-2xl sm:text-3xl font-bold text-amber-400">

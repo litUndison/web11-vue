@@ -7,13 +7,13 @@
     <div
       class="relative w-full max-w-md rounded-2xl border border-amber-500/50 bg-gradient-to-b from-zinc-900 via-zinc-950 to-black text-zinc-100 p-6 shadow-2xl text-center space-y-5 overflow-hidden animate-in fade-in zoom-in-95"
     >
-      <!-- Background Radiance Glow -->
+      <!-- Фоновое свечение -->
       <div
         v-if="isOpened"
         class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/20 via-red-500/10 to-transparent animate-pulse"
       ></div>
 
-      <!-- Close Button -->
+      <!-- Кнопка закрытия -->
       <button
         @click="close"
         class="absolute top-3 right-3 text-zinc-400 hover:text-amber-400 p-1 text-sm transition-colors"
@@ -23,7 +23,7 @@
 
       <div class="space-y-1">
         <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/40">
-          <span>👑 Сундук Босса 25-й Минуты</span>
+          <span>Сундук с добычей</span>
         </div>
         <h3 class="heading-gothic text-xl font-bold text-amber-400">
           {{ isOpened ? 'Трофеи Выжившего!' : 'Тайный Сундук с Лутом' }}
@@ -33,9 +33,9 @@
         </p>
       </div>
 
-      <!-- Animated Chest Graphics Container -->
+      <!-- Область сундука -->
       <div class="py-6 flex flex-col items-center justify-center relative">
-        <!-- Unopened state -->
+        <!-- Закрытое состояние -->
         <div
           v-if="!isOpened"
           @click="openChest"
@@ -52,9 +52,9 @@
           </span>
         </div>
 
-        <!-- Opened state with reward reveal -->
+        <!-- Открытое состояние с наградой -->
         <div v-else class="space-y-4 animate-in zoom-in-50 duration-300 flex flex-col items-center">
-          <!-- Item Card -->
+          <!-- Карточка выпавшего предмета -->
           <div class="relative p-4 rounded-xl border border-amber-400 bg-zinc-900/90 shadow-gold max-w-xs w-full flex items-center gap-3 text-left">
             <div class="w-14 h-14 rounded-lg bg-zinc-950 border border-amber-500/40 flex items-center justify-center text-3xl shrink-0">
               {{ currentReward.icon }}
@@ -68,13 +68,13 @@
             </div>
           </div>
 
-          <!-- Gold Bonus Strip -->
+          <!-- Награда золотом -->
           <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold">
-            <span>🪙 Получено золота:</span>
+            <span>Получено золота:</span>
             <span class="text-sm font-mono text-amber-400">+{{ currentReward.gold }} G</span>
           </div>
 
-          <!-- Action buttons -->
+          <!-- Кнопки действий -->
           <div class="flex items-center gap-2 pt-2">
             <button
               @click="resetChest"
@@ -104,6 +104,7 @@ const isOpen = isChestModalOpen
 const isOpened = ref(false)
 const isShaking = ref(false)
 
+// Список возможных наград
 const rewardsList = [
   {
     name: 'Кровавая Слеза (Bloody Tear)',
@@ -144,6 +145,7 @@ const rewardsList = [
 
 const currentReward = ref(rewardsList[0])
 
+// Анимация и открытие сундука
 const openChest = () => {
   if (isShaking.value || isOpened.value) return
   isShaking.value = true
@@ -158,20 +160,23 @@ const openChest = () => {
   }, 400)
 }
 
+// Сброс состояния сундука
 const resetChest = () => {
   isOpened.value = false
   isShaking.value = false
 }
 
+// Получение награды и закрытие
 const claimAndClose = () => {
   pushToast({
-    title: 'Трофей получен!',
+    title: 'Трофей получен',
     message: `${currentReward.value.name} добавлен в арсенал (+${currentReward.value.gold} G)`,
     type: 'gold'
   })
   close()
 }
 
+// Закрытие модального окна
 const close = () => {
   closeChestModal()
   setTimeout(() => {

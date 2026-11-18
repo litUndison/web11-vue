@@ -1,6 +1,6 @@
 <template>
   <div class="space-y-6">
-    <!-- Header -->
+    <!-- Заголовок страницы -->
     <div class="pb-4 border-b border-amber-500/20">
       <h1 class="heading-gothic text-2xl font-bold tracking-tight text-zinc-100">
         Облачная инфраструктура сохранений, кроссплей & CDN
@@ -10,7 +10,7 @@
       </p>
     </div>
 
-    <!-- Live Site Banner -->
+    <!-- Информационный баннер рабочего сайта -->
     <div class="card-base p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-amber-500/30 bg-zinc-900/90 shadow-card">
       <div>
         <div class="flex items-center gap-2">
@@ -50,20 +50,20 @@
       </div>
     </div>
 
-    <!-- Interactive Advisor Widget -->
+    <!-- Советник по выбору хостинга -->
     <HostingAdvisor />
 
-    <!-- Comparative Table -->
+    <!-- Сравнительная таблица -->
     <HostingTable />
 
-    <!-- Parameters of Deployment and Integration -->
+    <!-- Спецификация деплоя и архитектуры -->
     <div class="card-base p-5 sm:p-6 space-y-5 border-amber-500/20 bg-zinc-900/80">
       <h3 class="heading-gothic text-lg font-bold text-zinc-100 border-b border-zinc-800 pb-3">
         Спецификация облачной архитектуры и интеграции рекламы
       </h3>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- 1. Production Environment -->
+        <!-- Блок окружения -->
         <div class="p-4 rounded-lg border border-zinc-800 bg-zinc-950/60 flex flex-col justify-between">
           <div>
             <span class="text-[10px] font-mono uppercase text-amber-400 block mb-1">Production Environment</span>
@@ -88,7 +88,7 @@
           </div>
         </div>
 
-        <!-- 2. Rationale & SLA -->
+        <!-- Обоснование выбора -->
         <div class="p-4 rounded-lg border border-zinc-800 bg-zinc-950/60 flex flex-col justify-between">
           <div>
             <span class="text-[10px] font-mono uppercase text-amber-400 block mb-1">Cloud Infrastructure Rationale</span>

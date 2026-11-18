@@ -2,7 +2,7 @@
   <footer class="mt-16 border-t border-amber-500/20 dark:border-amber-500/20 bg-zinc-950/80 backdrop-blur-md transition-colors duration-200 text-zinc-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-sm">
-        <!-- Col 1: Brand & Lore -->
+        <!-- Информация о проекте -->
         <div class="md:col-span-2 space-y-4">
           <div class="flex items-center gap-2.5">
             <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-zinc-950 font-bold text-sm shadow-gold">
@@ -37,7 +37,7 @@
           </div>
         </div>
 
-        <!-- Col 2: Navigation Links -->
+        <!-- Навигационные ссылки -->
         <div class="space-y-2">
           <h5 class="text-xs font-bold uppercase tracking-wider text-amber-400 heading-gothic">Навигация</h5>
           <ul class="space-y-1.5 text-xs text-zinc-400">
@@ -59,24 +59,25 @@
           </ul>
         </div>
 
-        <!-- Col 3: Cloud & Game Specs -->
+        <!-- Спецификации платформы -->
         <div class="space-y-2">
           <h5 class="text-xs font-bold uppercase tracking-wider text-amber-400 heading-gothic">Сервер & Платформы</h5>
           <ul class="space-y-1.5 text-xs text-zinc-400 font-mono text-[11px]">
-            <li>• Cloud Save Sync: Global CDN</li>
-            <li>• Target Framerate: 60 - 120 FPS</li>
-            <li>• Metal & Vulkan API Support</li>
-            <li>• Controller: Razer Kishi / Xbox / DualSense</li>
-            <li>• Offline: 100% автономный геймплей</li>
+            <li>• Облачная синхронизация: Global CDN</li>
+            <li>• Целевая частота кадров: 60 - 120 FPS</li>
+            <li>• Поддержка графических API: Metal & Vulkan</li>
+            <li>• Контроллеры: Razer Kishi / Xbox / DualSense</li>
+            <li>• Автономный режим: 100% офлайн</li>
           </ul>
         </div>
       </div>
 
+      <!-- Нижняя плашка с копирайтом -->
       <div class="pt-6 border-t border-zinc-800 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-3">
         <span>© 2026 Poncle Ltd. Все права защищены. Vampire Survivors является зарегистрированным товарным знаком.</span>
         <span class="flex items-center gap-1.5 font-mono text-[11px] text-amber-400">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-          <span>Game Servers: Online (SLA 99.99%)</span>
+          <span>Игровые серверы активны (SLA 99.99%)</span>
         </span>
       </div>
     </div>

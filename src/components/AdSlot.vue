@@ -9,17 +9,17 @@
       hidden ? 'hidden' : ''
     ]"
   >
-    <!-- 1. Real Creative Mode (Active by default) -->
+    <!-- Режим спонсорского баннера -->
     <div
       v-if="showCreativeMode"
       class="relative overflow-hidden rounded-xl border border-amber-500/20 dark:border-amber-500/30 bg-zinc-900/90 dark:bg-[#121218] transition-all shadow-card flex flex-col justify-between"
       :class="creativeContainerClass"
       :style="customDimensions"
     >
-      <!-- Format: Sidebar (300x250) -->
+      <!-- Формат боковой панели -->
       <template v-if="format === 'sidebar'">
         <div class="p-4 flex flex-col justify-between h-full bg-gradient-to-b from-zinc-900 to-zinc-950 text-zinc-100">
-          <!-- Top meta bar -->
+          <!-- Верхняя строка -->
           <div class="flex items-center justify-between text-[11px] text-zinc-400 mb-2">
             <div class="flex items-center gap-1.5">
               <span class="px-1.5 py-0.5 rounded text-[9px] font-semibold tracking-wider uppercase bg-amber-500/20 text-amber-400 border border-amber-500/30">
@@ -46,7 +46,7 @@
             </div>
           </div>
 
-          <!-- Middle Brand & Headline -->
+          <!-- Логотип и описание -->
           <div class="space-y-2 my-auto">
             <div class="flex items-center gap-2.5">
               <div
@@ -67,7 +67,7 @@
             </p>
           </div>
 
-          <!-- CTA and Legal Footer -->
+          <!-- Кнопка перехода и маркировка -->
           <div class="pt-3 border-t border-zinc-800 space-y-2 mt-auto">
             <a
               :href="creativeData.link"
@@ -85,10 +85,10 @@
         </div>
       </template>
 
-      <!-- Format: Horizontal Banner / Leaderboard (728x90) -->
+      <!-- Формат горизонтального баннера -->
       <template v-else-if="format === 'banner' || format === 'leaderboard'">
         <div class="px-4 py-3 sm:px-5 sm:py-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 min-h-[90px] bg-gradient-to-r from-zinc-900 via-zinc-900/95 to-zinc-950 text-zinc-100">
-          <!-- Left: Logo + Info -->
+          <!-- Логотип и информация -->
           <div class="flex items-center gap-3 min-w-0 flex-1">
             <div
               class="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 text-white shadow-2xs"
@@ -111,7 +111,7 @@
             </div>
           </div>
 
-          <!-- Right: Action & Controls -->
+          <!-- Кнопки действий -->
           <div class="flex items-center gap-3 shrink-0 self-end sm:self-center">
             <div class="text-right hidden xl:block">
               <span class="text-[10px] text-zinc-400 block truncate max-w-[150px]">{{ creativeData.sponsor }}</span>
@@ -144,7 +144,7 @@
         </div>
       </template>
 
-      <!-- Format: In-Feed / Fluid -->
+      <!-- Формат нативного блока в ленте -->
       <template v-else>
         <div class="p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-gradient-to-r from-zinc-900 to-zinc-950 text-zinc-100">
           <div class="flex items-center gap-3 min-w-0">
@@ -191,7 +191,7 @@
       </template>
     </div>
 
-    <!-- 2. Technical Placeholder Mode (Accessible via toggle) -->
+    <!-- Режим технического плейсхолдера -->
     <div
       v-else
       class="flex flex-col items-center justify-center border border-dashed border-amber-500/40 dark:border-amber-500/30 bg-zinc-900/60 dark:bg-zinc-950/70 rounded-xl p-4 text-center transition-colors select-none"
@@ -320,7 +320,7 @@ const subDescription = computed(() => {
     case 'leaderboard':
       return 'Медийный баннер Leaderboard (728×90 px)'
     default:
-      return 'Интеграция рекламных сетей (AdSense / РСЯ)'
+      return 'Интеграция рекламных сетей'
   }
 })
 

@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen flex flex-col bg-[#f8fafc] dark:bg-[#0a0a0d] text-zinc-800 dark:text-zinc-100 transition-colors duration-200 relative overflow-x-hidden bg-subtle-grid">
-    <!-- Main Top Navbar with Live App State & Controls -->
+    <!-- Шапка сайта -->
     <Navbar
       :activeTab="activeTab"
       :allCreative="allCreativeMode"
@@ -8,9 +8,9 @@
       @toggle-all-ads="toggleAllAdsMode"
     />
 
-    <!-- Main Content Area with Dynamic Views -->
+    <!-- Основная область контента -->
     <main class="flex-1 max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 lg:pb-8">
-      <!-- Transition wrapper for views -->
+      <!-- Анимация переходов -->
       <transition name="fade" mode="out-in">
         <component
           :is="currentViewComponent"
@@ -20,24 +20,24 @@
       </transition>
     </main>
 
-    <!-- Global Footer -->
+    <!-- Подвал сайта -->
     <Footer />
 
-    <!-- Web App Features: Mobile Floating Dock -->
+    <!-- Мобильная панель навигации -->
     <MobileDock
       :activeTab="activeTab"
       @select-tab="setTab"
     />
 
-    <!-- Web App Features: Command Palette (Ctrl+K) -->
+    <!-- Командная строка поиска -->
     <CommandPalette
       @select-tab="setTab"
     />
 
-    <!-- Web App Features: Treasure Chest Simulator Modal -->
+    <!-- Модальное окно сундука -->
     <ChestModal />
 
-    <!-- Web App Features: Real-time Toast Notifications -->
+    <!-- Всплывающие уведомления -->
     <ToastContainer />
   </div>
 </template>
@@ -51,7 +51,7 @@ import ChestModal from './components/ChestModal.vue'
 import ToastContainer from './components/ToastContainer.vue'
 import MobileDock from './components/MobileDock.vue'
 
-// Import views
+// Импорт представлений
 import LandingView from './views/LandingView.vue'
 import DashboardView from './views/DashboardView.vue'
 import EcommerceView from './views/EcommerceView.vue'

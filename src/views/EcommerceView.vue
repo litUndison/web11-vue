@@ -1,6 +1,6 @@
 <template>
   <div class="space-y-6">
-    <!-- Header & Cart Summary -->
+    <!-- Шапка раздела и корзина -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-amber-500/20">
       <div>
         <h1 class="heading-gothic text-2xl font-bold tracking-tight text-zinc-100">
@@ -12,7 +12,7 @@
       </div>
 
       <div class="flex items-center gap-3">
-        <!-- Cart Pill Button -->
+        <!-- Индикатор корзины -->
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-amber-500/30 bg-zinc-900/90 text-xs font-bold text-amber-300 shadow-gold">
           <span>🛒 Корзина:</span>
           <span class="bg-amber-500 text-zinc-950 px-2 py-0.5 rounded-full text-[11px] font-bold">{{ cartCount }}</span>
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <!-- Filter Toolbar -->
+    <!-- Панель фильтров и поиска -->
     <div class="card-base p-3.5 flex flex-wrap items-center justify-between gap-3 border-amber-500/20 bg-zinc-900/80">
       <div class="flex items-center gap-1.5 flex-wrap">
         <button
@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <!-- Product Grid: First Row (3 Products) -->
+    <!-- Сетка товаров: первый ряд -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       <div
         v-for="item in firstRowProducts"
@@ -54,7 +54,7 @@
         class="card-base p-4 flex flex-col justify-between border-amber-500/20 hover:border-amber-500/40 transition-colors group bg-zinc-900/80"
       >
         <div>
-          <!-- Image Box with Badges -->
+          <!-- Изображение товара и метки -->
           <div class="relative overflow-hidden rounded-lg bg-zinc-950 aspect-video flex items-center justify-center mb-3 border border-zinc-800">
             <img
               :src="item.image"
@@ -92,7 +92,7 @@
       </div>
     </div>
 
-    <!-- Native AdSlot in Product Feed -->
+    <!-- Встроенный рекламный блок в ленте товаров -->
     <div class="py-1">
       <AdSlot
         format="in-feed"
@@ -103,7 +103,7 @@
       />
     </div>
 
-    <!-- Product Grid: Second Row (3 Products) -->
+    <!-- Сетка товаров: второй ряд -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       <div
         v-for="item in secondRowProducts"
@@ -111,7 +111,7 @@
         class="card-base p-4 flex flex-col justify-between border-amber-500/20 hover:border-amber-500/40 transition-colors group bg-zinc-900/80"
       >
         <div>
-          <!-- Image Box with Badges -->
+          <!-- Изображение товара и метки -->
           <div class="relative overflow-hidden rounded-lg bg-zinc-950 aspect-video flex items-center justify-center mb-3 border border-zinc-800">
             <img
               :src="item.image"

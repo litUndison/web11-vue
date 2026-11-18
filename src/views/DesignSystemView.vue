@@ -9,7 +9,7 @@
       </p>
     </div>
 
-    <!-- 1. Color Palette -->
+    <!-- Цветовая палитра -->
     <div class="card-base p-5 space-y-3 border-amber-500/20 bg-zinc-900/80">
       <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400 heading-gothic">1. Цветовая палитра: Blood & Radiant Gold</h3>
       <div class="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 gap-2 text-center text-xs font-mono">
@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <!-- 2. Button Matrix -->
+    <!-- Кнопки интерфейса -->
     <div class="card-base p-5 space-y-3 border-amber-500/20 bg-zinc-900/80">
       <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400 heading-gothic">2. Матрица боевых кнопок</h3>
       <div class="flex flex-wrap items-center gap-3">
@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <!-- 3. Artifact Rarity Badges -->
+    <!-- Редкости предметов -->
     <div class="card-base p-5 space-y-3 border-amber-500/20 bg-zinc-900/80">
       <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400 heading-gothic">3. Градация редкости реликвий и арканов</h3>
       <div class="flex flex-wrap items-center gap-2.5">

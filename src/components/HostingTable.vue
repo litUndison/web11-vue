@@ -10,7 +10,7 @@
         </p>
       </div>
 
-      <!-- Quick Platform Filter & Search -->
+      <!-- Фильтр и поиск по платформам -->
       <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2">
         <div class="relative w-full sm:w-56">
           <input
@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <!-- Desktop Table View (Sticky platform column, min-w-1000px) -->
+    <!-- Таблица для десктопа -->
     <div class="hidden lg:block overflow-x-auto rounded-lg border border-zinc-800">
       <table class="w-full min-w-[1000px] text-left text-xs border-collapse">
         <thead class="bg-zinc-950 text-zinc-400 uppercase font-semibold text-[10px] tracking-wider border-b border-zinc-800">
@@ -63,7 +63,7 @@
             class="hover:bg-zinc-800/40 transition-colors group"
             :class="p.isRecommended ? 'bg-amber-500/10' : ''"
           >
-            <!-- Platform Name (Sticky on scroll) -->
+            <!-- Название платформы -->
             <td class="p-3.5 font-bold text-zinc-100 whitespace-nowrap sticky left-0 bg-zinc-900 z-10 shadow-[1px_0_0_0_rgba(255,255,255,0.06)] group-hover:bg-zinc-800 transition-colors">
               <div class="flex items-center gap-2">
                 <span>{{ p.name }}</span>
@@ -82,46 +82,46 @@
               </div>
             </td>
 
-            <!-- Bandwidth -->
+            <!-- Трафик -->
             <td class="p-3.5 whitespace-nowrap font-medium">
               <span :class="p.bandwidthHighlight">{{ p.bandwidth }}</span>
             </td>
 
-            <!-- Builds -->
+            <!-- Сборки -->
             <td class="p-3.5 whitespace-nowrap font-mono text-zinc-400">
               {{ p.builds }}
             </td>
 
-            <!-- Commercial Policy -->
+            <!-- Коммерческое использование -->
             <td class="p-3.5 font-medium">
               <span :class="p.commercialAllowed ? 'text-emerald-400' : 'text-rose-400'">
                 {{ p.commercialText }}
               </span>
             </td>
 
-            <!-- Ads Policy -->
+            <!-- Политика рекламы -->
             <td class="p-3.5">
               <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium" :class="p.adsBadgeClass">
                 {{ p.adsPolicy }}
               </span>
             </td>
 
-            <!-- Domain + SSL -->
+            <!-- Домен и SSL -->
             <td class="p-3.5 whitespace-nowrap text-zinc-400">
               Бесплатно (Auto-SSL)
             </td>
 
-            <!-- Git Deploy -->
+            <!-- Деплой из Git -->
             <td class="p-3.5 whitespace-nowrap text-zinc-400">
               Авто (Vite)
             </td>
 
-            <!-- Scenario -->
+            <!-- Сценарий использования -->
             <td class="p-3.5 text-zinc-400 leading-relaxed text-[11px]">
               {{ p.scenario }}
             </td>
 
-            <!-- Risk Badge -->
+            <!-- Оценка риска -->
             <td class="p-3.5 text-center whitespace-nowrap">
               <span
                 class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold"
@@ -136,7 +136,7 @@
       </table>
     </div>
 
-    <!-- Mobile Responsive Cards View (for < 1024px) -->
+    <!-- Мобильное представление в виде карточек -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 lg:hidden">
       <div
         v-for="p in filteredPlatforms"
@@ -190,7 +190,7 @@
       </div>
     </div>
 
-    <!-- Alert Box: Policies Nuances -->
+    <!-- Информационный блок -->
     <div class="mt-5 p-4 rounded-xl border border-zinc-800 bg-zinc-950/70 text-xs text-zinc-400">
       <div class="flex items-start gap-3">
         <span class="text-base text-amber-400 shrink-0 mt-0.5">⚠️</span>
@@ -212,6 +212,7 @@ import { ref, computed } from 'vue'
 const activeFilter = ref('Все')
 const searchQuery = ref('')
 
+// Данные о хостинг-платформах
 const platforms = [
   {
     name: 'Cloudflare Pages',
@@ -300,6 +301,7 @@ const platforms = [
   }
 ]
 
+// Фильтрация списка платформ
 const filteredPlatforms = computed(() => {
   let list = platforms
   if (activeFilter.value === 'Безопасные') {

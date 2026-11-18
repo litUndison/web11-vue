@@ -1,9 +1,9 @@
-// 8-bit Retro Web Audio API Synthesizer for Vampire Survivors Mobile Web App
-// Works 100% offline with zero external audio assets
+// Звуковой синтезатор на основе Web Audio API
 
 let audioCtx = null;
 let soundEnabled = true;
 
+// Получение аудио контекста
 function getAudioContext() {
   if (!audioCtx) {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -19,6 +19,7 @@ function getAudioContext() {
 
 export const isSoundEnabled = () => soundEnabled;
 
+// Переключение состояния звука
 export const toggleSound = () => {
   soundEnabled = !soundEnabled;
   localStorage.setItem('vamp_sound_enabled', soundEnabled ? '1' : '0');
@@ -28,12 +29,13 @@ export const toggleSound = () => {
   return soundEnabled;
 };
 
+// Инициализация звука
 export const initSoundState = () => {
   const saved = localStorage.getItem('vamp_sound_enabled');
   soundEnabled = saved !== '0';
 };
 
-// Play classic 8-bit gold pickup sound
+// Звук сбора золота
 export const playCoinSound = () => {
   if (!soundEnabled) return;
   try {
@@ -46,8 +48,8 @@ export const playCoinSound = () => {
     osc.type = 'triangle';
     const now = ctx.currentTime;
 
-    osc.frequency.setValueAtTime(987.77, now); // B5
-    osc.frequency.setValueAtTime(1318.51, now + 0.08); // E6
+    osc.frequency.setValueAtTime(987.77, now);
+    osc.frequency.setValueAtTime(1318.51, now + 0.08);
 
     gain.gain.setValueAtTime(0.15, now);
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
@@ -62,7 +64,7 @@ export const playCoinSound = () => {
   }
 };
 
-// Play short UI click sound
+// Звук клика интерфейса
 export const playClickSound = () => {
   if (!soundEnabled) return;
   try {
@@ -91,7 +93,7 @@ export const playClickSound = () => {
   }
 };
 
-// Play triumphant treasure chest fanfare
+// Звук открытия сундука
 export const playChestFanfare = () => {
   if (!soundEnabled) return;
   try {
@@ -99,10 +101,10 @@ export const playChestFanfare = () => {
     if (!ctx) return;
 
     const notes = [
-      { freq: 523.25, time: 0.0, dur: 0.1 },  // C5
-      { freq: 659.25, time: 0.1, dur: 0.1 },  // E5
-      { freq: 783.99, time: 0.2, dur: 0.12 }, // G5
-      { freq: 1046.50, time: 0.32, dur: 0.4 } // C6
+      { freq: 523.25, time: 0.0, dur: 0.1 },
+      { freq: 659.25, time: 0.1, dur: 0.1 },
+      { freq: 783.99, time: 0.2, dur: 0.12 },
+      { freq: 1046.50, time: 0.32, dur: 0.4 }
     ];
 
     notes.forEach(n => {
@@ -127,7 +129,7 @@ export const playChestFanfare = () => {
   }
 };
 
-// Play level-up sound
+// Звук повышения уровня
 export const playLevelUpSound = () => {
   if (!soundEnabled) return;
   try {

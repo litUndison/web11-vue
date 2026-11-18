@@ -13,9 +13,9 @@
         Укажите требования вашего игрового портала для автоматической проверки соответствия правилам платформ (ToS) и лимитам трафика 2026 года.
       </p>
 
-      <!-- Questions Grid -->
+      <!-- Опросник -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
-        <!-- Question 1: Ads -->
+        <!-- Вопрос 1: Реклама -->
         <div class="p-3.5 rounded-lg border border-zinc-800 bg-zinc-950/60">
           <label class="block text-xs font-bold text-amber-400 mb-2">
             1. Планируете ли спонсорскую монетизацию?
@@ -36,7 +36,7 @@
           </div>
         </div>
 
-        <!-- Question 2: Traffic -->
+        <!-- Вопрос 2: Трафик -->
         <div class="p-3.5 rounded-lg border border-zinc-800 bg-zinc-950/60">
           <label class="block text-xs font-bold text-amber-400 mb-2">
             2. Ожидаемый объём трафика игроков
@@ -54,7 +54,7 @@
         </div>
       </div>
 
-      <!-- Result Card -->
+      <!-- Карточка рекомендации -->
       <div class="mt-4 p-4 rounded-lg border border-zinc-800 bg-zinc-950/80">
         <div class="flex items-center justify-between flex-wrap gap-2 mb-2">
           <span class="text-xs text-zinc-400">Рекомендуемая платформа:</span>
@@ -97,6 +97,7 @@ const answers = reactive({
   traffic: 'high'
 })
 
+// Расчёт рекомендации на основе ответов
 const adviceResult = computed(() => {
   if (answers.ads === 'yes') {
     return {

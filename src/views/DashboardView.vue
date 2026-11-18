@@ -1,6 +1,6 @@
 <template>
   <div class="space-y-6">
-    <!-- Header -->
+    <!-- Шапка страницы -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-amber-500/20">
       <div>
         <h1 class="heading-gothic text-2xl font-bold tracking-tight text-zinc-100">
@@ -11,7 +11,7 @@
         </p>
       </div>
 
-      <!-- Time period switcher -->
+      <!-- Переключатель периода -->
       <div class="flex items-center gap-1.5 p-1 rounded-lg border border-amber-500/30 bg-zinc-900/90 shadow-2xs">
         <button
           v-for="p in ['Сегодня', '7 дней', '30 дней']"
@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <!-- Stat Cards Grid -->
+    <!-- Карточки ключевых показателей -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       <div
         v-for="stat in currentStats"
@@ -58,15 +58,15 @@
       </div>
     </div>
 
-    <!-- Main Content Layout (Chart + Sidebar AdSlot) -->
+    <!-- Основной контент: график и рекламная колонка -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
       
-      <!-- Left Column (8 cols): Interactive Chart & Transactions -->
+      <!-- Левая колонка: график и таблица -->
       <div class="lg:col-span-8 space-y-6">
         
-        <!-- Interactive SVG Chart Card -->
+        <!-- Интерактивный график -->
         <div class="card-base p-5 sm:p-6 space-y-4 border-amber-500/20 bg-zinc-900/80">
-          <!-- Chart Header & Controls -->
+          <!-- Заголовок графика и элементы управления -->
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-zinc-800">
             <div>
               <div class="flex items-center gap-2">
@@ -83,7 +83,7 @@
               </p>
             </div>
 
-            <!-- Controls: Metric Toggle & View Toggle -->
+            <!-- Переключатели метрики и вида графика -->
             <div class="flex items-center gap-2 flex-wrap">
               <div class="flex items-center p-0.5 rounded-lg border border-amber-500/30 bg-zinc-950 text-xs">
                 <button
@@ -104,11 +104,11 @@
                 class="p-1.5 rounded-lg border border-amber-500/30 text-amber-400 hover:bg-zinc-800 transition-colors"
                 :title="chartType === 'line' ? 'Столбчатая диаграмма' : 'Плавный график'"
               >
-                <!-- Line icon -->
+                <!-- Иконка графика -->
                 <svg v-if="chartType === 'line'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                 </svg>
-                <!-- Bar icon -->
+                <!-- Иконка диаграммы -->
                 <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/>
                 </svg>
@@ -116,9 +116,9 @@
             </div>
           </div>
 
-          <!-- The SVG Chart Container -->
+          <!-- Векторная область диаграммы -->
           <div class="relative w-full h-60 select-none" @mouseleave="hoveredIndex = null">
-            <!-- Tooltip -->
+            <!-- Всплывающая подсказка -->
             <div
               v-if="hoveredIndex !== null && activeDataPoints[hoveredIndex]"
               class="absolute z-20 pointer-events-none p-2.5 rounded-lg bg-zinc-950 text-zinc-100 shadow-2xl border border-amber-500/40 text-xs transition-all duration-75"
@@ -142,7 +142,7 @@
                 </linearGradient>
               </defs>
 
-              <!-- Horizontal Grid Lines -->
+              <!-- Линии сетки -->
               <g stroke="#3f3f46" stroke-width="1" stroke-dasharray="3 3">
                 <line x1="45" y1="20" x2="680" y2="20" />
                 <line x1="45" y1="65" x2="680" y2="65" />
@@ -150,7 +150,7 @@
                 <line x1="45" y1="155" x2="680" y2="155" />
               </g>
 
-              <!-- Y-axis Text Labels -->
+              <!-- Метки оси Y -->
               <g fill="#a1a1aa" font-size="10" font-family="monospace">
                 <text x="36" y="24" text-anchor="end">{{ yAxisLabels[3] }}</text>
                 <text x="36" y="69" text-anchor="end">{{ yAxisLabels[2] }}</text>
@@ -158,12 +158,12 @@
                 <text x="36" y="159" text-anchor="end">{{ yAxisLabels[0] }}</text>
               </g>
 
-              <!-- MODE: Smooth Line / Area Chart -->
+              <!-- Отображение графика линией -->
               <template v-if="chartType === 'line'">
-                <!-- Area Fill -->
+                <!-- Заливка области -->
                 <path :d="areaPathString" fill="url(#areaGradientGold)" />
 
-                <!-- Stroke Curve -->
+                <!-- Линия графика -->
                 <path
                   :d="linePathString"
                   fill="none"
@@ -173,9 +173,9 @@
                   stroke-linejoin="round"
                 />
 
-                <!-- Data Points & Hover Targets -->
+                <!-- Точки данных -->
                 <g v-for="(p, i) in plottedPoints" :key="'pt-' + i">
-                  <!-- Hover vertical cursor line -->
+                  <!-- Вертикальная линия курсора -->
                   <line
                     v-if="hoveredIndex === i"
                     :x1="p.x"
@@ -187,7 +187,7 @@
                     stroke-dasharray="2 2"
                   />
 
-                  <!-- Point Circle -->
+                  <!-- Кружок точки -->
                   <circle
                     :cx="p.x"
                     :cy="p.y"
@@ -198,7 +198,7 @@
                     :stroke-width="hoveredIndex === i ? 2.5 : 1.5"
                   />
 
-                  <!-- Invisible hit target for easy mouse hover -->
+                  <!-- Область наведения мыши -->
                   <rect
                     :x="p.x - 22"
                     y="0"
@@ -211,7 +211,7 @@
                 </g>
               </template>
 
-              <!-- MODE: Bar Chart -->
+              <!-- Отображение столбцами -->
               <template v-else>
                 <g v-for="(p, i) in plottedPoints" :key="'bar-' + i">
                   <rect
@@ -227,7 +227,7 @@
                 </g>
               </template>
 
-              <!-- X-axis Text Labels -->
+              <!-- Метки оси X -->
               <g fill="#a1a1aa" font-size="10" font-family="monospace">
                 <text
                   v-for="(p, i) in plottedPoints"
@@ -242,14 +242,14 @@
             </svg>
           </div>
 
-          <!-- Bottom Summary Strip -->
+          <!-- Сводка за период -->
           <div class="pt-3 border-t border-zinc-800 flex items-center justify-between text-xs text-zinc-400">
             <span>Всего за период: <strong class="text-amber-400 font-bold">{{ periodTotals[activeMetric] }}</strong></span>
             <span class="font-mono text-[11px] text-zinc-500">Движок: 60-120 FPS • Latency: 12ms</span>
           </div>
         </div>
 
-        <!-- Transactions & Loot Log Table -->
+        <!-- Журнал наград -->
         <div class="card-base p-5 sm:p-6 space-y-4 border-amber-500/20 bg-zinc-900/80">
           <div class="flex items-center justify-between pb-3 border-b border-zinc-800">
             <div>
@@ -301,10 +301,10 @@
 
       </div>
 
-      <!-- Right Column (4 cols): Dedicated Sidebar AdSlot (Clean 300x250) -->
+      <!-- Правая колонка: рекламный блок и статус сети -->
       <div class="lg:col-span-4 space-y-4">
         
-        <!-- Sidebar AdSlot Wrapper -->
+        <!-- Контейнер рекламного блока -->
         <div class="card-base p-4 space-y-3 border-amber-500/20 bg-zinc-900/80">
           <div class="flex items-center justify-between text-xs pb-2 border-b border-zinc-800">
             <span class="font-bold text-amber-400 text-xs">Игровой спонсор</span>
@@ -322,7 +322,7 @@
           </div>
         </div>
 
-        <!-- Infrastructure Status Mini-Card -->
+        <!-- Статус облачной синхронизации -->
         <div class="card-base p-4 space-y-2.5 border-amber-500/20 bg-zinc-900/80">
           <div class="flex items-center justify-between text-xs">
             <span class="font-bold text-zinc-100">Глобальная сеть Cloud Sync</span>
@@ -371,7 +371,7 @@ const selectedMetricName = computed(() => {
   return metrics.find(m => m.id === activeMetric.value)?.label || 'Уничтожено монстров'
 })
 
-// Dynamic Datasets for "Сегодня", "7 дней", "30 дней"
+// Наборы данных для периодов
 const datasets = {
   'Сегодня': [
     { label: '00:00', monsters: 12400, gold: 2400, chests: 12, kills: 12400, rate: 8.5 },
@@ -409,7 +409,7 @@ const activeDataPoints = computed(() => {
   }))
 })
 
-// Dynamic Y-axis labels
+// Метки оси Y
 const yAxisLabels = computed(() => {
   const values = activeDataPoints.value.map(p => p.value)
   const max = Math.max(...values, 10)
@@ -494,7 +494,7 @@ const periodTotals = computed(() => {
   }
 })
 
-// Current period KPI cards
+// Карточки показателей выбранного периода
 const currentStats = computed(() => {
   if (selectedPeriod.value === 'Сегодня') {
     return [

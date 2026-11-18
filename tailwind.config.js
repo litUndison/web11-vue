@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+// Конфигурация стилей Tailwind CSS
 export default {
   content: [
     "./index.html",
@@ -14,7 +14,7 @@ export default {
           200: '#fde68a',
           300: '#fcd34d',
           400: '#fbbf24',
-          500: '#f59e0b', // Gold / Amber
+          500: '#f59e0b', // Золотой оттенок
           600: '#d97706',
           700: '#b45309',
           800: '#92400e',
@@ -31,7 +31,7 @@ export default {
         surface: {
           light: '#ffffff',
           lightMuted: '#f8fafc',
-          dark: '#0a0a0d', // Deep gothic obsidian
+          dark: '#0a0a0d', // Тёмный фон
           darkCard: '#13131a',
           darkHover: '#1c1c24',
           darkBorder: '#272733',

@@ -8,7 +8,7 @@
         Регистрация профиля выжившего, привязка платформы и получение стартовых артефактов
       </p>
 
-      <!-- Stepper Progress Bar -->
+      <!-- Индикатор прогресса шагов -->
       <div class="mt-5">
         <div class="flex items-center justify-between text-xs font-bold text-zinc-400 mb-2">
           <span :class="currentStep >= 1 ? 'text-amber-400 font-bold' : ''">1. Позывной</span>
@@ -25,7 +25,7 @@
       </div>
     </div>
 
-    <!-- Step 1: Profile -->
+    <!-- Шаг 1: Профиль -->
     <div v-if="currentStep === 1" class="space-y-3.5">
       <h3 class="text-sm font-bold text-zinc-100">Шаг 1: Имя и боевой позывной</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -44,7 +44,7 @@
       </div>
     </div>
 
-    <!-- Step 2: Platform -->
+    <!-- Шаг 2: Платформа -->
     <div v-if="currentStep === 2" class="space-y-3.5">
       <h3 class="text-sm font-bold text-zinc-100">Шаг 2: Устройство и ориентация управления</h3>
       <div class="space-y-2 text-xs">
@@ -63,7 +63,7 @@
       </div>
     </div>
 
-    <!-- Step 3: Starter Pack -->
+    <!-- Шаг 3: Стартовый набор -->
     <div v-if="currentStep === 3" class="space-y-3.5">
       <h3 class="text-sm font-bold text-zinc-100">Шаг 3: Стартовый сундук снаряжения</h3>
       <div class="space-y-2.5 text-xs">
@@ -90,7 +90,7 @@
       </div>
     </div>
 
-    <!-- Step 4: Summary -->
+    <!-- Шаг 4: Итоговые данные -->
     <div v-if="currentStep === 4" class="space-y-4">
       <div class="text-center py-2">
         <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mx-auto mb-2 border border-amber-500/40 shadow-gold">
@@ -109,7 +109,7 @@
       </div>
     </div>
 
-    <!-- Navigation Buttons -->
+    <!-- Кнопки перехода между шагами -->
     <div class="mt-6 pt-4 border-t border-zinc-800 flex items-center justify-between">
       <button
         v-if="currentStep > 1"

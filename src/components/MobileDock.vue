@@ -16,7 +16,7 @@
         ></span>
       </button>
 
-      <!-- Center Floating Chest Action -->
+      <!-- Кнопка открытия сундука -->
       <button
         @click="openChestModal"
         class="flex flex-col items-center justify-center p-2 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-600 text-zinc-950 shadow-gold -translate-y-2 active:scale-95 transition-transform"
@@ -26,7 +26,7 @@
         <span class="text-[8px] font-bold mt-0.5">Сундук</span>
       </button>
 
-      <!-- Quick Command Search -->
+      <!-- Быстрый вызов поиска -->
       <button
         @click="openCommandPalette"
         class="flex flex-col items-center justify-center py-1 px-2 rounded-xl text-zinc-400 hover:text-amber-300 transition-colors"
@@ -50,6 +50,7 @@ defineProps({
 
 const emit = defineEmits(['select-tab'])
 
+// Элементы мобильной панели навигации
 const dockItems = [
   { id: 'landing', name: 'Обзор', icon: '🦇' },
   { id: 'dashboard', name: 'Статы', icon: '📊' },

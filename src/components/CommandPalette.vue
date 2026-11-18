@@ -7,7 +7,7 @@
     <div
       class="w-full max-w-xl rounded-2xl border border-amber-500/40 bg-zinc-950 text-zinc-100 shadow-2xl overflow-hidden transition-all duration-200 animate-in fade-in zoom-in-95"
     >
-      <!-- Search Input Bar -->
+      <!-- Поле поиска -->
       <div class="relative flex items-center px-4 py-3 border-b border-zinc-800">
         <span class="text-amber-400 text-lg mr-3">🔍</span>
         <input
@@ -26,7 +26,7 @@
         </kbd>
       </div>
 
-      <!-- Results List -->
+      <!-- Список команд -->
       <div class="max-h-80 overflow-y-auto p-2 divide-y divide-zinc-900 text-xs">
         <div v-if="filteredCommands.length === 0" class="py-8 text-center text-zinc-500">
           Ничего не найдено по запросу «{{ query }}»
@@ -53,13 +53,13 @@
         </div>
       </div>
 
-      <!-- Footer Hints -->
+      <!-- Подсказки по навигации -->
       <div class="px-4 py-2.5 border-t border-zinc-900 bg-zinc-900/60 flex items-center justify-between text-[11px] text-zinc-500">
         <div class="flex items-center gap-2">
           <span>Навигация: <strong>↑</strong> <strong>↓</strong></span>
           <span>• Выбор: <strong>Enter</strong></span>
         </div>
-        <span class="text-amber-400 font-mono">Vampire Survivors Command OS</span>
+        <span class="text-amber-400 font-mono">Палитра быстрого доступа</span>
       </div>
     </div>
   </div>
@@ -77,8 +77,8 @@ const query = ref('')
 const selectedIndex = ref(0)
 const inputRef = ref(null)
 
+// Список доступных команд и разделов
 const commands = [
-  // Navigation
   { id: 'tab-landing', title: 'Обзор игры & Релиз', desc: 'Главный лендинг, особенности и трейлер', icon: '🦇', category: 'Раздел', action: () => emit('select-tab', 'landing') },
   { id: 'tab-dash', title: 'Игровая Статистика', desc: 'Векторная диаграмма поверженных монстров и золота', icon: '📊', category: 'Раздел', action: () => emit('select-tab', 'dashboard') },
   { id: 'tab-ecom', title: 'Лавка Торговца & Арсенал', desc: 'DLC Moonspell, Foscari, геймпады Razer Kishi', icon: '🛒', category: 'Раздел', action: () => emit('select-tab', 'ecommerce') },
@@ -87,41 +87,44 @@ const commands = [
   { id: 'tab-order', title: 'Орден Охотников (Cloud ID)', desc: 'Генерация персонального ключа синхронизации', icon: '🛡️', category: 'Раздел', action: () => emit('select-tab', 'multistep') },
   { id: 'tab-ui', title: 'Гримуар Дизайн-Системы', desc: 'Палитра Blood & Gold, кнопки и статусы', icon: '🎨', category: 'Раздел', action: () => emit('select-tab', 'design-system') },
   { id: 'tab-cloud', title: 'Сеть & Cloud Анализ', desc: 'Сравнение Cloudflare Pages, GitHub Pages и SLA', icon: '☁️', category: 'Раздел', action: () => emit('select-tab', 'hosting-analysis') },
-
-  // App Features
-  { id: 'act-chest', title: 'Открыть сундук удачи', desc: 'Мини-игра: случайный дроп золота и эволюции оружия', icon: '🎁', category: 'Интерактив', action: () => openChestModal() },
-  { id: 'act-fullscreen', title: 'Полноэкранный режим', desc: 'Переключить веб-приложение во весь экран (F11)', icon: '⛶', category: 'Система', action: () => toggleFullscreen() },
-  { id: 'act-sound', title: 'Звуковые эффекты 8-bit', desc: 'Включить / отключить ретро-звуки синтезатора', icon: '🔊', category: 'Аудио', action: () => {
+  { id: 'act-chest', title: 'Открыть сундук удачи', desc: 'Мини-игра: случайный дроп золота и эволюции оружия', icon: '🎁', category: 'Действие', action: () => openChestModal() },
+  { id: 'act-fullscreen', title: 'Полноэкранный режим', desc: 'Переключить веб-приложение во весь экран (F11)', icon: '⛶', category: 'Действие', action: () => toggleFullscreen() },
+  { id: 'act-sound', title: 'Звуковые эффекты 8-bit', desc: 'Включить или отключить звуки интерфейса', icon: '🔊', category: 'Действие', action: () => {
     const state = toggleSound();
     pushToast({ title: 'Звук', message: state ? 'Ретро-звуки включены' : 'Звук отключен', type: 'info' });
   }},
-  { id: 'act-save', title: 'Синхронизировать сохранения', desc: 'Записать текущий прогресс в локальное хранилище', icon: '💾', category: 'Cloud', action: () => {
-    pushToast({ title: 'Cloud Sync', message: 'Сохранения успешно отправлены в облако!', type: 'gold' });
+  { id: 'act-save', title: 'Синхронизировать сохранения', desc: 'Записать текущий прогресс в локальное хранилище', icon: '💾', category: 'Действие', action: () => {
+    pushToast({ title: 'Облачная синхронизация', message: 'Сохранения успешно отправлены в облако', type: 'gold' });
   }}
 ]
 
+// Фильтрация команд по поисковому запросу
 const filteredCommands = computed(() => {
   if (!query.value.trim()) return commands
   const q = query.value.toLowerCase().trim()
   return commands.filter(c => c.title.toLowerCase().includes(q) || c.desc.toLowerCase().includes(q) || c.category.toLowerCase().includes(q))
 })
 
+// Навигация стрелками клавиатуры
 const navigate = (direction) => {
   const count = filteredCommands.value.length
   if (count === 0) return
   selectedIndex.value = (selectedIndex.value + direction + count) % count
 }
 
+// Выбор активного элемента
 const selectActive = () => {
   const cmd = filteredCommands.value[selectedIndex.value]
   if (cmd) execute(cmd)
 }
 
+// Выполнение выбранной команды
 const execute = (cmd) => {
   close()
   if (cmd.action) cmd.action()
 }
 
+// Закрытие палитры
 const close = () => {
   closeCommandPalette()
   query.value = ''
@@ -136,7 +139,7 @@ watch(isOpen, (newVal) => {
   }
 })
 
-// Global Ctrl+K hotkey handler
+// Обработка горячей клавиши Ctrl+K
 const handleKeydown = (e) => {
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
     e.preventDefault()

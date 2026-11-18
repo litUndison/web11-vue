@@ -3,7 +3,7 @@
     <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
       <div class="h-16 flex items-center justify-between gap-3">
         
-        <!-- Left: Logo & Brand -->
+        <!-- Логотип и название игры -->
         <a href="#" @click.prevent="$emit('select-tab', 'landing')" class="flex items-center gap-2.5 group shrink-0">
           <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-zinc-950 font-bold text-sm shadow-gold transition-transform group-hover:scale-105">
             🦇
@@ -18,7 +18,7 @@
           </div>
         </a>
 
-        <!-- Desktop Navigation Tabs -->
+        <!-- Навигационные вкладки -->
         <nav class="hidden xl:flex items-center gap-1 overflow-x-auto no-scrollbar py-1">
           <button
             v-for="tab in tabs"
@@ -42,9 +42,9 @@
           </button>
         </nav>
 
-        <!-- Right: App Controls & Live State -->
+        <!-- Элементы управления -->
         <div class="flex items-center gap-2 shrink-0">
-          <!-- Command Palette Search Button (Ctrl+K) -->
+          <!-- Кнопка поиска -->
           <button
             @click="openCommandPalette"
             class="hidden md:inline-flex items-center gap-2 px-2.5 py-1.5 rounded-lg border border-zinc-800 bg-zinc-900/80 text-zinc-400 hover:text-amber-300 hover:border-amber-500/40 text-xs transition-colors"
@@ -56,7 +56,7 @@
             </kbd>
           </button>
 
-          <!-- Interactive Chest Mini-Game Button -->
+          <!-- Кнопка сундука -->
           <button
             @click="openChestModal"
             class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 text-zinc-950 hover:brightness-110 shadow-gold transition-all"
@@ -66,7 +66,7 @@
             <span class="hidden sm:inline">Сундук</span>
           </button>
 
-          <!-- Live Reactive Player Gold Counter -->
+          <!-- Счётчик золота игрока -->
           <div
             class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-amber-500/30 bg-zinc-900/90 text-xs font-bold text-amber-300 shadow-2xs cursor-pointer hover:border-amber-400 transition-colors"
             @click="openChestModal"
@@ -76,7 +76,7 @@
             <span class="font-mono text-amber-400">{{ playerGold.toLocaleString() }} G</span>
           </div>
 
-          <!-- Sound Effects 8-bit Toggle -->
+          <!-- Переключатель звука -->
           <button
             type="button"
             @click="handleToggleSound"
@@ -87,7 +87,7 @@
             <span v-else>🔇</span>
           </button>
 
-          <!-- Fullscreen Toggle Button -->
+          <!-- Переключатель полноэкранного режима -->
           <button
             type="button"
             @click="toggleFullscreen"
@@ -97,7 +97,7 @@
             <span>⛶</span>
           </button>
 
-          <!-- Theme Toggle -->
+          <!-- Переключатель темы -->
           <button
             type="button"
             @click="toggleTheme"
@@ -112,7 +112,7 @@
             </svg>
           </button>
 
-          <!-- Mobile Dropdown Toggle -->
+          <!-- Кнопка мобильного меню -->
           <button
             @click="mobileOpen = !mobileOpen"
             class="xl:hidden p-2 rounded-lg text-zinc-300 hover:bg-zinc-800 border border-zinc-800"
@@ -124,7 +124,7 @@
         </div>
       </div>
 
-      <!-- Mobile Dropdown Menu -->
+      <!-- Мобильное меню -->
       <div v-if="mobileOpen" class="xl:hidden py-3 border-t border-zinc-800 grid grid-cols-2 gap-1.5">
         <button
           v-for="tab in tabs"
@@ -164,6 +164,7 @@ const mobileOpen = ref(false)
 const isDark = ref(true)
 const soundOn = ref(true)
 
+// Список основных разделов
 const tabs = [
   { id: 'landing', name: 'Обзор' },
   { id: 'dashboard', name: 'Статистика' },
@@ -175,15 +176,17 @@ const tabs = [
   { id: 'hosting-analysis', name: 'Сеть & Cloud', badge: 'SLA' }
 ]
 
+// Обработка переключения звука
 const handleToggleSound = () => {
   soundOn.value = toggleSound()
   pushToast({
     title: soundOn.value ? 'Звук включен' : 'Звук выключен',
-    message: soundOn.value ? 'Воспроизведение ретро 8-bit аудио активно' : 'Аудиоэффекты отключены',
+    message: soundOn.value ? 'Воспроизведение ретро-звуков активно' : 'Аудиоэффекты отключены',
     type: 'info'
   })
 }
 
+// Переключение темы оформления
 const toggleTheme = () => {
   isDark.value = !isDark.value
   if (isDark.value) {
