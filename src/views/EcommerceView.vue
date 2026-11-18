@@ -1,6 +1,6 @@
 <template>
   <div class="space-y-6">
-    <!-- Шапка раздела и корзина -->
+    <!-- Шапка раздела -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-zinc-200 dark:border-amber-500/20">
       <div>
         <h1 class="heading-gothic text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
@@ -11,17 +11,11 @@
         </p>
       </div>
 
-      <div class="flex items-center gap-3">
-        <!-- Индикатор корзины с векторной иконкой -->
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-amber-500/40 bg-zinc-100 dark:bg-zinc-900/90 text-xs font-bold text-amber-700 dark:text-amber-300 shadow-gold">
-          <svg class="w-4 h-4 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="9" cy="21" r="1" />
-            <circle cx="20" cy="21" r="1" />
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-          </svg>
-          <span>Корзина:</span>
-          <span class="bg-amber-500 text-zinc-950 px-2 py-0.5 rounded-full text-[11px] font-bold">{{ cartCount }}</span>
-        </div>
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-amber-500/30 bg-amber-500/10 text-xs font-bold text-amber-700 dark:text-amber-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Официальный каталог</span>
+        </span>
       </div>
     </div>
 
@@ -107,13 +101,24 @@
             <span>В Steam</span>
             <span class="text-[10px]">↗</span>
           </a>
-          <!-- Для остальных товаров лавки: добавление в корзину -->
+          <!-- Для официального оборудования: переход в магазин бренда -->
+          <a
+            v-else-if="item.externalUrl"
+            :href="item.externalUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-gold btn-sm px-3.5 py-1.5 flex items-center gap-1"
+          >
+            <span>В магазин</span>
+            <span class="text-[10px]">↗</span>
+          </a>
+          <!-- Для игровых реликвий лавки -->
           <button
             v-else
-            @click="addToCart(item)"
+            @click="orderItem(item)"
             class="btn-gold btn-sm px-3.5 py-1.5"
           >
-            В корзину
+            Купить
           </button>
         </div>
       </div>
@@ -186,13 +191,24 @@
             <span>В Steam</span>
             <span class="text-[10px]">↗</span>
           </a>
-          <!-- Для остальных товаров лавки: добавление в корзину -->
+          <!-- Для официального оборудования: переход в магазин бренда -->
+          <a
+            v-else-if="item.externalUrl"
+            :href="item.externalUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-gold btn-sm px-3.5 py-1.5 flex items-center gap-1"
+          >
+            <span>В магазин</span>
+            <span class="text-[10px]">↗</span>
+          </a>
+          <!-- Для игровых реликвий лавки -->
           <button
             v-else
-            @click="addToCart(item)"
+            @click="orderItem(item)"
             class="btn-gold btn-sm px-3.5 py-1.5"
           >
-            В корзину
+            Купить
           </button>
         </div>
       </div>
@@ -212,16 +228,13 @@ defineProps({
   }
 })
 
-const cartCount = ref(0)
 const selectedCategory = ref('Все')
 const searchQuery = ref('')
 
-const addToCart = (item) => {
-  if (item.steamUrl) return
-  cartCount.value++
+const orderItem = (item) => {
   pushToast({
-    title: 'Добавлено в заказ!',
-    message: `${item.name} (${item.price} BYN) добавлен в корзину`,
+    title: 'Заказ оформлен!',
+    message: `${item.name} (${item.price} BYN) успешно приобретен`,
     type: 'gold'
   })
 }
@@ -263,7 +276,8 @@ const products = [
     image: 'https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?w=600&auto=format&fit=crop&q=80',
     badge: 'Официальный выбор',
     rating: '5.0',
-    reviews: 640
+    reviews: 640,
+    externalUrl: 'https://www.razer.com/mobile-controllers/razer-kishi-ultra'
   },
   {
     id: 4,
@@ -299,7 +313,8 @@ const products = [
     image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80',
     badge: 'Hi-Res Audio',
     rating: '4.9',
-    reviews: 970
+    reviews: 970,
+    externalUrl: 'https://steelseries.com/gaming-headsets/arctis-nova-7'
   }
 ]
 
