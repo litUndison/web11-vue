@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="8" fill="#0a0a0d"/>
+  <rect x="1" y="1" width="30" height="30" rx="7" stroke="#f59e0b" stroke-width="1.5" stroke-opacity="0.6"/>
+  <!-- Bat Wings / Gothic Cross -->
+  <path d="M16 4L19 11L27 12.5L21 18L23 26L16 22L9 26L11 18L5 12.5L13 11L16 4Z" fill="#f59e0b"/>
+  <path d="M4 16C4 16 8 13 11 17C13 20 11 24 11 24C11 24 15 21 16 24C17 21 21 24 21 24C21 24 19 20 21 17C24 13 28 16 28 16C28 16 25 10 19 10C16 10 16 12 16 12C16 12 16 10 13 10C7 10 4 16 4 16Z" fill="#dc2626" fill-opacity="0.85"/>
+</svg>

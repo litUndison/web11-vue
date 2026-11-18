@@ -1,0 +1,16 @@
+{
+  "name": "Vampire Survivors Mobile",
+  "short_name": "Vampire Survivors",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0a0a0d",
+  "theme_color": "#0a0a0d",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
