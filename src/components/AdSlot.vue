@@ -374,7 +374,7 @@ const creativeData = computed(() => {
   if (props.format === 'sidebar') {
     return {
       title: 'Razer Kishi Ultra',
-      badge: '9 990 ₽',
+      badge: '349 BYN',
       description: 'Консольный мобильный контроллер для iPhone 15/16 и Android с тактильной отдачей Sensa HD.',
       buttonText: 'Купить со скидкой',
       link: 'https://www.razer.com/mobile-controllers/razer-kishi-ultra',
@@ -397,7 +397,7 @@ const creativeData = computed(() => {
 
   return {
     title: 'SteelSeries Arctis Nova',
-    badge: '14 490 ₽',
+    badge: '499 BYN',
     description: 'Игровая беспроводная гарнитура с 360° пространственным звуком Spatial Audio для Vampire Survivors.',
     buttonText: 'Перейти в каталог',
     link: 'https://steelseries.com/gaming-headsets/arctis-nova-7',

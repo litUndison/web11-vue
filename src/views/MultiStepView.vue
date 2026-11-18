@@ -73,7 +73,7 @@
         >
           <input type="radio" v-model="formData.pack" value="free" name="pack" class="text-amber-500 focus:ring-0" />
           <div>
-            <div class="font-bold text-zinc-900 dark:text-zinc-100">Набор Рекрута (Бесплатно • 0 ₽)</div>
+            <div class="font-bold text-zinc-900 dark:text-zinc-100">Набор Рекрута (Бесплатно • 0 BYN)</div>
             <div class="text-zinc-600 dark:text-zinc-400">Стартовый персонаж Antonio Belpaese + Кнут + 5 000 золотых монет.</div>
           </div>
         </label>
@@ -83,7 +83,7 @@
         >
           <input type="radio" v-model="formData.pack" value="champion" name="pack" class="text-amber-500 focus:ring-0" />
           <div>
-            <div class="font-bold text-amber-600 dark:text-amber-400">Набор Паладина (299 ₽)</div>
+            <div class="font-bold text-amber-600 dark:text-amber-400">Набор Паладина (9.99 BYN)</div>
             <div class="text-zinc-600 dark:text-zinc-400">Разблокировка 4 персонажей Belpaese + 50 000 золота + 20 Золотых Яиц.</div>
           </div>
         </label>

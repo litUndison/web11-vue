@@ -89,8 +89,8 @@
 
         <div class="mt-4 pt-3 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
           <div>
-            <div class="text-base font-bold font-mono text-amber-600 dark:text-amber-400">{{ item.price }} ₽</div>
-            <div v-if="item.oldPrice" class="text-xs text-zinc-400 dark:text-zinc-500 line-through font-mono">{{ item.oldPrice }} ₽</div>
+            <div class="text-base font-bold font-mono text-amber-600 dark:text-amber-400">{{ item.price }} BYN</div>
+            <div v-if="item.oldPrice" class="text-xs text-zinc-400 dark:text-zinc-500 line-through font-mono">{{ item.oldPrice }} BYN</div>
           </div>
           <button @click="addToCart(item)" class="btn-gold btn-sm px-3.5 py-1.5">
             В корзину
@@ -148,8 +148,8 @@
 
         <div class="mt-4 pt-3 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
           <div>
-            <div class="text-base font-bold font-mono text-amber-600 dark:text-amber-400">{{ item.price }} ₽</div>
-            <div v-if="item.oldPrice" class="text-xs text-zinc-400 dark:text-zinc-500 line-through font-mono">{{ item.oldPrice }} ₽</div>
+            <div class="text-base font-bold font-mono text-amber-600 dark:text-amber-400">{{ item.price }} BYN</div>
+            <div v-if="item.oldPrice" class="text-xs text-zinc-400 dark:text-zinc-500 line-through font-mono">{{ item.oldPrice }} BYN</div>
           </div>
           <button @click="addToCart(item)" class="btn-gold btn-sm px-3.5 py-1.5">
             В корзину
@@ -180,7 +180,7 @@ const addToCart = (item) => {
   cartCount.value++
   pushToast({
     title: 'Добавлено в заказ!',
-    message: `${item.name} (${item.price} ₽) добавлен в корзину`,
+    message: `${item.name} (${item.price} BYN) добавлен в корзину`,
     type: 'gold'
   })
 }
@@ -189,8 +189,8 @@ const products = [
   {
     id: 1,
     name: 'DLC: Legacy of the Moonspell',
-    price: '149',
-    oldPrice: '199',
+    price: '4.99',
+    oldPrice: '6.99',
     category: 'DLC Дополнения',
     desc: 'Огромная карта Гора Луны, 8 новых персонажей клана Мунспелл и 13 видов эволюционирующего оружия.',
     image: './img/hero-bg.jpg',
@@ -201,8 +201,8 @@ const products = [
   {
     id: 2,
     name: 'DLC: Tides of the Foscari',
-    price: '149',
-    oldPrice: '199',
+    price: '4.99',
+    oldPrice: '6.99',
     category: 'DLC Дополнения',
     desc: 'Зачарованная лесная академия Фоскари, 8 магов-выживших и легендарное оружие SpellString.',
     image: './img/gameplay-screen.jpg',
@@ -213,8 +213,8 @@ const products = [
   {
     id: 3,
     name: 'Контроллер Razer Kishi Ultra USB-C',
-    price: '9 990',
-    oldPrice: '12 500',
+    price: '349',
+    oldPrice: '429',
     category: 'Оборудование',
     desc: 'Премиальный мобильный контроллер консольного уровня для iPhone 15/16 и Android с тактильной отдачей.',
     image: 'https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?w=600&auto=format&fit=crop&q=80',
@@ -225,8 +225,8 @@ const products = [
   {
     id: 4,
     name: 'Коллекционная реплика: Кровавая Слеза',
-    price: '3 490',
-    oldPrice: '4 200',
+    price: '119',
+    oldPrice: '149',
     category: 'Реликвии',
     desc: 'Металлическая копия артефакта Bloody Tear на дубовой подставке с гравировкой Ордена Belpaese.',
     image: './img/bloody-tear.jpg',
@@ -237,8 +237,8 @@ const products = [
   {
     id: 5,
     name: 'Пакет Торговца: 100 Золотых Яиц',
-    price: '299',
-    oldPrice: '399',
+    price: '9.99',
+    oldPrice: '13.99',
     category: 'Реликвии',
     desc: 'Мгновенный постоянный прирост характеристик любого персонажа: +HP, +Скорость, +Урон магии.',
     image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80',
@@ -249,8 +249,8 @@ const products = [
   {
     id: 6,
     name: 'Беспроводные наушники SteelSeries Arctis Nova',
-    price: '14 490',
-    oldPrice: '16 990',
+    price: '499',
+    oldPrice: '589',
     category: 'Оборудование',
     desc: '360° пространственный звук Spatial Audio для мгновенного обнаружения приближающихся боссов.',
     image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80',
