@@ -72,6 +72,18 @@
             <span>Google Play (Android)</span>
           </a>
 
+          <a
+            href="https://store.steampowered.com/app/1794680/Vampire_Survivors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary px-6 py-3 text-sm font-bold flex items-center gap-2 border-zinc-700 bg-zinc-900/90 text-zinc-100 hover:bg-zinc-800 shadow-2xs"
+          >
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2a10 10 0 0 0-10 10c0 4.74 3.31 8.7 7.74 9.73l2.84-4.14a2.98 2.98 0 0 1-.58-.59l-3.3 1.34a7.99 7.99 0 0 1-1.7-4.11l3.52-1.44a3 3 0 0 1 5.96-.32l3.41 1.4a8 8 0 1 1-8.89-11.87zm4 7a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+            </svg>
+            <span>Steam (ПК)</span>
+          </a>
+
           <button
             @click="$emit('switch-tab', 'ecommerce')"
             class="btn-secondary px-5 py-3 text-sm font-semibold border-amber-500/30 text-amber-700 dark:text-amber-300 hover:text-amber-600 dark:hover:text-amber-200"
@@ -530,6 +542,17 @@
             class="btn-blood px-6 py-2.5 text-xs sm:text-sm font-bold"
           >
             Скачать для Android
+          </a>
+          <a
+            href="https://store.steampowered.com/app/1794680/Vampire_Survivors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary px-6 py-2.5 text-xs sm:text-sm font-bold flex items-center gap-2 border-zinc-300 dark:border-zinc-700"
+          >
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2a10 10 0 0 0-10 10c0 4.74 3.31 8.7 7.74 9.73l2.84-4.14a2.98 2.98 0 0 1-.58-.59l-3.3 1.34a7.99 7.99 0 0 1-1.7-4.11l3.52-1.44a3 3 0 0 1 5.96-.32l3.41 1.4a8 8 0 1 1-8.89-11.87zm4 7a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+            </svg>
+            <span>Версия в Steam</span>
           </a>
         </div>
       </div>

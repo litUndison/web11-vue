@@ -92,7 +92,27 @@
             <div class="text-base font-bold font-mono text-amber-600 dark:text-amber-400">{{ item.price }} BYN</div>
             <div v-if="item.oldPrice" class="text-xs text-zinc-400 dark:text-zinc-500 line-through font-mono">{{ item.oldPrice }} BYN</div>
           </div>
-          <button @click="addToCart(item)" class="btn-gold btn-sm px-3.5 py-1.5">
+          <!-- Для DLC: переход на официальную страницу Steam -->
+          <a
+            v-if="item.steamUrl"
+            :href="item.steamUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary btn-sm px-3.5 py-1.5 flex items-center gap-1.5"
+            title="Купить официальное DLC в Steam"
+          >
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2a10 10 0 0 0-10 10c0 4.74 3.31 8.7 7.74 9.73l2.84-4.14a2.98 2.98 0 0 1-.58-.59l-3.3 1.34a7.99 7.99 0 0 1-1.7-4.11l3.52-1.44a3 3 0 0 1 5.96-.32l3.41 1.4a8 8 0 1 1-8.89-11.87zm4 7a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+            </svg>
+            <span>В Steam</span>
+            <span class="text-[10px]">↗</span>
+          </a>
+          <!-- Для остальных товаров лавки: добавление в корзину -->
+          <button
+            v-else
+            @click="addToCart(item)"
+            class="btn-gold btn-sm px-3.5 py-1.5"
+          >
             В корзину
           </button>
         </div>
@@ -151,7 +171,27 @@
             <div class="text-base font-bold font-mono text-amber-600 dark:text-amber-400">{{ item.price }} BYN</div>
             <div v-if="item.oldPrice" class="text-xs text-zinc-400 dark:text-zinc-500 line-through font-mono">{{ item.oldPrice }} BYN</div>
           </div>
-          <button @click="addToCart(item)" class="btn-gold btn-sm px-3.5 py-1.5">
+          <!-- Для DLC: переход на официальную страницу Steam -->
+          <a
+            v-if="item.steamUrl"
+            :href="item.steamUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary btn-sm px-3.5 py-1.5 flex items-center gap-1.5"
+            title="Купить официальное DLC в Steam"
+          >
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2a10 10 0 0 0-10 10c0 4.74 3.31 8.7 7.74 9.73l2.84-4.14a2.98 2.98 0 0 1-.58-.59l-3.3 1.34a7.99 7.99 0 0 1-1.7-4.11l3.52-1.44a3 3 0 0 1 5.96-.32l3.41 1.4a8 8 0 1 1-8.89-11.87zm4 7a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+            </svg>
+            <span>В Steam</span>
+            <span class="text-[10px]">↗</span>
+          </a>
+          <!-- Для остальных товаров лавки: добавление в корзину -->
+          <button
+            v-else
+            @click="addToCart(item)"
+            class="btn-gold btn-sm px-3.5 py-1.5"
+          >
             В корзину
           </button>
         </div>
@@ -177,6 +217,7 @@ const selectedCategory = ref('Все')
 const searchQuery = ref('')
 
 const addToCart = (item) => {
+  if (item.steamUrl) return
   cartCount.value++
   pushToast({
     title: 'Добавлено в заказ!',
@@ -196,7 +237,8 @@ const products = [
     image: './img/hero-bg.jpg',
     badge: 'Хит продаж',
     rating: '4.9',
-    reviews: 1420
+    reviews: 1420,
+    steamUrl: 'https://store.steampowered.com/app/2230760/Vampire_Survivors_Legacy_of_the_Moonspell/'
   },
   {
     id: 2,
@@ -208,7 +250,8 @@ const products = [
     image: './img/gameplay-screen.jpg',
     badge: 'Новинка',
     rating: '4.8',
-    reviews: 890
+    reviews: 890,
+    steamUrl: 'https://store.steampowered.com/app/2394600/Vampire_Survivors_Tides_of_the_Foscari/'
   },
   {
     id: 3,

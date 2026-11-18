@@ -36,6 +36,15 @@
               <span>Google Play</span>
               <span class="text-[10px]">↗</span>
             </a>
+            <a
+              href="https://store.steampowered.com/app/1794680/Vampire_Survivors/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-amber-500/30 text-xs font-semibold text-zinc-800 dark:text-zinc-100 hover:border-amber-400 transition-colors shadow-2xs"
+            >
+              <span>Steam</span>
+              <span class="text-[10px]">↗</span>
+            </a>
           </div>
         </div>
 
