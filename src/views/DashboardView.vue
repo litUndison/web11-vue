@@ -4,10 +4,10 @@
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-zinc-200 dark:border-amber-500/20">
       <div>
         <h1 class="heading-gothic text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-          Игровая Статистика & Монетизация
+          Игровая Статистика Выживших
         </h1>
         <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-0.5">
-          Глобальный трекинг уничтоженных орд нежити, золотого фонда и наград спонсорских сундуков
+          Глобальный трекинг уничтоженных орд нежити, добытого золота и открытых сундуков
         </p>
       </div>
 
@@ -265,19 +265,19 @@
           <!-- Сводка за период -->
           <div class="pt-3 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs text-zinc-600 dark:text-zinc-400">
             <span>Всего за период: <strong class="text-amber-600 dark:text-amber-400 font-bold">{{ periodTotals[activeMetric] }}</strong></span>
-            <span class="font-mono text-[11px] text-zinc-500">Движок: 60-120 FPS • Latency: 12ms</span>
+            <span class="font-mono text-[11px] text-zinc-500">Условие победы: 30:00 • Множитель золота: ×1.5</span>
           </div>
         </div>
 
-        <!-- Журнал наград -->
+        <!-- Журнал последних экспедиций и наград -->
         <div class="card-base p-5 sm:p-6 space-y-4 border-zinc-200 dark:border-amber-500/20 bg-white dark:bg-zinc-900/80 shadow-xs">
           <div class="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
             <div>
               <h3 class="heading-gothic font-bold text-sm sm:text-base text-zinc-900 dark:text-zinc-100">
-                Журнал игровых наград и спонсорских сундуков
+                Журнал последних экспедиций и битв с боссами
               </h3>
               <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-0.5">
-                Автоматическое начисление золота, реликвий и бонусов партнеров
+                Хроника сражений, полученные артефакты и добыча золота
               </p>
             </div>
             <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/30">
@@ -289,11 +289,11 @@
             <table class="w-full min-w-[540px] text-left text-xs">
               <thead class="text-zinc-500 uppercase font-semibold text-[10px] tracking-wider border-b border-zinc-200 dark:border-zinc-800 pb-2">
                 <tr>
-                  <th class="pb-2.5">Событие / Партнёр</th>
-                  <th class="pb-2.5">Формат слота</th>
-                  <th class="pb-2.5">Показы / Уровень</th>
+                  <th class="pb-2.5">Событие / Локация</th>
+                  <th class="pb-2.5">Режим боя</th>
+                  <th class="pb-2.5">Время матча</th>
                   <th class="pb-2.5">Награда</th>
-                  <th class="pb-2.5 text-right">Статус</th>
+                  <th class="pb-2.5 text-right">Итог</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800 text-zinc-700 dark:text-zinc-300">
@@ -308,7 +308,7 @@
                   <td class="py-3 text-right">
                     <span
                       class="px-2 py-0.5 rounded text-[10px] font-medium"
-                      :class="t.status === 'Получено' ? 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30' : 'bg-amber-500/20 text-amber-700 dark:text-amber-400 border border-amber-500/30'"
+                      :class="t.status === 'Победа' || t.status === 'Получено' ? 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30' : 'bg-amber-500/20 text-amber-700 dark:text-amber-400 border border-amber-500/30'"
                     >
                       {{ t.status }}
                     </span>
@@ -321,7 +321,7 @@
 
       </div>
 
-      <!-- Правая колонка: рекламный блок и статус сети -->
+      <!-- Правая колонка: рекламный блок и статистика карт -->
       <div class="lg:col-span-4 space-y-4">
         
         <!-- Контейнер рекламного блока -->
@@ -342,20 +342,48 @@
           </div>
         </div>
 
-        <!-- Статус облачной синхронизации -->
-        <div class="card-base p-4 space-y-2.5 border-zinc-200 dark:border-amber-500/20 bg-white dark:bg-zinc-900/80 shadow-xs">
-          <div class="flex items-center justify-between text-xs">
-            <span class="font-bold text-zinc-900 dark:text-zinc-100">Глобальная сеть Cloud Sync</span>
-            <span class="px-1.5 py-0.5 rounded text-[10px] font-mono bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30">
-              99.99% SLA
-            </span>
+        <!-- Популярные этапы выживания -->
+        <div class="card-base p-4 space-y-3 border-zinc-200 dark:border-amber-500/20 bg-white dark:bg-zinc-900/80 shadow-xs">
+          <div class="flex items-center justify-between text-xs pb-2 border-b border-zinc-200 dark:border-zinc-800">
+            <span class="font-bold text-zinc-900 dark:text-zinc-100">Популярные локации выживания</span>
+            <span class="font-mono text-[10px] text-amber-600 dark:text-amber-400">Сезон 1</span>
           </div>
-          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            Автоматическая репликация сохранений профиля на узлах Edge CDN. Нулевой сдвиг макета (CLS = 0) при интеграции рекламных блоков.
-          </p>
-          <div class="pt-2 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-[11px] text-zinc-600 dark:text-zinc-400">
-            <span>Репликация: Мгновенная</span>
-            <span class="font-mono text-amber-600 dark:text-amber-400">Vulkan / Metal</span>
+          <div class="space-y-2 text-xs">
+            <div class="flex items-center justify-between">
+              <span class="text-zinc-700 dark:text-zinc-300">Инкрустированная Библиотека</span>
+              <span class="font-mono font-bold text-amber-600 dark:text-amber-400">42%</span>
+            </div>
+            <div class="w-full bg-zinc-100 dark:bg-zinc-800 h-1.5 rounded-full overflow-hidden">
+              <div class="bg-amber-500 h-full rounded-full" style="width: 42%"></div>
+            </div>
+
+            <div class="flex items-center justify-between pt-1">
+              <span class="text-zinc-700 dark:text-zinc-300">Безумный Лес</span>
+              <span class="font-mono font-bold text-amber-600 dark:text-amber-400">28%</span>
+            </div>
+            <div class="w-full bg-zinc-100 dark:bg-zinc-800 h-1.5 rounded-full overflow-hidden">
+              <div class="bg-amber-500/80 h-full rounded-full" style="width: 28%"></div>
+            </div>
+
+            <div class="flex items-center justify-between pt-1">
+              <span class="text-zinc-700 dark:text-zinc-300">Молочный Завод</span>
+              <span class="font-mono font-bold text-amber-600 dark:text-amber-400">18%</span>
+            </div>
+            <div class="w-full bg-zinc-100 dark:bg-zinc-800 h-1.5 rounded-full overflow-hidden">
+              <div class="bg-amber-500/60 h-full rounded-full" style="width: 18%"></div>
+            </div>
+
+            <div class="flex items-center justify-between pt-1">
+              <span class="text-zinc-700 dark:text-zinc-300">Капелла Магна</span>
+              <span class="font-mono font-bold text-amber-600 dark:text-amber-400">12%</span>
+            </div>
+            <div class="w-full bg-zinc-100 dark:bg-zinc-800 h-1.5 rounded-full overflow-hidden">
+              <div class="bg-amber-500/40 h-full rounded-full" style="width: 12%"></div>
+            </div>
+          </div>
+          <div class="pt-2 border-t border-zinc-200 dark:border-zinc-800 text-[11px] text-zinc-500 flex items-center justify-between">
+            <span>Любимый билд: Святая Вода</span>
+            <span class="font-mono text-emerald-600 dark:text-emerald-400">DPS +140%</span>
           </div>
         </div>
 
@@ -549,10 +577,10 @@ const currentStats = computed(() => {
 })
 
 const transactions = [
-  { id: 1, sponsor: 'Razer Kishi Ultra Sponsored Chest', slot: 'Sidebar (300×250)', impressions: '54 300', income: '+10 000 G', status: 'Получено', dotClass: 'bg-emerald-500' },
-  { id: 2, sponsor: 'Сундук 25-й минуты: Босс Красный Дракон', slot: 'Boss Drop (Grimoire)', impressions: 'Капелла Магна', income: 'Holy Wand Evolution', status: 'Получено', dotClass: 'bg-amber-500' },
-  { id: 3, sponsor: 'Google Play Pass Bonus Pack', slot: 'In-Feed Native Card', impressions: '28 900', income: '+15 000 G', status: 'Получено', dotClass: 'bg-emerald-500' },
-  { id: 4, sponsor: 'Лавка Торговца: 10 Золотых яиц', slot: 'Merchant Store', impressions: 'Покупка', income: '-10 000 G', status: 'Получено', dotClass: 'bg-indigo-500' },
-  { id: 5, sponsor: 'SteelSeries Arctis Nova Sound Chest', slot: 'Leaderboard (728×90)', impressions: '17 550', income: '+7 500 G', status: 'В обработке', dotClass: 'bg-amber-500' }
+  { id: 1, sponsor: 'Сундук 25-й мин: Красный Дракон', slot: 'Капелла Магна', impressions: '30:00 мин', income: 'Holy Wand Evolution', status: 'Победа', dotClass: 'bg-emerald-500' },
+  { id: 2, sponsor: 'Спонсорский сундук: Razer Kishi', slot: 'Библиотека', impressions: '28:45 мин', income: '+10 000 G', status: 'Получено', dotClass: 'bg-amber-500' },
+  { id: 3, sponsor: 'Секретный босс: Зеленый Жнец', slot: 'Молочный Завод', impressions: '25:12 мин', income: '+15 000 G', status: 'Победа', dotClass: 'bg-emerald-500' },
+  { id: 4, sponsor: 'Лавка Торговца: 10 Золотых яиц', slot: 'Торговец', impressions: 'Покупка', income: '+10 Яиц', status: 'Получено', dotClass: 'bg-indigo-500' },
+  { id: 5, sponsor: 'Бонус Google Play Pass Pack', slot: 'Стартовый пак', impressions: 'Награда', income: '+7 500 G', status: 'Получено', dotClass: 'bg-amber-500' }
 ]
 </script>
