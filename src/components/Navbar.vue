@@ -77,21 +77,6 @@
             <span class="font-mono text-amber-700 dark:text-amber-400 font-bold">{{ playerGold.toLocaleString() }} G</span>
           </div>
 
-          <!-- Переключатель звуковых эффектов -->
-          <button
-            type="button"
-            @click="handleToggleSound"
-            class="p-2 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-amber-600 dark:hover:text-amber-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors border border-zinc-200 dark:border-zinc-800"
-            :title="soundOn ? 'Звуковые эффекты включены' : 'Звук отключен'"
-          >
-            <svg v-if="soundOn" class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
-            </svg>
-            <svg v-else class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z M17 14l4-4m0 4l-4-4"/>
-            </svg>
-          </button>
-
           <!-- Переключатель полноэкранного режима -->
           <button
             type="button"
@@ -153,7 +138,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { playerGold, openChestModal, openCommandPalette, toggleFullscreen, pushToast } from '../utils/store.js'
-import { toggleSound, isSoundEnabled, initSoundState } from '../utils/audio.js'
 
 defineProps({
   activeTab: {
@@ -170,7 +154,6 @@ defineEmits(['select-tab', 'toggle-all-ads'])
 
 const mobileOpen = ref(false)
 const isDark = ref(true)
-const soundOn = ref(true)
 
 // Список разделов коммерческого сайта
 const tabs = [
@@ -181,16 +164,6 @@ const tabs = [
   { id: 'messenger', name: 'Чат гильдии' },
   { id: 'multistep', name: 'Орден Охотников' }
 ]
-
-// Обработка переключения звука
-const handleToggleSound = () => {
-  soundOn.value = toggleSound()
-  pushToast({
-    title: soundOn.value ? 'Звук включен' : 'Звук выключен',
-    message: soundOn.value ? 'Воспроизведение ретро-звуков активно' : 'Аудиоэффекты отключены',
-    type: 'info'
-  })
-}
 
 // Переключение темы оформления
 const toggleTheme = () => {
@@ -205,9 +178,6 @@ const toggleTheme = () => {
 }
 
 onMounted(() => {
-  initSoundState()
-  soundOn.value = isSoundEnabled()
-
   const saved = localStorage.getItem('theme')
   if (saved === 'light') {
     isDark.value = false

@@ -149,7 +149,6 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { pushToast, addGold } from '../utils/store.js'
-import { playLevelUpSound } from '../utils/audio.js'
 
 const currentStep = ref(1)
 const syncKey = ref('8F9K2Q')
@@ -174,7 +173,6 @@ const selectedPlatformTitle = computed(() => {
 })
 
 const finishRegistration = () => {
-  playLevelUpSound()
   const reward = formData.value.pack === 'champion' ? 50000 : 5000
   addGold(reward)
   pushToast({

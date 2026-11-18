@@ -564,7 +564,6 @@
 import { ref, computed } from 'vue'
 import AdSlot from '../components/AdSlot.vue'
 import { openChestModal } from '../utils/store.js'
-import { playClickSound } from '../utils/audio.js'
 
 defineProps({
   allCreative: {
@@ -579,7 +578,6 @@ const selectedCharIdx = ref(0)
 
 const selectChar = (idx) => {
   selectedCharIdx.value = idx
-  playClickSound()
 }
 
 // Список выживших героев

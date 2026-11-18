@@ -72,7 +72,6 @@
 <script setup>
 import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue'
 import { isCommandPaletteOpen, closeCommandPalette, openChestModal, toggleFullscreen, pushToast } from '../utils/store.js'
-import { toggleSound } from '../utils/audio.js'
 
 const emit = defineEmits(['select-tab'])
 
@@ -91,10 +90,6 @@ const commands = [
   { id: 'tab-order', title: 'Орден Охотников (Cloud ID)', desc: 'Генерация персонального ключа синхронизации', badge: 'ID', category: 'Раздел', action: () => emit('select-tab', 'multistep') },
   { id: 'act-chest', title: 'Открыть сундук удачи', desc: 'Мини-игра: случайный дроп золота и эволюции оружия', badge: 'BX', category: 'Действие', action: () => openChestModal() },
   { id: 'act-fullscreen', title: 'Полноэкранный режим', desc: 'Переключить веб-приложение во весь экран (F11)', badge: 'FS', category: 'Действие', action: () => toggleFullscreen() },
-  { id: 'act-sound', title: 'Звуковые эффекты 8-bit', desc: 'Включить или отключить звуки интерфейса', badge: 'AU', category: 'Действие', action: () => {
-    const state = toggleSound();
-    pushToast({ title: 'Звук', message: state ? 'Ретро-звуки включены' : 'Звук отключен', type: 'info' });
-  }},
   { id: 'act-save', title: 'Синхронизировать сохранения', desc: 'Записать текущий прогресс в локальное хранилище', badge: 'SV', category: 'Действие', action: () => {
     pushToast({ title: 'Облачная синхронизация', message: 'Сохранения успешно отправлены в облако', type: 'gold' });
   }}

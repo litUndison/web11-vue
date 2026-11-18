@@ -108,7 +108,6 @@
 <script setup>
 import { ref } from 'vue'
 import { isChestModalOpen, closeChestModal, addGold, pushToast } from '../utils/store.js'
-import { playChestFanfare } from '../utils/audio.js'
 
 const isOpen = isChestModalOpen
 const isOpened = ref(false)
@@ -160,7 +159,6 @@ const openChest = () => {
     isOpened.value = true
     const rand = Math.floor(Math.random() * rewardsList.length)
     currentReward.value = rewardsList[rand]
-    playChestFanfare()
     addGold(currentReward.value.gold)
   }, 400)
 }
