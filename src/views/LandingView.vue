@@ -1,340 +1,532 @@
-<template>
+﻿<template>
   <div class="space-y-16">
     <!-- Top Advertisement Slot (Leaderboard 728x90) -->
     <div class="max-w-4xl mx-auto">
       <AdSlot
         format="banner"
         label="Спонсорский блок (Leaderboard)"
-        slotTitle="Премиум-размещение в шапке портала"
+        slotTitle="Официальный игровой спонсор"
         :initialCreative="allCreative"
         :key="'ad-landing-top-' + allCreative"
       />
     </div>
 
-    <!-- Hero Section -->
-    <section class="relative text-center max-w-4xl mx-auto pt-6 pb-12 space-y-6">
-      <!-- Minimalist Status Pill -->
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700/60 shadow-2xs">
-        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-        <span>Tailwind UI Studio v2.5</span>
-        <span class="text-zinc-400">•</span>
-        <span class="text-zinc-500 dark:text-zinc-400">Enterprise Ready</span>
+    <!-- Hero Section with Background Atmosphere -->
+    <section class="relative rounded-2xl overflow-hidden border border-amber-500/20 bg-zinc-950 shadow-card">
+      <!-- Background Image with Gradient Overlay -->
+      <div class="absolute inset-0 z-0 opacity-25 pointer-events-none">
+        <img
+          src="../assets/img/hero-bg.jpg"
+          alt="Vampire Survivors Hero Background"
+          class="w-full h-full object-cover object-center"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-zinc-950 via-transparent to-zinc-950"></div>
       </div>
 
-      <!-- Main Headline -->
-      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.15]">
-        Платформа веб-интерфейсов и монетизации на Vue 3
-      </h1>
-
-      <!-- Subtitle -->
-      <p class="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-        Готовая архитектура компонентов корпоративного уровня со встроенной поддержкой рекламных форматов IAB, интерактивной аналитикой и нулевым сдвигом верстки.
-      </p>
-
-      <!-- CTA Buttons -->
-      <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
-        <button
-          @click="$emit('switch-tab', 'dashboard')"
-          class="btn-primary btn-md px-5 py-2.5 text-sm font-semibold shadow-sm"
-        >
-          <span>Открыть дашборд</span>
-          <span class="text-xs">→</span>
-        </button>
-        <button
-          @click="$emit('switch-tab', 'hosting-analysis')"
-          class="btn-secondary btn-md px-5 py-2.5 text-sm"
-        >
-          <span>Cloud & Инфраструктура</span>
-        </button>
-      </div>
-
-      <!-- Key Performance Metrics Strip -->
-      <div class="pt-10 grid grid-cols-2 sm:grid-cols-4 gap-6 border-t border-zinc-200 dark:border-zinc-800/80 max-w-3xl mx-auto">
-        <div class="text-center">
-          <div class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">100%</div>
-          <div class="text-xs text-zinc-500 mt-0.5">Vue 3 Composition</div>
+      <div class="relative z-10 max-w-5xl mx-auto px-6 py-12 sm:py-16 text-center space-y-6">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-gold">
+          <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+          <span>Официальный мобильный релиз • Версия 1.10</span>
+          <span class="text-amber-500/60">•</span>
+          <span class="text-amber-200">100% Бесплатно</span>
         </div>
-        <div class="text-center">
-          <div class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">0 ms</div>
-          <div class="text-xs text-zinc-500 mt-0.5">CLS Сдвиг макета</div>
+
+        <!-- Headline -->
+        <h1 class="heading-gothic text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-zinc-100 leading-[1.1]">
+          ВЫЖИВИ В АДУ <br />
+          <span class="bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 bg-clip-text text-transparent">
+            ДО РАССВЕТА
+          </span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-sm sm:text-base text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+          Культовый инди-хит от Poncle теперь в твоем смартфоне. Уничтожай орды ночной нежити одним пальцем, открывай рецепты в Гримуаре и создавай ультимативные билды выживания.
+        </p>
+
+        <!-- CTAs -->
+        <div class="pt-2 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="https://apps.apple.com/app/vampire-survivors/id6444525702"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-gold px-6 py-3 text-sm font-bold shadow-gold flex items-center gap-2"
+          >
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.4c.67-.82 1.13-1.96.99-3.1-.99.04-2.17.66-2.86 1.48-.61.71-1.14 1.88-.99 2.99 1.1.09 2.2-.55 2.86-1.37z"/>
+            </svg>
+            <span>App Store (iOS)</span>
+          </a>
+
+          <a
+            href="https://play.google.com/store/apps/details?id=com.poncle.vampiresurvivors"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-blood px-6 py-3 text-sm font-bold shadow-blood flex items-center gap-2"
+          >
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M3.609 1.814L13.792 12 3.61 22.186a2.222 2.222 0 0 1-.61-.912V2.726c0-.342.22-.68.61-.912zm11.3 11.3l2.42 2.42-11.83 6.64 9.41-9.06zm0-2.228L5.5 1.826l11.83 6.64-2.42 2.42zm1.65 1.114l3.88 2.18c.84.47.84 1.24 0 1.71l-3.88 2.18-2.02-2.03 2.02-2.04z"/>
+            </svg>
+            <span>Google Play (Android)</span>
+          </a>
+
+          <button
+            @click="$emit('switch-tab', 'ecommerce')"
+            class="btn-secondary px-5 py-3 text-sm font-semibold border-amber-500/30 text-amber-300 hover:text-amber-200"
+          >
+            <span>Арсенал & DLC</span>
+            <span class="text-xs">→</span>
+          </button>
         </div>
-        <div class="text-center">
-          <div class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">99.99%</div>
-          <div class="text-xs text-zinc-500 mt-0.5">SLA Доступность</div>
+
+        <!-- Phone Gameplay Mockup -->
+        <div class="pt-8 max-w-xl mx-auto">
+          <div class="relative rounded-2xl p-2.5 bg-gradient-to-b from-amber-500/40 via-zinc-800 to-amber-700/40 shadow-2xl border border-amber-500/30">
+            <div class="relative rounded-xl overflow-hidden aspect-video bg-zinc-950">
+              <img
+                src="../assets/img/gameplay-screen.jpg"
+                alt="Геймплей мобильной версии Vampire Survivors"
+                class="w-full h-full object-cover"
+              />
+              <!-- Gameplay In-game HUD Simulation -->
+              <div class="absolute top-2 left-2 right-2 flex items-center justify-between text-[11px] font-mono text-white bg-black/60 backdrop-blur-xs px-2.5 py-1 rounded">
+                <div class="flex items-center gap-2">
+                  <span class="text-amber-400 font-bold">LV 99</span>
+                  <span class="text-emerald-400 font-bold">HP 250/250</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-rose-400 font-bold">☠ 142 800</span>
+                  <span class="text-amber-300 font-bold">⏱ 28:45</span>
+                  <span class="text-sky-300 font-bold">120 FPS</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="text-center">
-          <div class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">&lt;30 ms</div>
-          <div class="text-xs text-zinc-500 mt-0.5">Edge CDN Latency</div>
+
+        <!-- Performance Stats -->
+        <div class="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-zinc-800/80 max-w-3xl mx-auto">
+          <div class="text-center p-3 rounded-lg bg-zinc-900/60 border border-zinc-800">
+            <div class="text-2xl font-bold heading-gothic text-amber-400">100 000+</div>
+            <div class="text-xs text-zinc-400 mt-0.5">Монстров на экране</div>
+          </div>
+          <div class="text-center p-3 rounded-lg bg-zinc-900/60 border border-zinc-800">
+            <div class="text-2xl font-bold heading-gothic text-amber-400">60-120 FPS</div>
+            <div class="text-xs text-zinc-400 mt-0.5">Vulkan & Metal API</div>
+          </div>
+          <div class="text-center p-3 rounded-lg bg-zinc-900/60 border border-zinc-800">
+            <div class="text-2xl font-bold heading-gothic text-amber-400">98%</div>
+            <div class="text-xs text-zinc-400 mt-0.5">Крайне положительно</div>
+          </div>
+          <div class="text-center p-3 rounded-lg bg-zinc-900/60 border border-zinc-800">
+            <div class="text-2xl font-bold heading-gothic text-amber-400">10M+</div>
+            <div class="text-xs text-zinc-400 mt-0.5">Загрузок в мире</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Features Bento Grid -->
-    <section class="max-w-6xl mx-auto">
-      <div class="text-center max-w-xl mx-auto mb-10">
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-          Возможности архитектуры
+    <!-- Features Section -->
+    <section class="max-w-6xl mx-auto space-y-8">
+      <div class="text-center max-w-xl mx-auto">
+        <h2 class="heading-gothic text-2xl sm:text-3xl font-bold text-zinc-100">
+          Особенности мобильного релиза
         </h2>
-        <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1">
-          Модульная система компонентов, строгая типизация и соблюдение веб-стандартов
+        <p class="text-xs sm:text-sm text-zinc-400 mt-1">
+          Идеальная адаптация для сенсорных экранов смартфонов и планшетов
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         <!-- Feature 1 -->
-        <div class="card-base p-6 space-y-3 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
-          <div class="w-10 h-10 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex items-center justify-center">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-            </svg>
+        <div class="card-base p-5 space-y-3 border-amber-500/20 hover:border-amber-500/40 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center text-lg">
+            👆
           </div>
-          <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">
-            Аналитический дашборд
-          </h3>
-          <p class="text-xs sm:text-sm text-zinc-500 leading-relaxed">
-            Интерактивный векторный график метрик, динамический переключатель периодов и журнал расчётов с рекламодателями.
+          <h3 class="font-bold text-sm text-zinc-100">Управление одним пальцем</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Вертикальная или горизонтальная ориентация. Автоматическая атака снарядами — маневрируйте и уворачивайтесь от орд нежити.
           </p>
         </div>
 
         <!-- Feature 2 -->
-        <div class="card-base p-6 space-y-3 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
-          <div class="w-10 h-10 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex items-center justify-center">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
-            </svg>
+        <div class="card-base p-5 space-y-3 border-amber-500/20 hover:border-amber-500/40 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 flex items-center justify-center text-lg">
+            ⚡
           </div>
-          <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">
-            Каталог e-Commerce
-          </h3>
-          <p class="text-xs sm:text-sm text-zinc-500 leading-relaxed">
-            Адаптивная витрина товаров со студийными фотографиями, фильтрами категорий, корзиной и нативной рекламой In-Feed.
+          <h3 class="font-bold text-sm text-zinc-100">100 000+ врагов без лагов</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Высокооптимизированный графический пайплайн гарантирует плавные 60-120 кадров в секунду даже на 29-й минуте ада.
           </p>
         </div>
 
         <!-- Feature 3 -->
-        <div class="card-base p-6 space-y-3 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
-          <div class="w-10 h-10 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex items-center justify-center">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-            </svg>
+        <div class="card-base p-5 space-y-3 border-amber-500/20 hover:border-amber-500/40 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center text-lg">
+            📖
           </div>
-          <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">
-            Стандарты IAB AdSlot
-          </h3>
-          <p class="text-xs sm:text-sm text-zinc-500 leading-relaxed">
-            Поддержка форматов Leaderboard (728×90), Medium Rectangle (300×250) и Fluid In-Feed с гарантией нулевого CLS.
+          <h3 class="font-bold text-sm text-zinc-100">Глубокие синергии билдов</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Более 50 уникальных охотников, тайные реликвии, карты Таро (Арканы) и десятки ветвей эволюций супероружия.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="card-base p-5 space-y-3 border-amber-500/20 hover:border-amber-500/40 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-lg">
+            ☁️
+          </div>
+          <h3 class="font-bold text-sm text-zinc-100">Офлайн и Cloud Sync</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Играйте в метро или самолете без интернета. Прогресс мгновенно синхронизируется через облачную сеть сохранений.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="max-w-6xl mx-auto">
-      <div class="text-center max-w-xl mx-auto mb-10">
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-          Тарифные планы
+    <!-- Interactive Survivors (Characters) Showcase -->
+    <section class="max-w-6xl mx-auto space-y-8" id="characters">
+      <div class="text-center max-w-xl mx-auto">
+        <h2 class="heading-gothic text-2xl sm:text-3xl font-bold text-zinc-100">
+          Выжившие Охотники
         </h2>
-        <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1">
-          Гибкие варианты подключения для стартапов и корпоративных команд
+        <p class="text-xs sm:text-sm text-zinc-400 mt-1">
+          Выберите легендарного героя и отправляйтесь в темные земли
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-        <!-- Starter Plan -->
-        <div class="card-base p-6 flex flex-col justify-between">
-          <div>
-            <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Стартовый</div>
-            <h3 class="text-xl font-bold text-zinc-900 dark:text-zinc-100 mt-1">Free Tier</h3>
-            <div class="mt-3 flex items-baseline gap-1">
-              <span class="text-3xl font-bold text-zinc-900 dark:text-zinc-100">0 ₽</span>
-              <span class="text-xs text-zinc-400">/ навсегда</span>
+      <div class="card-base p-6 border-amber-500/30">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <!-- Left: Image Showcase -->
+          <div class="lg:col-span-6 relative rounded-xl overflow-hidden border border-amber-500/30 shadow-card">
+            <img
+              src="../assets/img/characters.jpg"
+              alt="Охотники Vampire Survivors"
+              class="w-full h-auto object-cover"
+            />
+            <div class="absolute bottom-2 left-2 px-2.5 py-1 rounded bg-black/80 text-[11px] font-mono text-amber-300 border border-amber-500/30">
+              Орден Belpaese & Союзники
             </div>
-            <ul class="mt-6 space-y-2.5 text-xs text-zinc-600 dark:text-zinc-400">
-              <li class="flex items-center gap-2">
-                <span class="text-emerald-500 font-bold">✓</span>
-                <span>До 10 000 просмотров/мес</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-emerald-500 font-bold">✓</span>
-                <span>Базовые пресеты AdSlot</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-emerald-500 font-bold">✓</span>
-                <span>Деплой на GitHub Pages</span>
-              </li>
-            </ul>
           </div>
-          <button class="btn-secondary btn-sm w-full mt-6 py-2">Выбрать Free</button>
-        </div>
 
-        <!-- Pro Plan (Featured) -->
-        <div class="card-base p-6 flex flex-col justify-between border-indigo-500/80 dark:border-indigo-400/80 ring-1 ring-indigo-500/30 relative">
-          <div class="absolute -top-2.5 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-indigo-600 text-white shadow-xs">
-            Рекомендуемый
-          </div>
-          <div>
-            <div class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">Профессиональный</div>
-            <h3 class="text-xl font-bold text-zinc-900 dark:text-zinc-100 mt-1">Pro Developer</h3>
-            <div class="mt-3 flex items-baseline gap-1">
-              <span class="text-3xl font-bold text-zinc-900 dark:text-zinc-100">1 490 ₽</span>
-              <span class="text-xs text-zinc-400">/ месяц</span>
+          <!-- Right: Interactive Character Selector -->
+          <div class="lg:col-span-6 space-y-5">
+            <!-- Selector Tabs -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              <button
+                v-for="(char, idx) in characterList"
+                :key="char.name"
+                @click="selectedCharIdx = idx"
+                class="p-2.5 rounded-lg border text-xs font-bold transition-all text-left"
+                :class="selectedCharIdx === idx
+                  ? 'border-amber-400 bg-amber-500/20 text-amber-300 shadow-gold'
+                  : 'border-zinc-800 bg-zinc-900/60 text-zinc-400 hover:border-zinc-700'"
+              >
+                <div class="truncate">{{ char.name }}</div>
+                <div class="text-[10px] font-normal text-zinc-400">{{ char.title }}</div>
+              </button>
             </div>
-            <ul class="mt-6 space-y-2.5 text-xs text-zinc-700 dark:text-zinc-300">
-              <li class="flex items-center gap-2">
-                <span class="text-indigo-600 dark:text-indigo-400 font-bold">✓</span>
-                <span>Все модули (Дашборд, Чат, Канбан, E-com)</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-indigo-600 dark:text-indigo-400 font-bold">✓</span>
-                <span>Безлимитная полоса Cloudflare Pages</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-indigo-600 dark:text-indigo-400 font-bold">✓</span>
-                <span>Интеграция сетей РСЯ / AdSense</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-indigo-600 dark:text-indigo-400 font-bold">✓</span>
-                <span>Кастомный домен и Auto-SSL</span>
-              </li>
-            </ul>
-          </div>
-          <button class="btn-primary btn-sm w-full mt-6 py-2 font-semibold">Подключить Pro</button>
-        </div>
 
-        <!-- Enterprise Plan -->
-        <div class="card-base p-6 flex flex-col justify-between">
-          <div>
-            <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Корпоративный</div>
-            <h3 class="text-xl font-bold text-zinc-900 dark:text-zinc-100 mt-1">Enterprise</h3>
-            <div class="mt-3 flex items-baseline gap-1">
-              <span class="text-3xl font-bold text-zinc-900 dark:text-zinc-100">По запросу</span>
+            <!-- Active Character Details -->
+            <div class="p-5 rounded-xl border border-amber-500/20 bg-zinc-900/80 space-y-4">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="heading-gothic text-lg font-bold text-amber-400">
+                    {{ activeChar.name }}
+                  </h3>
+                  <div class="text-xs text-zinc-400">{{ activeChar.role }}</div>
+                </div>
+                <span class="px-2.5 py-1 rounded text-xs font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                  {{ activeChar.weapon }}
+                </span>
+              </div>
+
+              <p class="text-xs text-zinc-300 leading-relaxed">
+                {{ activeChar.description }}
+              </p>
+
+              <!-- Attributes Bar -->
+              <div class="grid grid-cols-3 gap-3 text-xs pt-2 border-t border-zinc-800">
+                <div>
+                  <span class="text-zinc-500 block text-[10px] uppercase font-mono">Базовое HP</span>
+                  <span class="font-bold text-emerald-400">{{ activeChar.hp }}</span>
+                </div>
+                <div>
+                  <span class="text-zinc-500 block text-[10px] uppercase font-mono">Скорость бега</span>
+                  <span class="font-bold text-amber-400">{{ activeChar.speed }}</span>
+                </div>
+                <div>
+                  <span class="text-zinc-500 block text-[10px] uppercase font-mono">Особый пассив</span>
+                  <span class="font-bold text-rose-400 truncate block">{{ activeChar.passive }}</span>
+                </div>
+              </div>
             </div>
-            <ul class="mt-6 space-y-2.5 text-xs text-zinc-600 dark:text-zinc-400">
-              <li class="flex items-center gap-2">
-                <span class="text-emerald-500 font-bold">✓</span>
-                <span>Выделенный SLA 99.99%</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-emerald-500 font-bold">✓</span>
-                <span>Кастомные размеры рекламных сеток</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-emerald-500 font-bold">✓</span>
-                <span>Поддержка 24/7 с персональным менеджером</span>
-              </li>
-            </ul>
           </div>
-          <button class="btn-secondary btn-sm w-full mt-6 py-2">Связаться с нами</button>
         </div>
       </div>
     </section>
 
-    <!-- Prominently Featured Comparison Table -->
-    <section class="max-w-6xl mx-auto">
+    <!-- Grimoire of Weapon Evolutions -->
+    <section class="max-w-6xl mx-auto space-y-8" id="weapons">
+      <div class="text-center max-w-xl mx-auto">
+        <h2 class="heading-gothic text-2xl sm:text-3xl font-bold text-zinc-100">
+          Гримуар Эволюций Оружия
+        </h2>
+        <p class="text-xs sm:text-sm text-zinc-400 mt-1">
+          Объединяйте оружие 8-го уровня с пассивными артефактами в сундуках боссов
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Recipe 1: Whip -> Bloody Tear -->
+        <div class="card-base p-5 border-amber-500/20 hover:border-amber-500/40 transition-all flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-zinc-400 mb-2">
+              <span class="text-amber-400 font-bold">Эволюция #1</span>
+              <span>Вампиризм</span>
+            </div>
+            <div class="flex items-center justify-center gap-3 py-3">
+              <div class="w-14 h-14 rounded-lg overflow-hidden border border-zinc-700 bg-zinc-900 shrink-0">
+                <img src="../assets/img/whip.jpg" alt="Кнут (Whip)" class="w-full h-full object-cover" />
+              </div>
+              <span class="text-amber-400 font-bold text-lg">+</span>
+              <div class="w-14 h-14 rounded-lg border border-zinc-700 bg-zinc-900 flex flex-col items-center justify-center text-center p-1 shrink-0">
+                <span class="text-lg">🖤</span>
+                <span class="text-[8px] font-mono text-zinc-400 leading-tight">Пустое Сердце</span>
+              </div>
+              <span class="text-amber-400 font-bold text-lg">➔</span>
+              <div class="w-14 h-14 rounded-lg overflow-hidden border border-red-500 bg-zinc-900 shadow-blood shrink-0">
+                <img src="../assets/img/bloody-tear.jpg" alt="Кровавая слеза (Bloody Tear)" class="w-full h-full object-cover" />
+              </div>
+            </div>
+            <h4 class="font-bold text-sm text-amber-400 text-center mt-1">Кровавая Слеза (Bloody Tear)</h4>
+            <p class="text-xs text-zinc-300 mt-2 leading-relaxed">
+              Кнут эволюционирует в смертоносную цепь, наносящую критические удары и восстанавливающую по 8 HP за каждое попадание по толпе.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-zinc-800 text-[11px] font-mono text-amber-400/80 flex items-center justify-between">
+            <span>Рекомендовано: Antonio</span>
+            <span>★ Легендарное</span>
+          </div>
+        </div>
+
+        <!-- Recipe 2: Magic Wand -> Holy Wand -->
+        <div class="card-base p-5 border-amber-500/20 hover:border-amber-500/40 transition-all flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-zinc-400 mb-2">
+              <span class="text-amber-400 font-bold">Эволюция #2</span>
+              <span>Шквал магии</span>
+            </div>
+            <div class="flex items-center justify-center gap-3 py-3">
+              <div class="w-14 h-14 rounded-lg overflow-hidden border border-zinc-700 bg-zinc-900 shrink-0">
+                <img src="../assets/img/wand.jpg" alt="Волшебная палочка (Magic Wand)" class="w-full h-full object-cover" />
+              </div>
+              <span class="text-amber-400 font-bold text-lg">+</span>
+              <div class="w-14 h-14 rounded-lg border border-zinc-700 bg-zinc-900 flex flex-col items-center justify-center text-center p-1 shrink-0">
+                <span class="text-lg">📖</span>
+                <span class="text-[8px] font-mono text-zinc-400 leading-tight">Фолиант</span>
+              </div>
+              <span class="text-amber-400 font-bold text-lg">➔</span>
+              <div class="w-14 h-14 rounded-lg overflow-hidden border border-amber-400 bg-zinc-900 shadow-gold shrink-0">
+                <img src="../assets/img/holy-wand.jpg" alt="Священная палочка (Holy Wand)" class="w-full h-full object-cover" />
+              </div>
+            </div>
+            <h4 class="font-bold text-sm text-amber-400 text-center mt-1">Священная Палочка (Holy Wand)</h4>
+            <p class="text-xs text-zinc-300 mt-2 leading-relaxed">
+              Устраняет перезарядку снарядов. Заливает экран непрерывным пулеметным потоком самонаводящихся зарядов света.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-zinc-800 text-[11px] font-mono text-amber-400/80 flex items-center justify-between">
+            <span>Рекомендовано: Imelda</span>
+            <span>★ Легендарное</span>
+          </div>
+        </div>
+
+        <!-- Recipe 3: Garlic -> Soul Eater -->
+        <div class="card-base p-5 border-amber-500/20 hover:border-amber-500/40 transition-all flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-zinc-400 mb-2">
+              <span class="text-amber-400 font-bold">Эволюция #3</span>
+              <span>Аура вампиризма</span>
+            </div>
+            <div class="flex items-center justify-center gap-3 py-3">
+              <div class="w-14 h-14 rounded-lg overflow-hidden border border-zinc-700 bg-zinc-900 shrink-0">
+                <img src="../assets/img/garlic.jpg" alt="Чеснок (Garlic)" class="w-full h-full object-cover" />
+              </div>
+              <span class="text-amber-400 font-bold text-lg">+</span>
+              <div class="w-14 h-14 rounded-lg border border-zinc-700 bg-zinc-900 flex flex-col items-center justify-center text-center p-1 shrink-0">
+                <span class="text-lg">❤️</span>
+                <span class="text-[8px] font-mono text-zinc-400 leading-tight">Пуммарола</span>
+              </div>
+              <span class="text-amber-400 font-bold text-lg">➔</span>
+              <div class="w-14 h-14 rounded-lg border border-purple-500 bg-zinc-900 flex flex-col items-center justify-center text-center p-1 shadow-lg shrink-0">
+                <span class="text-xl">🌌</span>
+                <span class="text-[9px] font-mono text-purple-300 font-bold">Soul Eater</span>
+              </div>
+            </div>
+            <h4 class="font-bold text-sm text-amber-400 text-center mt-1">Пожиратель Душ (Soul Eater)</h4>
+            <p class="text-xs text-zinc-300 mt-2 leading-relaxed">
+              Аура вокруг персонажа увеличивается в радиусе, отталкивает нежить и крадет жизненную силу, повышая урон за каждое поглощение.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-zinc-800 text-[11px] font-mono text-amber-400/80 flex items-center justify-between">
+            <span>Рекомендовано: Poe Ratcho</span>
+            <span>★ Легендарное</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Embedded Game Cloud Infrastructure Comparative Table -->
+    <section class="max-w-6xl mx-auto space-y-4">
+      <div class="text-center max-w-xl mx-auto">
+        <h2 class="heading-gothic text-2xl sm:text-3xl font-bold text-zinc-100">
+          Синхронизация сохранений & Облачные серверы
+        </h2>
+        <p class="text-xs sm:text-sm text-zinc-400 mt-1">
+          Сравнительный анализ архитектуры CDN и хостинг-платформ для поддержки миллионов игроков
+        </p>
+      </div>
+
       <HostingTable />
     </section>
 
-    <!-- Testimonials Section with Real Photography -->
-    <section class="max-w-6xl mx-auto">
-      <div class="text-center max-w-xl mx-auto mb-10">
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-          Отзывы пользователей
+    <!-- Accolades & Press Reviews -->
+    <section class="max-w-6xl mx-auto space-y-8" id="reviews">
+      <div class="text-center max-w-xl mx-auto">
+        <h2 class="heading-gothic text-2xl sm:text-3xl font-bold text-zinc-100">
+          Признание критиков и награды
         </h2>
-        <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1">
-          Мнения команд разработчиков и продуктовых специалистов
+        <p class="text-xs sm:text-sm text-zinc-400 mt-1">
+          Почему игра стала триумфатором мировой игровой индустрии
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="card-base p-5 space-y-3">
-          <div class="flex items-center gap-3">
-            <img
-              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&auto=format&fit=crop&q=80"
-              alt="Екатерина Романова"
-              class="w-10 h-10 rounded-full object-cover border border-zinc-200 dark:border-zinc-700"
-            />
-            <div>
-              <h4 class="font-semibold text-xs text-zinc-900 dark:text-zinc-100">Екатерина Романова</h4>
-              <p class="text-[11px] text-zinc-400">Head of Product, FinTech Cloud</p>
-            </div>
-          </div>
-          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            «Архитектура AdSlot позволила интегрировать нативные промо-блоки с нулевым сдвигом верстки. Показатели Core Web Vitals выросли до 99/100 в Lighthouse.»
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
+        <div class="card-base p-5 text-center space-y-2 border-amber-500/20">
+          <div class="text-3xl font-bold heading-gothic text-amber-400">BAFTA</div>
+          <div class="text-xs font-bold text-zinc-200">Games Awards Winner</div>
+          <p class="text-[11px] text-zinc-400 leading-relaxed">
+            Победитель в номинациях «Лучшая игра года» и «Лучший геймдизайн».
           </p>
-          <div class="text-amber-500 text-xs">★★★★★</div>
         </div>
 
-        <div class="card-base p-5 space-y-3">
-          <div class="flex items-center gap-3">
-            <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80"
-              alt="Алексей Соколов"
-              class="w-10 h-10 rounded-full object-cover border border-zinc-200 dark:border-zinc-700"
-            />
-            <div>
-              <h4 class="font-semibold text-xs text-zinc-900 dark:text-zinc-100">Алексей Соколов</h4>
-              <p class="text-[11px] text-zinc-400">VP of Engineering, RetailHub</p>
-            </div>
-          </div>
-          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            «Перенос витрины на Cloudflare Pages с Vue 3 занял меньше часа. Неограниченный трафик обеспечил надежность во время сезонных распродаж.»
+        <div class="card-base p-5 text-center space-y-2 border-amber-500/20">
+          <div class="text-3xl font-bold heading-gothic text-amber-400">9.5 / 10</div>
+          <div class="text-xs font-bold text-zinc-200">IGN Review</div>
+          <p class="text-[11px] text-zinc-400 leading-relaxed">
+            «Шедевр минималистичного экшена и чистейший дофаминовый восторг».
           </p>
-          <div class="text-amber-500 text-xs">★★★★★</div>
         </div>
 
-        <div class="card-base p-5 space-y-3">
-          <div class="flex items-center gap-3">
-            <img
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80"
-              alt="Елена Васильева"
-              class="w-10 h-10 rounded-full object-cover border border-zinc-200 dark:border-zinc-700"
-            />
-            <div>
-              <h4 class="font-semibold text-xs text-zinc-900 dark:text-zinc-100">Елена Васильева</h4>
-              <p class="text-[11px] text-zinc-400">Lead UX Architect, DataStream</p>
-            </div>
-          </div>
-          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            «Минималистичный дизайн в стиле Linear выглядит солидно и профессионально. Пользователи отмечают безупречную скорость загрузки интерфейса.»
+        <div class="card-base p-5 text-center space-y-2 border-amber-500/20">
+          <div class="text-3xl font-bold heading-gothic text-amber-400">90 / 100</div>
+          <div class="text-xs font-bold text-zinc-200">PC Gamer</div>
+          <p class="text-[11px] text-zinc-400 leading-relaxed">
+            «Лучшая игра десятилетия для быстрых сессий и бесконечного погружения».
           </p>
-          <div class="text-amber-500 text-xs">★★★★★</div>
+        </div>
+
+        <div class="card-base p-5 text-center space-y-2 border-amber-500/20">
+          <div class="text-3xl font-bold heading-gothic text-amber-400">98%</div>
+          <div class="text-xs font-bold text-zinc-200">Steam Rating</div>
+          <p class="text-[11px] text-zinc-400 leading-relaxed">
+            Ошеломительно положительные отзывы от более чем 250 000 игроков.
+          </p>
         </div>
       </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="max-w-3xl mx-auto pb-6">
-      <div class="text-center mb-6">
-        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-          Часто задаваемые вопросы
+    <section class="max-w-3xl mx-auto space-y-6 pb-6" id="faq">
+      <div class="text-center">
+        <h2 class="heading-gothic text-2xl sm:text-3xl font-bold text-zinc-100">
+          Часто задаваемые вопросы (FAQ)
         </h2>
+        <p class="text-xs sm:text-sm text-zinc-400 mt-1">
+          Всё, что нужно знать о мобильной версии Vampire Survivors
+        </p>
       </div>
+
       <div class="space-y-3">
-        <details class="group card-base p-4 cursor-pointer">
-          <summary class="font-semibold text-xs sm:text-sm text-zinc-900 dark:text-zinc-100 flex items-center justify-between list-none">
-            <span>Допускается ли размещение сторонней рекламы на Cloudflare Pages?</span>
+        <details class="group card-base p-4 cursor-pointer border-zinc-800">
+          <summary class="font-bold text-xs sm:text-sm text-amber-400 flex items-center justify-between list-none">
+            <span>Бесплатна ли игра на смартфонах iOS и Android?</span>
             <span class="text-xs text-zinc-400 group-open:rotate-180 transition-transform">▼</span>
           </summary>
-          <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2.5 leading-relaxed">
-            Да. Условия обслуживания бесплатного тарифа Cloudflare Pages не накладывают ограничений на стороннюю баннерную рекламу или коммерческую монетизацию статических веб-сайтов, а полоса пропускания не лимитируется.
+          <p class="text-xs text-zinc-300 mt-2.5 leading-relaxed">
+            Да! Игра доступна совершенно бесплатно в App Store и Google Play. В ней нет пейволлов, pay-to-win механик или таймеров энергии. Вы можете наслаждаться полноценным контентом без обязательных платежей.
           </p>
         </details>
 
-        <details class="group card-base p-4 cursor-pointer">
-          <summary class="font-semibold text-xs sm:text-sm text-zinc-900 dark:text-zinc-100 flex items-center justify-between list-none">
-            <span>Каковы риски размещения рекламных баннеров на платформе Vercel?</span>
+        <details class="group card-base p-4 cursor-pointer border-zinc-800">
+          <summary class="font-bold text-xs sm:text-sm text-amber-400 flex items-center justify-between list-none">
+            <span>Требуется ли постоянное подключение к интернету?</span>
             <span class="text-xs text-zinc-400 group-open:rotate-180 transition-transform">▼</span>
           </summary>
-          <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2.5 leading-relaxed">
-            Пункт 1.2 Terms of Service тарифа Vercel Hobby строго запрещает любую коммерческую эксплуатацию ресурса. Размещение рекламы квалифицируется как коммерческая деятельность, что ведёт к блокировке аккаунта.
+          <p class="text-xs text-zinc-300 mt-2.5 leading-relaxed">
+            Нет. Мобильная версия Vampire Survivors на 100% поддерживает автономный офлайн-режим. Вы можете играть в самолете, метро или на даче. При появлении сети прогресс автоматически синхронизируется с облаком.
           </p>
         </details>
+
+        <details class="group card-base p-4 cursor-pointer border-zinc-800">
+          <summary class="font-bold text-xs sm:text-sm text-amber-400 flex items-center justify-between list-none">
+            <span>Как разблокировать эволюцию оружия в бою?</span>
+            <span class="text-xs text-zinc-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-xs text-zinc-300 mt-2.5 leading-relaxed">
+            Прокачайте оружие до максимального 8-го уровня, получите хотя бы 1-й уровень соответствующего пассивного артефакта, продержитесь до 10-й минуты матча и победите босса, чтобы открыть выпавший сундук.
+          </p>
+        </details>
+
+        <details class="group card-base p-4 cursor-pointer border-zinc-800">
+          <summary class="font-bold text-xs sm:text-sm text-amber-400 flex items-center justify-between list-none">
+            <span>Поддерживаются ли физические геймпады и контроллеры?</span>
+            <span class="text-xs text-zinc-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-xs text-zinc-300 mt-2.5 leading-relaxed">
+            Да. Игра обладает нативной поддержкой мобильных контроллеров Razer Kishi Ultra, Backbone One, а также беспроводных геймпадов Xbox Wireless Controller и Sony DualSense.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Bottom Download Banner -->
+    <section class="max-w-4xl mx-auto">
+      <div class="rounded-2xl p-8 border border-amber-500/30 bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 text-center space-y-4 shadow-card">
+        <h3 class="heading-gothic text-2xl sm:text-3xl font-bold text-amber-400">
+          Готовы вступить в битву за выживание?
+        </h3>
+        <p class="text-xs sm:text-sm text-zinc-300 max-w-lg mx-auto">
+          Установите игру прямо сейчас на свой смартфон и испытайте настоящий шквал экшена.
+        </p>
+        <div class="pt-2 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="https://apps.apple.com/app/vampire-survivors/id6444525702"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-gold px-6 py-2.5 text-xs sm:text-sm font-bold"
+          >
+            Скачать для iPhone & iPad
+          </a>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.poncle.vampiresurvivors"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-blood px-6 py-2.5 text-xs sm:text-sm font-bold"
+          >
+            Скачать для Android
+          </a>
+        </div>
       </div>
     </section>
   </div>
 </template>
 
 <script setup>
+import { ref, computed } from 'vue'
 import AdSlot from '../components/AdSlot.vue'
 import HostingTable from '../components/HostingTable.vue'
 
@@ -346,4 +538,52 @@ defineProps({
 })
 
 defineEmits(['switch-tab'])
+
+const selectedCharIdx = ref(0)
+
+const characterList = [
+  {
+    name: 'Antonio Belpaese',
+    title: 'Воин с Кнутом',
+    role: 'Стартовый боец клана Бельпаезе',
+    weapon: 'Кнут (Whip)',
+    description: 'Легендарный охотник на вампиров. Наносит сокрушительные горизонтальные удары кнутом, каждые 10 уровней увеличивая урон на +10% (вплоть до +50%).',
+    hp: '120',
+    speed: '+10%',
+    passive: '+10% Урона / 10 уровней'
+  },
+  {
+    name: 'Imelda Belpaese',
+    title: 'Архимаг',
+    role: 'Магистр заклинаний тайного света',
+    weapon: 'Волшебная палочка (Magic Wand)',
+    description: 'Ученая чародейка, способная ускоренно поглощать кристаллы опыта. Получает дополнительный прирост к опыту каждые 5 уровней, опережая орды врагов в развитии.',
+    hp: '100',
+    speed: 'Норма',
+    passive: '+10% Опыта / 5 уровней'
+  },
+  {
+    name: 'Gennaro Belpaese',
+    title: 'Мастер Ножей',
+    role: 'Быстрый стрелок метательных клинков',
+    weapon: 'Нож (Knife)',
+    description: 'Мастер молниеносного метания кинжалов. Пассивно дарует +1 дополнительный снаряд ко всем видам оружия в арсенале с самого начала матча.',
+    hp: '100',
+    speed: '+15%',
+    passive: '+1 Доп. снаряд ко всему оружию'
+  },
+  {
+    name: 'Mortaccio',
+    title: 'Костяной Лорд',
+    role: 'Загадочный восставший скелет',
+    weapon: 'Кость (Bone)',
+    description: 'Тайный персонаж, бросающий рикошетящие кости. Каждые 20 уровней получает еще один дополнительный снаряд (до +3 снарядов на 60-м уровне).',
+    hp: '100',
+    speed: 'Норма',
+    passive: '+1 Снаряд / 20 уровней'
+  }
+]
+
+const activeChar = computed(() => characterList[selectedCharIdx.value])
 </script>
+

@@ -1,12 +1,12 @@
 <template>
-  <div class="card-base p-5 sm:p-6 my-6 border-zinc-200/80 dark:border-zinc-800/90">
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5 pb-4 border-b border-zinc-100 dark:border-zinc-800/80">
+  <div class="card-base p-5 sm:p-6 my-6 border-amber-500/20 bg-zinc-900/90 shadow-card">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5 pb-4 border-b border-zinc-800">
       <div>
-        <h3 class="text-lg sm:text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-          Сравнение облачных платформ (2026)
+        <h3 class="heading-gothic text-lg sm:text-xl font-bold tracking-tight text-zinc-100">
+          Сравнительный анализ облачных платформ (Cloud Sync & CDN)
         </h3>
-        <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-          Анализ тарифов, лимитов полосы пропускания и правовых рисков размещения рекламы
+        <p class="text-xs text-zinc-400 mt-0.5">
+          Анализ тарифов, лимитов пропускной способности и правовых рисков размещения спонсорской рекламы
         </p>
       </div>
 
@@ -29,10 +29,10 @@
             v-for="filter in ['Все', 'Безопасные', 'Рискованные']"
             :key="filter"
             @click="activeFilter = filter"
-            class="px-2.5 py-1 text-xs rounded-md font-medium transition-colors"
+            class="px-2.5 py-1 text-xs rounded-md font-bold transition-all"
             :class="activeFilter === filter
-              ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-semibold shadow-2xs'
-              : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-800'"
+              ? 'bg-amber-500 text-zinc-950 shadow-gold'
+              : 'text-zinc-400 hover:text-amber-300 hover:bg-zinc-800 border border-zinc-800'"
           >
             {{ filter }}
           </button>
@@ -41,11 +41,11 @@
     </div>
 
     <!-- Desktop Table View (Sticky platform column, min-w-1000px) -->
-    <div class="hidden lg:block overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-800">
+    <div class="hidden lg:block overflow-x-auto rounded-lg border border-zinc-800">
       <table class="w-full min-w-[1000px] text-left text-xs border-collapse">
-        <thead class="bg-zinc-50/90 dark:bg-zinc-900/90 text-zinc-500 uppercase font-semibold text-[10px] tracking-wider border-b border-zinc-200 dark:border-zinc-800">
+        <thead class="bg-zinc-950 text-zinc-400 uppercase font-semibold text-[10px] tracking-wider border-b border-zinc-800">
           <tr>
-            <th class="p-3.5 sticky left-0 bg-zinc-50 dark:bg-zinc-900 z-20 min-w-[180px] shadow-[1px_0_0_0_rgba(0,0,0,0.06)] dark:shadow-[1px_0_0_0_rgba(255,255,255,0.06)]">Платформа</th>
+            <th class="p-3.5 sticky left-0 bg-zinc-950 z-20 min-w-[180px] shadow-[1px_0_0_0_rgba(255,255,255,0.06)]">Платформа</th>
             <th class="p-3.5 min-w-[140px]">Трафик / Полоса</th>
             <th class="p-3.5 min-w-[120px]">Сборки</th>
             <th class="p-3.5 min-w-[120px]">Коммерция</th>
@@ -56,26 +56,26 @@
             <th class="p-3.5 text-center min-w-[110px]">Оценка риска</th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800/60 text-zinc-600 dark:text-zinc-300">
+        <tbody class="divide-y divide-zinc-800 text-zinc-300">
           <tr
             v-for="p in filteredPlatforms"
             :key="p.name"
-            class="hover:bg-zinc-50/70 dark:hover:bg-zinc-800/30 transition-colors group"
-            :class="p.isRecommended ? 'bg-indigo-50/20 dark:bg-indigo-950/10' : ''"
+            class="hover:bg-zinc-800/40 transition-colors group"
+            :class="p.isRecommended ? 'bg-amber-500/10' : ''"
           >
             <!-- Platform Name (Sticky on scroll) -->
-            <td class="p-3.5 font-semibold text-zinc-900 dark:text-zinc-100 whitespace-nowrap sticky left-0 bg-white dark:bg-[#121217] z-10 shadow-[1px_0_0_0_rgba(0,0,0,0.06)] dark:shadow-[1px_0_0_0_rgba(255,255,255,0.06)] group-hover:bg-zinc-50 dark:group-hover:bg-zinc-800/30 transition-colors">
+            <td class="p-3.5 font-bold text-zinc-100 whitespace-nowrap sticky left-0 bg-zinc-900 z-10 shadow-[1px_0_0_0_rgba(255,255,255,0.06)] group-hover:bg-zinc-800 transition-colors">
               <div class="flex items-center gap-2">
                 <span>{{ p.name }}</span>
                 <span
                   v-if="p.isRecommended"
-                  class="px-1.5 py-0.2 rounded text-[9px] font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20"
+                  class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30"
                 >
                   Выбор №1
                 </span>
                 <span
                   v-else-if="p.isAlternative"
-                  class="px-1.5 py-0.2 rounded text-[9px] font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-500/20"
+                  class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30"
                 >
                   Альтернатива
                 </span>
@@ -88,13 +88,13 @@
             </td>
 
             <!-- Builds -->
-            <td class="p-3.5 whitespace-nowrap font-mono text-zinc-500">
+            <td class="p-3.5 whitespace-nowrap font-mono text-zinc-400">
               {{ p.builds }}
             </td>
 
             <!-- Commercial Policy -->
             <td class="p-3.5 font-medium">
-              <span :class="p.commercialAllowed ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'">
+              <span :class="p.commercialAllowed ? 'text-emerald-400' : 'text-rose-400'">
                 {{ p.commercialText }}
               </span>
             </td>
@@ -107,24 +107,24 @@
             </td>
 
             <!-- Domain + SSL -->
-            <td class="p-3.5 whitespace-nowrap text-zinc-500">
+            <td class="p-3.5 whitespace-nowrap text-zinc-400">
               Бесплатно (Auto-SSL)
             </td>
 
             <!-- Git Deploy -->
-            <td class="p-3.5 whitespace-nowrap text-zinc-500">
+            <td class="p-3.5 whitespace-nowrap text-zinc-400">
               Авто (Vite)
             </td>
 
             <!-- Scenario -->
-            <td class="p-3.5 text-zinc-500 leading-relaxed text-[11px]">
+            <td class="p-3.5 text-zinc-400 leading-relaxed text-[11px]">
               {{ p.scenario }}
             </td>
 
             <!-- Risk Badge -->
             <td class="p-3.5 text-center whitespace-nowrap">
               <span
-                class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium"
+                class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold"
                 :class="p.riskClass"
               >
                 <span class="w-1.5 h-1.5 rounded-full" :class="p.riskDotClass"></span>
@@ -141,21 +141,21 @@
       <div
         v-for="p in filteredPlatforms"
         :key="'mob-' + p.name"
-        class="card-base p-4 space-y-3 border"
-        :class="p.isRecommended ? 'border-indigo-500/50 ring-1 ring-indigo-500/20' : 'border-zinc-200 dark:border-zinc-800'"
+        class="card-base p-4 space-y-3 border bg-zinc-950"
+        :class="p.isRecommended ? 'border-amber-500/50 ring-1 ring-amber-500/20' : 'border-zinc-800'"
       >
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2">
-            <h4 class="font-bold text-sm text-zinc-900 dark:text-zinc-100">{{ p.name }}</h4>
+            <h4 class="font-bold text-sm text-zinc-100">{{ p.name }}</h4>
             <span
               v-if="p.isRecommended"
-              class="px-1.5 py-0.2 rounded text-[9px] font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400"
+              class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30"
             >
               №1 выбор
             </span>
           </div>
           <span
-            class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium"
+            class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold"
             :class="p.riskClass"
           >
             <span class="w-1.5 h-1.5 rounded-full" :class="p.riskDotClass"></span>
@@ -163,44 +163,42 @@
           </span>
         </div>
 
-        <div class="grid grid-cols-2 gap-2 text-xs pt-1 border-t border-zinc-100 dark:border-zinc-800/80">
+        <div class="grid grid-cols-2 gap-2 text-xs pt-1 border-t border-zinc-800">
           <div>
-            <span class="text-zinc-400 block text-[10px] uppercase font-semibold">Полоса:</span>
-            <span class="font-medium text-zinc-800 dark:text-zinc-200" :class="p.bandwidthHighlight">{{ p.bandwidth }}</span>
+            <span class="text-zinc-500 block text-[10px] uppercase font-semibold">Полоса:</span>
+            <span class="font-medium text-zinc-200" :class="p.bandwidthHighlight">{{ p.bandwidth }}</span>
           </div>
           <div>
-            <span class="text-zinc-400 block text-[10px] uppercase font-semibold">Сборки:</span>
-            <span class="text-zinc-600 dark:text-zinc-400 font-mono">{{ p.builds }}</span>
+            <span class="text-zinc-500 block text-[10px] uppercase font-semibold">Сборки:</span>
+            <span class="text-zinc-400 font-mono">{{ p.builds }}</span>
           </div>
           <div>
-            <span class="text-zinc-400 block text-[10px] uppercase font-semibold">Коммерция:</span>
-            <span :class="p.commercialAllowed ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-rose-600 dark:text-rose-400 font-medium'">
+            <span class="text-zinc-500 block text-[10px] uppercase font-semibold">Коммерция:</span>
+            <span :class="p.commercialAllowed ? 'text-emerald-400 font-medium' : 'text-rose-400 font-medium'">
               {{ p.commercialText }}
             </span>
           </div>
           <div>
-            <span class="text-zinc-400 block text-[10px] uppercase font-semibold">Реклама:</span>
-            <span class="text-zinc-700 dark:text-zinc-300 text-[11px]">{{ p.adsPolicy }}</span>
+            <span class="text-zinc-500 block text-[10px] uppercase font-semibold">Реклама:</span>
+            <span class="text-zinc-300 text-[11px]">{{ p.adsPolicy }}</span>
           </div>
         </div>
 
-        <p class="text-[11px] text-zinc-500 pt-2 border-t border-zinc-100 dark:border-zinc-800/80 leading-relaxed">
+        <p class="text-[11px] text-zinc-400 pt-2 border-t border-zinc-800 leading-relaxed">
           {{ p.scenario }}
         </p>
       </div>
     </div>
 
     <!-- Alert Box: Policies Nuances -->
-    <div class="mt-5 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/60 dark:bg-zinc-900/60 text-xs text-zinc-600 dark:text-zinc-400">
+    <div class="mt-5 p-4 rounded-xl border border-zinc-800 bg-zinc-950/70 text-xs text-zinc-400">
       <div class="flex items-start gap-3">
-        <svg class="w-4 h-4 text-amber-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-        </svg>
+        <span class="text-base text-amber-400 shrink-0 mt-0.5">⚠️</span>
         <div class="space-y-1">
-          <h4 class="font-semibold text-zinc-900 dark:text-zinc-100">Правовой аудит условий обслуживания хостингов (2026):</h4>
+          <h4 class="font-bold text-amber-400">Правовой аудит условий обслуживания хостингов:</h4>
           <p>
-            <strong>Vercel (Hobby):</strong> пункт 1.2 ToS строго ограничивает бесплатный тариф некоммерческим использованием. Размещение баннеров или AdSense влечет блокировку.<br>
-            <strong>Cloudflare Pages:</strong> не накладывает лимитов на трафик (unlimited bandwidth) и полностью разрешает коммерческую баннерную рекламу.
+            <strong>Vercel (Hobby):</strong> пункт 1.2 ToS строго ограничивает бесплатный тариф некоммерческим использованием. Размещение баннеров или рекламы влечет блокировку.<br>
+            <strong>Cloudflare Pages:</strong> не накладывает лимитов на трафик (unlimited bandwidth) и полностью разрешает коммерческую спонсорскую рекламу.
           </p>
         </div>
       </div>
@@ -218,15 +216,15 @@ const platforms = [
   {
     name: 'Cloudflare Pages',
     bandwidth: 'Безлимит (Unlimited)',
-    bandwidthHighlight: 'text-indigo-600 dark:text-indigo-400 font-semibold',
+    bandwidthHighlight: 'text-amber-400 font-bold',
     builds: '500 сборок/мес (20 мин)',
     commercialAllowed: true,
     commercialText: 'Разрешено',
     adsPolicy: 'Разрешена (без ограничений)',
-    adsBadgeClass: 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400',
-    scenario: 'Оптимально для статических Vue/Vite сайтов с рекламой и неограниченным трафиком.',
+    adsBadgeClass: 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30',
+    scenario: 'Оптимально для статических сайтов с рекламой, играми и неограниченным трафиком.',
     riskLevel: 'Безопасно',
-    riskClass: 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400',
+    riskClass: 'bg-emerald-500/20 text-emerald-400',
     riskDotClass: 'bg-emerald-500',
     isRecommended: true,
     isAlternative: false,
@@ -235,15 +233,15 @@ const platforms = [
   {
     name: 'GitHub Pages',
     bandwidth: '100 ГБ/мес (soft limit)',
-    bandwidthHighlight: 'text-zinc-700 dark:text-zinc-300',
+    bandwidthHighlight: 'text-zinc-300',
     builds: '2 000 мин Actions/мес',
     commercialAllowed: true,
     commercialText: 'Личные/проекты',
     adsPolicy: 'Умеренная монетизация',
-    adsBadgeClass: 'bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400',
-    scenario: 'Портфолио, документация, персональные блоги с умеренными спонсорскими блоками.',
+    adsBadgeClass: 'bg-amber-500/20 text-amber-400 border border-amber-500/30',
+    scenario: 'Портфолио, документация, игровые лендинги с умеренными спонсорскими блоками.',
     riskLevel: 'Серая зона',
-    riskClass: 'bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400',
+    riskClass: 'bg-amber-500/20 text-amber-400',
     riskDotClass: 'bg-amber-500',
     isRecommended: false,
     isAlternative: true,
@@ -252,15 +250,15 @@ const platforms = [
   {
     name: 'Netlify',
     bandwidth: '100 ГБ/мес',
-    bandwidthHighlight: 'text-zinc-700 dark:text-zinc-300',
+    bandwidthHighlight: 'text-zinc-300',
     builds: '300 кредитов/мес',
     commercialAllowed: true,
     commercialText: 'Разрешено (неявно)',
     adsPolicy: 'Допустимо (со слов поддержки)',
-    adsBadgeClass: 'bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400',
+    adsBadgeClass: 'bg-blue-500/20 text-blue-400 border border-blue-500/30',
     scenario: 'Быстрое прототипирование и Jamstack-сайты с редкими сборками.',
     riskLevel: 'Низкий/Средний',
-    riskClass: 'bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400',
+    riskClass: 'bg-blue-500/20 text-blue-400',
     riskDotClass: 'bg-blue-500',
     isRecommended: false,
     isAlternative: false,
@@ -269,15 +267,15 @@ const platforms = [
   {
     name: 'Vercel',
     bandwidth: '100 ГБ/мес (тариф Hobby)',
-    bandwidthHighlight: 'text-zinc-700 dark:text-zinc-300',
+    bandwidthHighlight: 'text-zinc-300',
     builds: '6 000 минут/мес',
     commercialAllowed: false,
     commercialText: 'СТРОГО НЕ-КОММЕРЧЕСКИЙ',
     adsPolicy: 'ЗАПРЕЩЕНА (риск бана)',
-    adsBadgeClass: 'bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400',
+    adsBadgeClass: 'bg-rose-500/20 text-rose-400 border border-rose-500/30',
     scenario: 'Персональные пет-проекты без какой-либо сторонней монетизации.',
     riskLevel: 'Высокий риск',
-    riskClass: 'bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400',
+    riskClass: 'bg-rose-500/20 text-rose-400',
     riskDotClass: 'bg-rose-500',
     isRecommended: false,
     isAlternative: false,
@@ -286,15 +284,15 @@ const platforms = [
   {
     name: 'Render (Static)',
     bandwidth: '100 ГБ/мес',
-    bandwidthHighlight: 'text-zinc-700 dark:text-zinc-300',
+    bandwidthHighlight: 'text-zinc-300',
     builds: '500 минут/мес (shared)',
     commercialAllowed: true,
     commercialText: 'Разрешено',
     adsPolicy: 'Разрешена (в рамках лимитов)',
-    adsBadgeClass: 'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300',
+    adsBadgeClass: 'bg-zinc-800 text-zinc-300 border border-zinc-700',
     scenario: 'Статические лендинги и связка со спиннинговыми веб-сервисами Render.',
     riskLevel: 'Низкий',
-    riskClass: 'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300',
+    riskClass: 'bg-zinc-800 text-zinc-300',
     riskDotClass: 'bg-zinc-500',
     isRecommended: false,
     isAlternative: false,

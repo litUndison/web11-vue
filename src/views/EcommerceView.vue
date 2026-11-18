@@ -1,38 +1,36 @@
 <template>
   <div class="space-y-6">
     <!-- Header & Cart Summary -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-zinc-200 dark:border-zinc-800">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-amber-500/20">
       <div>
-        <h1 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-          Каталог оборудования и аксессуаров
+        <h1 class="heading-gothic text-2xl font-bold tracking-tight text-zinc-100">
+          Лавка Торговца & Игровой Арсенал
         </h1>
-        <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">
-          Адаптивная витрина товаров со встроенной нативной монетизацией In-Feed
+        <p class="text-xs sm:text-sm text-zinc-400 mt-0.5">
+          Официальные дополнения (DLC), мобильные геймпады и золотые яйца выживших
         </p>
       </div>
 
       <div class="flex items-center gap-3">
         <!-- Cart Pill Button -->
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-xs font-medium shadow-2xs">
-          <svg class="w-4 h-4 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
-          </svg>
-          <span class="text-zinc-800 dark:text-zinc-200">Корзина: <strong class="font-semibold">{{ cartCount }}</strong></span>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-amber-500/30 bg-zinc-900/90 text-xs font-bold text-amber-300 shadow-gold">
+          <span>🛒 Корзина:</span>
+          <span class="bg-amber-500 text-zinc-950 px-2 py-0.5 rounded-full text-[11px] font-bold">{{ cartCount }}</span>
         </div>
       </div>
     </div>
 
     <!-- Filter Toolbar -->
-    <div class="card-base p-3.5 flex flex-wrap items-center justify-between gap-3">
+    <div class="card-base p-3.5 flex flex-wrap items-center justify-between gap-3 border-amber-500/20 bg-zinc-900/80">
       <div class="flex items-center gap-1.5 flex-wrap">
         <button
-          v-for="cat in ['Все', 'Гаджеты', 'Аудио', 'Аксессуары']"
+          v-for="cat in ['Все', 'DLC Дополнения', 'Оборудование', 'Реликвии']"
           :key="cat"
           @click="selectedCategory = cat"
-          class="px-2.5 py-1 rounded-md text-xs font-medium transition-colors"
+          class="px-3 py-1 rounded-md text-xs font-bold transition-all"
           :class="selectedCategory === cat
-            ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-semibold shadow-2xs'
-            : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800'"
+            ? 'bg-amber-500 text-zinc-950 shadow-gold'
+            : 'text-zinc-400 hover:text-amber-300 hover:bg-zinc-800'"
         >
           {{ cat }}
         </button>
@@ -42,7 +40,7 @@
         <input
           v-model="searchQuery"
           type="search"
-          placeholder="Поиск по названию..."
+          placeholder="Поиск по арсеналу..."
           class="input-base text-xs py-1.5"
         />
       </div>
@@ -53,42 +51,42 @@
       <div
         v-for="item in firstRowProducts"
         :key="item.id"
-        class="card-base p-4 flex flex-col justify-between hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors group"
+        class="card-base p-4 flex flex-col justify-between border-amber-500/20 hover:border-amber-500/40 transition-colors group bg-zinc-900/80"
       >
         <div>
           <!-- Image Box with Badges -->
-          <div class="relative overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-900 aspect-square flex items-center justify-center mb-3">
+          <div class="relative overflow-hidden rounded-lg bg-zinc-950 aspect-video flex items-center justify-center mb-3 border border-zinc-800">
             <img
               :src="item.image"
               :alt="item.name"
-              class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               loading="lazy"
             />
-            <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded text-[10px] font-mono bg-white/90 dark:bg-zinc-900/90 text-zinc-700 dark:text-zinc-300 shadow-2xs backdrop-blur-xs">
+            <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded text-[10px] font-mono bg-black/80 text-amber-300 border border-amber-500/30">
               {{ item.category }}
             </span>
-            <span v-if="item.badge" class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded text-[10px] font-medium bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs">
+            <span v-if="item.badge" class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded text-[10px] font-bold bg-red-600 text-white shadow-blood">
               {{ item.badge }}
             </span>
           </div>
 
-          <div class="flex items-center gap-1.5 text-xs text-amber-500 mb-1">
+          <div class="flex items-center gap-1.5 text-xs text-amber-400 mb-1">
             <span>★</span>
-            <span class="font-semibold text-zinc-900 dark:text-zinc-100">{{ item.rating }}</span>
-            <span class="text-zinc-400 text-[11px]">({{ item.reviews }})</span>
+            <span class="font-bold text-zinc-100">{{ item.rating }}</span>
+            <span class="text-zinc-400 text-[11px]">({{ item.reviews }} отзывов)</span>
           </div>
 
-          <h3 class="font-semibold text-sm text-zinc-900 dark:text-zinc-100">{{ item.name }}</h3>
-          <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 line-clamp-2 leading-relaxed">{{ item.desc }}</p>
+          <h3 class="font-bold text-sm text-zinc-100 leading-snug">{{ item.name }}</h3>
+          <p class="text-xs text-zinc-400 mt-1 line-clamp-2 leading-relaxed">{{ item.desc }}</p>
         </div>
 
-        <div class="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
+        <div class="mt-4 pt-3 border-t border-zinc-800 flex items-center justify-between">
           <div>
-            <div class="text-base font-bold font-mono text-zinc-900 dark:text-zinc-100">{{ item.price }} ₽</div>
-            <div v-if="item.oldPrice" class="text-xs text-zinc-400 line-through font-mono">{{ item.oldPrice }} ₽</div>
+            <div class="text-base font-bold font-mono text-amber-400">{{ item.price }} ₽</div>
+            <div v-if="item.oldPrice" class="text-xs text-zinc-500 line-through font-mono">{{ item.oldPrice }} ₽</div>
           </div>
-          <button @click="addToCart" class="btn-primary btn-sm px-3.5 py-1.5">
-            Купить
+          <button @click="addToCart" class="btn-gold btn-sm px-3.5 py-1.5">
+            В корзину
           </button>
         </div>
       </div>
@@ -98,8 +96,8 @@
     <div class="py-1">
       <AdSlot
         format="in-feed"
-        label="Партнёрское размещение"
-        slotTitle="Нативная монетизация каталога"
+        label="Партнёрский промо-блок"
+        slotTitle="Нативная интеграция Google Play Pass"
         :initialCreative="allCreative"
         :key="'ad-ecom-feed-' + allCreative"
       />
@@ -110,42 +108,42 @@
       <div
         v-for="item in secondRowProducts"
         :key="item.id"
-        class="card-base p-4 flex flex-col justify-between hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors group"
+        class="card-base p-4 flex flex-col justify-between border-amber-500/20 hover:border-amber-500/40 transition-colors group bg-zinc-900/80"
       >
         <div>
           <!-- Image Box with Badges -->
-          <div class="relative overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-900 aspect-square flex items-center justify-center mb-3">
+          <div class="relative overflow-hidden rounded-lg bg-zinc-950 aspect-video flex items-center justify-center mb-3 border border-zinc-800">
             <img
               :src="item.image"
               :alt="item.name"
-              class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               loading="lazy"
             />
-            <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded text-[10px] font-mono bg-white/90 dark:bg-zinc-900/90 text-zinc-700 dark:text-zinc-300 shadow-2xs backdrop-blur-xs">
+            <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded text-[10px] font-mono bg-black/80 text-amber-300 border border-amber-500/30">
               {{ item.category }}
             </span>
-            <span v-if="item.badge" class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded text-[10px] font-medium bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs">
+            <span v-if="item.badge" class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500 text-zinc-950 shadow-gold">
               {{ item.badge }}
             </span>
           </div>
 
-          <div class="flex items-center gap-1.5 text-xs text-amber-500 mb-1">
+          <div class="flex items-center gap-1.5 text-xs text-amber-400 mb-1">
             <span>★</span>
-            <span class="font-semibold text-zinc-900 dark:text-zinc-100">{{ item.rating }}</span>
-            <span class="text-zinc-400 text-[11px]">({{ item.reviews }})</span>
+            <span class="font-bold text-zinc-100">{{ item.rating }}</span>
+            <span class="text-zinc-400 text-[11px]">({{ item.reviews }} отзывов)</span>
           </div>
 
-          <h3 class="font-semibold text-sm text-zinc-900 dark:text-zinc-100">{{ item.name }}</h3>
-          <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 line-clamp-2 leading-relaxed">{{ item.desc }}</p>
+          <h3 class="font-bold text-sm text-zinc-100 leading-snug">{{ item.name }}</h3>
+          <p class="text-xs text-zinc-400 mt-1 line-clamp-2 leading-relaxed">{{ item.desc }}</p>
         </div>
 
-        <div class="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
+        <div class="mt-4 pt-3 border-t border-zinc-800 flex items-center justify-between">
           <div>
-            <div class="text-base font-bold font-mono text-zinc-900 dark:text-zinc-100">{{ item.price }} ₽</div>
-            <div v-if="item.oldPrice" class="text-xs text-zinc-400 line-through font-mono">{{ item.oldPrice }} ₽</div>
+            <div class="text-base font-bold font-mono text-amber-400">{{ item.price }} ₽</div>
+            <div v-if="item.oldPrice" class="text-xs text-zinc-500 line-through font-mono">{{ item.oldPrice }} ₽</div>
           </div>
-          <button @click="addToCart" class="btn-primary btn-sm px-3.5 py-1.5">
-            Купить
+          <button @click="addToCart" class="btn-gold btn-sm px-3.5 py-1.5">
+            В корзину
           </button>
         </div>
       </div>
@@ -175,75 +173,75 @@ const addToCart = () => {
 const products = [
   {
     id: 1,
-    name: 'Механическая клавиатура Keychron Pro (75%)',
-    price: '11 400',
-    oldPrice: '14 200',
-    category: 'Гаджеты',
-    desc: 'Смазанные линейные свитчи, Hot-Swap, шумоизоляция Poron и кастомные PBT-кейкапы.',
-    image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&auto=format&fit=crop&q=80',
-    badge: 'Хит',
+    name: 'DLC: Legacy of the Moonspell',
+    price: '149',
+    oldPrice: '199',
+    category: 'DLC Дополнения',
+    desc: 'Огромная карта Гора Луны, 8 новых персонажей клана Мунспелл и 13 видов эволюционирующего оружия.',
+    image: './img/hero-bg.jpg',
+    badge: 'Хит продаж',
     rating: '4.9',
-    reviews: 142
+    reviews: 1420
   },
   {
     id: 2,
-    name: 'Смарт-часы Titanium Ultra 49mm',
-    price: '16 990',
-    oldPrice: '21 500',
-    category: 'Гаджеты',
-    desc: 'Титановый корпус, сапфировое стекло, мониторинг пульса и до 14 дней на одном заряде.',
-    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=80',
+    name: 'DLC: Tides of the Foscari',
+    price: '149',
+    oldPrice: '199',
+    category: 'DLC Дополнения',
+    desc: 'Зачарованная лесная академия Фоскари, 8 магов-выживших и легендарное оружие SpellString.',
+    image: './img/gameplay-screen.jpg',
     badge: 'Новинка',
     rating: '4.8',
-    reviews: 89
+    reviews: 890
   },
   {
     id: 3,
-    name: 'Кожаный рюкзак Nomad Commuter 24L',
-    price: '7 800',
-    oldPrice: '9 900',
-    category: 'Аксессуары',
-    desc: 'Премиальная влагостойкая кожа, защищённый отсек для ноутбука 16" и антивор-замки.',
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop&q=80',
-    badge: 'Премиум',
+    name: 'Контроллер Razer Kishi Ultra USB-C',
+    price: '9 990',
+    oldPrice: '12 500',
+    category: 'Оборудование',
+    desc: 'Премиальный мобильный контроллер консольного уровня для iPhone 15/16 и Android с тактильной отдачей.',
+    image: 'https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?w=600&auto=format&fit=crop&q=80',
+    badge: 'Официальный выбор',
     rating: '5.0',
-    reviews: 64
+    reviews: 640
   },
   {
     id: 4,
-    name: 'Беспроводные наушники Studio ANC Pro',
-    price: '8 990',
-    oldPrice: '11 990',
-    category: 'Аудио',
-    desc: 'Гибридное активное шумоподавление ANC, 40 мм титановые драйверы и кодек LDAC.',
-    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80',
-    badge: 'Скидка -25%',
+    name: 'Коллекционная реплика: Кровавая Слеза',
+    price: '3 490',
+    oldPrice: '4 200',
+    category: 'Реликвии',
+    desc: 'Металлическая копия артефакта Bloody Tear на дубовой подставке с гравировкой Ордена Belpaese.',
+    image: './img/bloody-tear.jpg',
+    badge: 'Лимитировано',
     rating: '4.9',
     reviews: 215
   },
   {
     id: 5,
-    name: 'Акустическая стереосистема SoundDesk 360',
-    price: '6 890',
-    oldPrice: '8 500',
-    category: 'Аудио',
-    desc: 'Панорамный звук 360 градусов, влагозащита IPX7 и поддержка стереопары TWS.',
-    image: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?w=600&auto=format&fit=crop&q=80',
-    badge: 'Hi-Res',
+    name: 'Пакет Торговца: 100 Золотых Яиц',
+    price: '299',
+    oldPrice: '399',
+    category: 'Реликвии',
+    desc: 'Мгновенный постоянный прирост характеристик любого персонажа: +HP, +Скорость, +Урон магии.',
+    image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80',
+    badge: 'Буст',
     rating: '4.7',
-    reviews: 53
+    reviews: 530
   },
   {
     id: 6,
-    name: 'Городские кроссовки Aeroknit Trainer',
-    price: '9 490',
-    oldPrice: '12 990',
-    category: 'Аксессуары',
-    desc: 'Ультралегкая подошва и дышащий текстиль для комфортных тренировок и работы в офисе.',
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop&q=80',
-    badge: 'Выбор года',
+    name: 'Беспроводные наушники SteelSeries Arctis Nova',
+    price: '14 490',
+    oldPrice: '16 990',
+    category: 'Оборудование',
+    desc: '360° пространственный звук Spatial Audio для мгновенного обнаружения приближающихся боссов.',
+    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80',
+    badge: 'Hi-Res Audio',
     rating: '4.9',
-    reviews: 97
+    reviews: 970
   }
 ]
 

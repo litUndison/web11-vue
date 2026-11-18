@@ -10,13 +10,13 @@
   }
 
   body {
-    @apply antialiased min-h-screen text-zinc-800 dark:text-zinc-100 bg-[#f8fafc] dark:bg-[#09090b] selection:bg-indigo-500 selection:text-white transition-colors duration-200;
+    @apply antialiased min-h-screen text-zinc-800 dark:text-zinc-100 bg-[#f8fafc] dark:bg-[#0a0a0d] selection:bg-amber-500 selection:text-zinc-950 transition-colors duration-200;
   }
 }
 
-/* Subtle micro-grid background */
+/* Subtle gothic background pattern */
 .bg-subtle-grid {
-  background-size: 40px 40px;
+  background-size: 32px 32px;
   background-image: 
     linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
@@ -27,7 +27,7 @@
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
-/* Sleek minimalist scrollbar */
+/* Sleek scrollbar */
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -40,30 +40,14 @@
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(99, 102, 241, 0.5);
+  background: rgba(245, 158, 11, 0.6);
 }
 
-/* Design System component utility layers */
 @layer components {
   /* Typography */
-  .heading-1 {
-    @apply text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50;
-  }
-
-  .heading-2 {
-    @apply text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50;
-  }
-
-  .heading-3 {
-    @apply text-lg sm:text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100;
-  }
-
-  .body-text {
-    @apply text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed;
-  }
-
-  .body-sm {
-    @apply text-xs sm:text-sm text-zinc-500 dark:text-zinc-400;
+  .heading-gothic {
+    font-family: 'Cinzel', serif;
+    @apply font-bold tracking-tight text-zinc-900 dark:text-zinc-50;
   }
 
   /* Buttons */
@@ -72,15 +56,19 @@
   }
 
   .btn-primary {
-    @apply btn-base bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100 shadow-sm active:scale-[0.99] border border-transparent;
+    @apply btn-base bg-amber-500 text-zinc-950 hover:bg-amber-400 font-semibold shadow-xs active:scale-[0.99] border border-amber-400/40;
   }
 
-  .btn-accent {
-    @apply btn-base bg-indigo-600 text-white hover:bg-indigo-500 shadow-sm active:scale-[0.99] border border-indigo-500/20;
+  .btn-gold {
+    @apply btn-base bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-zinc-950 font-bold hover:brightness-105 shadow-gold active:scale-[0.99] border border-amber-300/40;
+  }
+
+  .btn-blood {
+    @apply btn-base bg-red-600 text-white hover:bg-red-500 font-semibold shadow-blood active:scale-[0.99] border border-red-500/30;
   }
 
   .btn-secondary {
-    @apply btn-base bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-800 shadow-xs active:scale-[0.99];
+    @apply btn-base bg-white dark:bg-[#161620] text-zinc-700 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 shadow-2xs active:scale-[0.99];
   }
 
   .btn-ghost {
@@ -105,12 +93,12 @@
 
   /* Inputs */
   .input-base {
-    @apply block w-full px-3.5 py-2 text-sm rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-1 focus:ring-indigo-500 transition-colors shadow-xs;
+    @apply block w-full px-3.5 py-2 text-sm rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#13131a] text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-amber-500 dark:focus:border-amber-400 focus:ring-1 focus:ring-amber-500 transition-colors shadow-2xs;
   }
 
   /* Cards */
   .card-base {
-    @apply bg-white dark:bg-[#121217] rounded-xl border border-zinc-200/80 dark:border-zinc-800/90 shadow-card p-6 transition-all duration-200;
+    @apply bg-white dark:bg-[#13131a] rounded-xl border border-zinc-200/80 dark:border-zinc-800/90 shadow-card p-6 transition-all duration-200;
   }
 
   .card-hover {

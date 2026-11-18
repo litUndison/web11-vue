@@ -12,25 +12,25 @@
     <!-- 1. Real Creative Mode (Active by default) -->
     <div
       v-if="showCreativeMode"
-      class="relative overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#121217] transition-all shadow-xs flex flex-col justify-between"
+      class="relative overflow-hidden rounded-xl border border-amber-500/20 dark:border-amber-500/30 bg-zinc-900/90 dark:bg-[#121218] transition-all shadow-card flex flex-col justify-between"
       :class="creativeContainerClass"
       :style="customDimensions"
     >
       <!-- Format: Sidebar (300x250) -->
       <template v-if="format === 'sidebar'">
-        <div class="p-4 flex flex-col justify-between h-full">
+        <div class="p-4 flex flex-col justify-between h-full bg-gradient-to-b from-zinc-900 to-zinc-950 text-zinc-100">
           <!-- Top meta bar -->
-          <div class="flex items-center justify-between text-[11px] text-zinc-400 dark:text-zinc-500 mb-2">
+          <div class="flex items-center justify-between text-[11px] text-zinc-400 mb-2">
             <div class="flex items-center gap-1.5">
-              <span class="px-1.5 py-0.2 rounded text-[9px] font-semibold tracking-wider uppercase bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-                Реклама
+              <span class="px-1.5 py-0.5 rounded text-[9px] font-semibold tracking-wider uppercase bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                Спонсор
               </span>
-              <span class="font-mono text-[10px]">300×250</span>
+              <span class="font-mono text-[10px] text-zinc-400">300×250</span>
             </div>
             <div class="flex items-center gap-2">
               <button
                 @click="toggleMode"
-                class="hover:text-zinc-700 dark:hover:text-zinc-300 text-[10px]"
+                class="hover:text-amber-300 text-[10px] text-zinc-400 transition-colors"
                 title="Переключить в режим сетки"
               >
                 Сетка
@@ -38,7 +38,7 @@
               <button
                 v-if="closable"
                 @click="hideSlot"
-                class="hover:text-rose-500 transition-colors"
+                class="hover:text-rose-400 text-zinc-400 transition-colors"
                 title="Скрыть"
               >
                 ✕
@@ -56,29 +56,29 @@
                 {{ creativeData.logoText }}
               </div>
               <div class="min-w-0">
-                <h4 class="text-xs font-semibold text-zinc-900 dark:text-zinc-100 leading-tight truncate">
+                <h4 class="text-xs font-bold text-amber-400 leading-tight truncate">
                   {{ creativeData.title }}
                 </h4>
-                <p class="text-[11px] text-zinc-500 truncate mt-0.5">{{ creativeData.subtitle }}</p>
+                <p class="text-[11px] text-zinc-400 truncate mt-0.5">{{ creativeData.subtitle }}</p>
               </div>
             </div>
-            <p class="text-xs text-zinc-600 dark:text-zinc-400 line-clamp-2 leading-relaxed">
+            <p class="text-xs text-zinc-300 line-clamp-2 leading-relaxed">
               {{ creativeData.description }}
             </p>
           </div>
 
           <!-- CTA and Legal Footer -->
-          <div class="pt-3 border-t border-zinc-100 dark:border-zinc-800/80 space-y-2 mt-auto">
+          <div class="pt-3 border-t border-zinc-800 space-y-2 mt-auto">
             <a
               :href="creativeData.link"
               target="_blank"
               rel="noopener noreferrer"
-              class="w-full inline-flex items-center justify-center gap-1.5 py-1.5 px-3 text-xs font-medium rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 transition-opacity"
+              class="w-full inline-flex items-center justify-center gap-1.5 py-1.5 px-3 text-xs font-bold rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 text-zinc-950 hover:brightness-110 transition-all shadow-gold"
             >
               <span>{{ creativeData.buttonText }}</span>
               <span class="text-[10px]">↗</span>
             </a>
-            <div class="text-[10px] text-zinc-400 dark:text-zinc-500 truncate text-center">
+            <div class="text-[10px] text-zinc-400 truncate text-center">
               {{ creativeData.sponsor }}
             </div>
           </div>
@@ -87,7 +87,7 @@
 
       <!-- Format: Horizontal Banner / Leaderboard (728x90) -->
       <template v-else-if="format === 'banner' || format === 'leaderboard'">
-        <div class="px-4 py-3 sm:px-5 sm:py-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 min-h-[90px]">
+        <div class="px-4 py-3 sm:px-5 sm:py-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 min-h-[90px] bg-gradient-to-r from-zinc-900 via-zinc-900/95 to-zinc-950 text-zinc-100">
           <!-- Left: Logo + Info -->
           <div class="flex items-center gap-3 min-w-0 flex-1">
             <div
@@ -98,14 +98,14 @@
             </div>
             <div class="min-w-0 flex-1">
               <div class="flex items-center gap-2">
-                <span class="px-1.5 py-0.2 rounded text-[9px] font-semibold tracking-wider uppercase bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 shrink-0">
-                  Реклама
+                <span class="px-1.5 py-0.5 rounded text-[9px] font-semibold tracking-wider uppercase bg-amber-500/20 text-amber-400 border border-amber-500/30 shrink-0">
+                  Партнёр
                 </span>
-                <h4 class="text-xs sm:text-sm font-semibold text-zinc-900 dark:text-zinc-100 truncate">
+                <h4 class="text-xs sm:text-sm font-bold text-amber-400 truncate">
                   {{ creativeData.title }}
                 </h4>
               </div>
-              <p class="text-xs text-zinc-500 dark:text-zinc-400 truncate mt-0.5 max-w-xl">
+              <p class="text-xs text-zinc-300 truncate mt-0.5 max-w-xl">
                 {{ creativeData.description }}
               </p>
             </div>
@@ -120,14 +120,14 @@
               :href="creativeData.link"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-indigo-600 text-white hover:bg-indigo-500 transition-colors shadow-xs"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 text-zinc-950 hover:brightness-110 transition-all shadow-gold"
             >
               <span>{{ creativeData.buttonText }}</span>
               <span class="text-[10px]">↗</span>
             </a>
             <button
               @click="toggleMode"
-              class="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 text-xs px-1"
+              class="text-zinc-400 hover:text-amber-300 text-xs px-1 transition-colors"
               title="Переключить в режим сетки"
             >
               Сетка
@@ -135,7 +135,7 @@
             <button
               v-if="closable"
               @click="hideSlot"
-              class="text-zinc-400 hover:text-rose-500 p-1"
+              class="text-zinc-400 hover:text-rose-400 p-1 transition-colors"
               title="Скрыть"
             >
               ✕
@@ -146,7 +146,7 @@
 
       <!-- Format: In-Feed / Fluid -->
       <template v-else>
-        <div class="p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-gradient-to-r from-zinc-900 to-zinc-950 text-zinc-100">
           <div class="flex items-center gap-3 min-w-0">
             <div
               class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm shrink-0 text-white shadow-2xs"
@@ -156,14 +156,14 @@
             </div>
             <div class="min-w-0">
               <div class="flex items-center gap-2">
-                <span class="px-1.5 py-0.2 rounded text-[9px] font-semibold tracking-wider uppercase bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-                  Партнёр
+                <span class="px-1.5 py-0.5 rounded text-[9px] font-semibold tracking-wider uppercase bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                  Рекомендация
                 </span>
-                <h4 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 truncate">
+                <h4 class="text-sm font-bold text-amber-400 truncate">
                   {{ creativeData.title }}
                 </h4>
               </div>
-              <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 line-clamp-2">
+              <p class="text-xs text-zinc-300 mt-1 line-clamp-2">
                 {{ creativeData.description }}
               </p>
             </div>
@@ -174,14 +174,14 @@
               :href="creativeData.link"
               target="_blank"
               rel="noopener noreferrer"
-              class="btn-secondary btn-sm"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg bg-zinc-800 text-amber-400 hover:bg-zinc-700 border border-amber-500/30 transition-all shadow-xs"
             >
               <span>{{ creativeData.buttonText }}</span>
               <span class="text-[10px]">↗</span>
             </a>
             <button
               @click="toggleMode"
-              class="text-zinc-400 hover:text-zinc-600 text-xs"
+              class="text-zinc-400 hover:text-amber-300 text-xs transition-colors"
               title="Сетка"
             >
               Сетка
@@ -194,12 +194,12 @@
     <!-- 2. Technical Placeholder Mode (Accessible via toggle) -->
     <div
       v-else
-      class="flex flex-col items-center justify-center border border-dashed border-zinc-300 dark:border-zinc-700 bg-zinc-50/70 dark:bg-zinc-900/50 rounded-xl p-4 text-center transition-colors select-none"
+      class="flex flex-col items-center justify-center border border-dashed border-amber-500/40 dark:border-amber-500/30 bg-zinc-900/60 dark:bg-zinc-950/70 rounded-xl p-4 text-center transition-colors select-none"
       :class="creativeContainerClass"
       :style="customDimensions"
     >
       <div class="flex items-center gap-2 mb-1.5">
-        <span class="px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-zinc-200/80 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+        <span class="px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-amber-500/20 text-amber-400 border border-amber-500/30">
           {{ label }}
         </span>
         <span class="text-[11px] font-mono text-zinc-400">
@@ -207,7 +207,7 @@
         </span>
       </div>
 
-      <div class="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+      <div class="text-xs font-semibold uppercase tracking-wider text-zinc-300">
         {{ slotTitle }}
       </div>
 
@@ -218,9 +218,9 @@
       <button
         type="button"
         @click="toggleMode"
-        class="mt-2.5 inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-700/80 transition-colors shadow-2xs"
+        class="mt-2.5 inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md bg-zinc-800 text-amber-400 border border-amber-500/30 hover:bg-zinc-700 transition-colors shadow-2xs"
       >
-        <span>Показать баннер</span>
+        <span>Показать спонсора</span>
         <span>→</span>
       </button>
     </div>
@@ -246,7 +246,7 @@ const props = defineProps({
   },
   label: {
     type: String,
-    default: 'Рекламное место'
+    default: 'Спонсорский блок'
   },
   slotTitle: {
     type: String,
@@ -327,38 +327,38 @@ const subDescription = computed(() => {
 const creativeData = computed(() => {
   if (props.format === 'sidebar') {
     return {
-      title: 'JetBrains WebStorm',
-      subtitle: 'IDE для Vue 3 & TypeScript',
-      description: 'Умное автодополнение Tailwind CSS, встроенный рефакторинг и мгновенный отклик.',
-      buttonText: 'Попробовать бесплатно',
-      link: 'https://www.jetbrains.com/webstorm/',
-      sponsor: 'ООО ДжетБрейнс • erid: 2Vtzqw7JetB',
-      logoText: 'WS',
-      logoBg: 'bg-zinc-900 dark:bg-zinc-800'
+      title: 'Razer Kishi Ultra',
+      subtitle: 'Мобильный контроллер Pro',
+      description: 'Консольный хват, аналоговые триггеры Hall Effect и USB-C подключение с нулевой задержкой.',
+      buttonText: 'Купить со скидкой',
+      link: 'https://www.razer.com/mobile-controllers/razer-kishi-ultra',
+      sponsor: 'Razer Inc. • erid: 2Vtzqw7RzrK',
+      logoText: 'RZ',
+      logoBg: 'bg-emerald-600'
     }
   }
 
   if (props.format === 'in-feed') {
     return {
-      title: 'Яндекс Рекламная Сеть',
-      subtitle: 'Монетизация e-Commerce',
-      description: 'Умные нативные рекомендации товаров. Высокий доход за 1000 показов без задержек.',
-      buttonText: 'Подключить',
-      link: 'https://partner.yandex.ru/',
-      sponsor: 'ООО «Яндекс» • erid: 2Vtzqu9Yndx',
-      logoText: 'Я',
-      logoBg: 'bg-red-600'
+      title: 'Google Play Pass',
+      subtitle: 'Подписка на 1000+ игр',
+      description: 'Играйте в Vampire Survivors и популярные хиты без рекламы и встроенных микроплатежей.',
+      buttonText: '1 месяц бесплатно',
+      link: 'https://play.google.com/about/play-pass/',
+      sponsor: 'Google Ireland Ltd. • erid: 2Vtzqu9GgPl',
+      logoText: 'GP',
+      logoBg: 'bg-indigo-600'
     }
   }
 
   return {
-    title: 'Cloudflare Pages',
-    subtitle: 'Edge CDN & Hosting',
-    description: 'Мгновенный деплой статических сайтов на Vue 3, SSL и безлимитная полоса пропускания.',
-    buttonText: 'Подключить',
-    link: 'https://pages.cloudflare.com',
-    sponsor: 'Cloudflare Inc. • erid: 2Vtzqv8Cldf',
-    logoText: 'CF',
+    title: 'SteelSeries Arctis Nova',
+    subtitle: 'Игровая гарнитура с 360° Spatial Audio',
+    description: 'Услышь приближение каждой волны вампиров и летучих мышей с акустической системой Nova Pro.',
+    buttonText: 'Перейти в каталог',
+    link: 'https://steelseries.com/gaming-headsets/arctis-nova-7',
+    sponsor: 'SteelSeries ApS • erid: 2Vtzqv8StlS',
+    logoText: 'SS',
     logoBg: 'bg-amber-600'
   }
 })

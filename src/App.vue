@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-[#f8fafc] dark:bg-[#09090b] text-zinc-800 dark:text-zinc-100 transition-colors duration-200 relative overflow-x-hidden bg-subtle-grid">
+  <div class="min-h-screen flex flex-col bg-[#f8fafc] dark:bg-[#0a0a0d] text-zinc-800 dark:text-zinc-100 transition-colors duration-200 relative overflow-x-hidden bg-subtle-grid">
     <!-- Main Top Navbar with Tabs -->
     <Navbar
       :activeTab="activeTab"
@@ -9,7 +9,7 @@
     />
 
     <!-- Main Content Area with Dynamic Views -->
-    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="flex-1 max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <!-- Transition wrapper for views -->
       <transition name="fade" mode="out-in">
         <component
