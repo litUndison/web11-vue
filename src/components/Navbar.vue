@@ -179,8 +179,7 @@ const tabs = [
   { id: 'ecommerce', name: 'Арсенал & DLC' },
   { id: 'kanban', name: 'Roadmap' },
   { id: 'messenger', name: 'Чат гильдии' },
-  { id: 'multistep', name: 'Орден Охотников' },
-  { id: 'design-system', name: 'Гримуар UI' }
+  { id: 'multistep', name: 'Орден Охотников' }
 ]
 
 // Обработка переключения звука

@@ -58,7 +58,6 @@ import EcommerceView from './views/EcommerceView.vue'
 import KanbanView from './views/KanbanView.vue'
 import MessengerView from './views/MessengerView.vue'
 import MultiStepView from './views/MultiStepView.vue'
-import DesignSystemView from './views/DesignSystemView.vue'
 
 const activeTab = ref('landing')
 const allCreativeMode = ref(true)
@@ -69,8 +68,7 @@ const viewMap = {
   ecommerce: EcommerceView,
   kanban: KanbanView,
   messenger: MessengerView,
-  multistep: MultiStepView,
-  'design-system': DesignSystemView
+  multistep: MultiStepView
 }
 
 const currentViewComponent = computed(() => {

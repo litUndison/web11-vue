@@ -89,7 +89,6 @@ const commands = [
   { id: 'tab-kanban', title: 'Roadmap разработки', desc: 'План релизов: 120 FPS, Кооператив на 4 игроков', badge: 'RD', category: 'Раздел', action: () => emit('select-tab', 'kanban') },
   { id: 'tab-chat', title: 'Чат Гильдии Охотников', desc: 'Переписка с Antonio, Imelda и техподдержкой', badge: 'CH', category: 'Раздел', action: () => emit('select-tab', 'messenger') },
   { id: 'tab-order', title: 'Орден Охотников (Cloud ID)', desc: 'Генерация персонального ключа синхронизации', badge: 'ID', category: 'Раздел', action: () => emit('select-tab', 'multistep') },
-  { id: 'tab-ui', title: 'Гримуар Дизайн-Системы', desc: 'Палитра Blood & Gold, кнопки и статусы', badge: 'UI', category: 'Раздел', action: () => emit('select-tab', 'design-system') },
   { id: 'act-chest', title: 'Открыть сундук удачи', desc: 'Мини-игра: случайный дроп золота и эволюции оружия', badge: 'BX', category: 'Действие', action: () => openChestModal() },
   { id: 'act-fullscreen', title: 'Полноэкранный режим', desc: 'Переключить веб-приложение во весь экран (F11)', badge: 'FS', category: 'Действие', action: () => toggleFullscreen() },
   { id: 'act-sound', title: 'Звуковые эффекты 8-bit', desc: 'Включить или отключить звуки интерфейса', badge: 'AU', category: 'Действие', action: () => {
