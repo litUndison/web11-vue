@@ -92,6 +92,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { pushToast } from '../utils/store.js'
 
 const contacts = ref([
   {
@@ -154,6 +155,11 @@ const sendMessage = () => {
     text: inputMsg.value.trim(),
     time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     isMine: true
+  })
+  pushToast({
+    title: `Сообщение отправлено`,
+    message: `Доставлено в канал «${activeContact.value.name}»`,
+    type: 'info'
   })
   inputMsg.value = ''
 }

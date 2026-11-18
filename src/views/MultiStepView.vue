@@ -143,6 +143,8 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { pushToast, addGold } from '../utils/store.js'
+import { playLevelUpSound } from '../utils/audio.js'
 
 const currentStep = ref(1)
 
@@ -165,6 +167,12 @@ const selectedPlatformTitle = computed(() => {
 })
 
 const finishRegistration = () => {
-  alert('Профиль охотника активирован! Облачное сохранение синхронизировано.')
+  addGold(10000)
+  playLevelUpSound()
+  pushToast({
+    title: 'Посвящение пройдено!',
+    message: 'Профиль охотника активирован, начислено +10 000 G бонуса!',
+    type: 'level'
+  })
 }
 </script>

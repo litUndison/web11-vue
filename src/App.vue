@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen flex flex-col bg-[#f8fafc] dark:bg-[#0a0a0d] text-zinc-800 dark:text-zinc-100 transition-colors duration-200 relative overflow-x-hidden bg-subtle-grid">
-    <!-- Main Top Navbar with Tabs -->
+    <!-- Main Top Navbar with Live App State & Controls -->
     <Navbar
       :activeTab="activeTab"
       :allCreative="allCreativeMode"
@@ -9,7 +9,7 @@
     />
 
     <!-- Main Content Area with Dynamic Views -->
-    <main class="flex-1 max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="flex-1 max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 lg:pb-8">
       <!-- Transition wrapper for views -->
       <transition name="fade" mode="out-in">
         <component
@@ -22,6 +22,23 @@
 
     <!-- Global Footer -->
     <Footer />
+
+    <!-- Web App Features: Mobile Floating Dock -->
+    <MobileDock
+      :activeTab="activeTab"
+      @select-tab="setTab"
+    />
+
+    <!-- Web App Features: Command Palette (Ctrl+K) -->
+    <CommandPalette
+      @select-tab="setTab"
+    />
+
+    <!-- Web App Features: Treasure Chest Simulator Modal -->
+    <ChestModal />
+
+    <!-- Web App Features: Real-time Toast Notifications -->
+    <ToastContainer />
   </div>
 </template>
 
@@ -29,6 +46,10 @@
 import { ref, computed, onMounted } from 'vue'
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
+import CommandPalette from './components/CommandPalette.vue'
+import ChestModal from './components/ChestModal.vue'
+import ToastContainer from './components/ToastContainer.vue'
+import MobileDock from './components/MobileDock.vue'
 
 // Import views
 import LandingView from './views/LandingView.vue'

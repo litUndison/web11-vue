@@ -135,6 +135,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { pushToast } from '../utils/store.js'
 
 const showNewTaskModal = ref(false)
 
@@ -212,6 +213,12 @@ const moveTask = (taskId, targetColumn) => {
   const t = tasks.value.find(item => item.id === taskId)
   if (t) {
     t.column = targetColumn
+    const colNames = { todo: 'В планах', inProgress: 'В разработке', done: 'Выполнено' }
+    pushToast({
+      title: 'Roadmap обновлён',
+      message: `«${t.title.substring(0, 35)}...» перенесена в «${colNames[targetColumn]}»`,
+      type: 'info'
+    })
   }
 }
 </script>

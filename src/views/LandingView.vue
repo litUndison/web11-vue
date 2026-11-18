@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <div class="space-y-16">
     <!-- Top Advertisement Slot (Leaderboard 728x90) -->
     <div class="max-w-4xl mx-auto">
@@ -78,6 +78,14 @@
           >
             <span>Арсенал & DLC</span>
             <span class="text-xs">→</span>
+          </button>
+
+          <button
+            @click="openChestModal"
+            class="btn-gold px-5 py-3 text-sm font-bold shadow-gold flex items-center gap-2"
+          >
+            <span>🎁</span>
+            <span>Сундук с лутом</span>
           </button>
         </div>
 
@@ -218,7 +226,7 @@
               <button
                 v-for="(char, idx) in characterList"
                 :key="char.name"
-                @click="selectedCharIdx = idx"
+                @click="selectChar(idx)"
                 class="p-2.5 rounded-lg border text-xs font-bold transition-all text-left"
                 :class="selectedCharIdx === idx
                   ? 'border-amber-400 bg-amber-500/20 text-amber-300 shadow-gold'
@@ -529,6 +537,8 @@
 import { ref, computed } from 'vue'
 import AdSlot from '../components/AdSlot.vue'
 import HostingTable from '../components/HostingTable.vue'
+import { openChestModal } from '../utils/store.js'
+import { playClickSound } from '../utils/audio.js'
 
 defineProps({
   allCreative: {
@@ -540,6 +550,11 @@ defineProps({
 defineEmits(['switch-tab'])
 
 const selectedCharIdx = ref(0)
+
+const selectChar = (idx) => {
+  selectedCharIdx.value = idx
+  playClickSound()
+}
 
 const characterList = [
   {

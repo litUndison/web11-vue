@@ -1,0 +1,181 @@
+<template>
+  <div
+    v-if="isOpen"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md select-none"
+    @click.self="close"
+  >
+    <div
+      class="relative w-full max-w-md rounded-2xl border border-amber-500/50 bg-gradient-to-b from-zinc-900 via-zinc-950 to-black text-zinc-100 p-6 shadow-2xl text-center space-y-5 overflow-hidden animate-in fade-in zoom-in-95"
+    >
+      <!-- Background Radiance Glow -->
+      <div
+        v-if="isOpened"
+        class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/20 via-red-500/10 to-transparent animate-pulse"
+      ></div>
+
+      <!-- Close Button -->
+      <button
+        @click="close"
+        class="absolute top-3 right-3 text-zinc-400 hover:text-amber-400 p-1 text-sm transition-colors"
+      >
+        ✕
+      </button>
+
+      <div class="space-y-1">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/40">
+          <span>👑 Сундук Босса 25-й Минуты</span>
+        </div>
+        <h3 class="heading-gothic text-xl font-bold text-amber-400">
+          {{ isOpened ? 'Трофеи Выжившего!' : 'Тайный Сундук с Лутом' }}
+        </h3>
+        <p class="text-xs text-zinc-400">
+          {{ isOpened ? 'Вы получили редкое супероружие и золото' : 'Нажмите на сундук, чтобы сорвать печать и забрать награду' }}
+        </p>
+      </div>
+
+      <!-- Animated Chest Graphics Container -->
+      <div class="py-6 flex flex-col items-center justify-center relative">
+        <!-- Unopened state -->
+        <div
+          v-if="!isOpened"
+          @click="openChest"
+          class="cursor-pointer group flex flex-col items-center"
+        >
+          <div
+            class="text-7xl transition-transform duration-200 group-hover:scale-110 active:scale-95"
+            :class="isShaking ? 'animate-bounce' : ''"
+          >
+            🎁
+          </div>
+          <span class="mt-4 px-4 py-1.5 rounded-lg text-xs font-bold bg-amber-500 text-zinc-950 shadow-gold group-hover:brightness-110 transition-all">
+            Открыть сундук (Бесплатно)
+          </span>
+        </div>
+
+        <!-- Opened state with reward reveal -->
+        <div v-else class="space-y-4 animate-in zoom-in-50 duration-300 flex flex-col items-center">
+          <!-- Item Card -->
+          <div class="relative p-4 rounded-xl border border-amber-400 bg-zinc-900/90 shadow-gold max-w-xs w-full flex items-center gap-3 text-left">
+            <div class="w-14 h-14 rounded-lg bg-zinc-950 border border-amber-500/40 flex items-center justify-center text-3xl shrink-0">
+              {{ currentReward.icon }}
+            </div>
+            <div class="min-w-0">
+              <span class="text-[9px] font-mono uppercase font-bold text-amber-400 px-1.5 py-0.2 rounded bg-amber-500/10 border border-amber-500/30">
+                {{ currentReward.rarity }}
+              </span>
+              <h4 class="font-bold text-sm text-zinc-100 truncate mt-1">{{ currentReward.name }}</h4>
+              <p class="text-[11px] text-zinc-400 line-clamp-2 leading-tight mt-0.5">{{ currentReward.desc }}</p>
+            </div>
+          </div>
+
+          <!-- Gold Bonus Strip -->
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold">
+            <span>🪙 Получено золота:</span>
+            <span class="text-sm font-mono text-amber-400">+{{ currentReward.gold }} G</span>
+          </div>
+
+          <!-- Action buttons -->
+          <div class="flex items-center gap-2 pt-2">
+            <button
+              @click="resetChest"
+              class="btn-secondary btn-sm px-4 py-2 text-xs"
+            >
+              Открыть ещё раз
+            </button>
+            <button
+              @click="claimAndClose"
+              class="btn-gold btn-sm px-5 py-2 text-xs font-bold"
+            >
+              Забрать в инвентарь ✓
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { isChestModalOpen, closeChestModal, addGold, pushToast } from '../utils/store.js'
+import { playChestFanfare, playCoinSound } from '../utils/audio.js'
+
+const isOpen = isChestModalOpen
+const isOpened = ref(false)
+const isShaking = ref(false)
+
+const rewardsList = [
+  {
+    name: 'Кровавая Слеза (Bloody Tear)',
+    icon: '🩸',
+    rarity: 'Легендарное',
+    gold: 5000,
+    desc: 'Эволюция Кнута. Критические удары и вампирический хил +8 HP за удар.'
+  },
+  {
+    name: 'Священная Палочка (Holy Wand)',
+    icon: '✨',
+    rarity: 'Эпическое',
+    gold: 3500,
+    desc: 'Эволюция Палочки. Непрерывный пулеметный шквал снарядов без перезарядки.'
+  },
+  {
+    name: 'Пожиратель Душ (Soul Eater)',
+    icon: '🌌',
+    rarity: 'Легендарное',
+    gold: 4200,
+    desc: 'Эволюция Чеснока. Расширяющаяся аура, поглощающая жизненную силу врагов.'
+  },
+  {
+    name: 'Знак Победы (Victory Sword)',
+    icon: '⚔️',
+    rarity: 'Мифическое',
+    gold: 7500,
+    desc: 'Рассекает пространство и уничтожает экран нежити волной чистой ярости.'
+  },
+  {
+    name: 'Золотое Яйцо Охотника (x10)',
+    icon: '🥚',
+    rarity: 'Реликвия',
+    gold: 2500,
+    desc: 'Постоянное усиление базовых характеристик скорости и урона.'
+  }
+]
+
+const currentReward = ref(rewardsList[0])
+
+const openChest = () => {
+  if (isShaking.value || isOpened.value) return
+  isShaking.value = true
+
+  setTimeout(() => {
+    isShaking.value = false
+    isOpened.value = true
+    const rand = Math.floor(Math.random() * rewardsList.length)
+    currentReward.value = rewardsList[rand]
+    playChestFanfare()
+    addGold(currentReward.value.gold)
+  }, 400)
+}
+
+const resetChest = () => {
+  isOpened.value = false
+  isShaking.value = false
+}
+
+const claimAndClose = () => {
+  pushToast({
+    title: 'Трофей получен!',
+    message: `${currentReward.value.name} добавлен в арсенал (+${currentReward.value.gold} G)`,
+    type: 'gold'
+  })
+  close()
+}
+
+const close = () => {
+  closeChestModal()
+  setTimeout(() => {
+    resetChest()
+  }, 300)
+}
+</script>

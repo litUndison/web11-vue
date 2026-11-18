@@ -85,7 +85,7 @@
             <div class="text-base font-bold font-mono text-amber-400">{{ item.price }} ₽</div>
             <div v-if="item.oldPrice" class="text-xs text-zinc-500 line-through font-mono">{{ item.oldPrice }} ₽</div>
           </div>
-          <button @click="addToCart" class="btn-gold btn-sm px-3.5 py-1.5">
+          <button @click="addToCart(item)" class="btn-gold btn-sm px-3.5 py-1.5">
             В корзину
           </button>
         </div>
@@ -142,7 +142,7 @@
             <div class="text-base font-bold font-mono text-amber-400">{{ item.price }} ₽</div>
             <div v-if="item.oldPrice" class="text-xs text-zinc-500 line-through font-mono">{{ item.oldPrice }} ₽</div>
           </div>
-          <button @click="addToCart" class="btn-gold btn-sm px-3.5 py-1.5">
+          <button @click="addToCart(item)" class="btn-gold btn-sm px-3.5 py-1.5">
             В корзину
           </button>
         </div>
@@ -154,6 +154,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import AdSlot from '../components/AdSlot.vue'
+import { pushToast } from '../utils/store.js'
 
 defineProps({
   allCreative: {
@@ -166,8 +167,13 @@ const cartCount = ref(0)
 const selectedCategory = ref('Все')
 const searchQuery = ref('')
 
-const addToCart = () => {
+const addToCart = (item) => {
   cartCount.value++
+  pushToast({
+    title: 'Добавлено в заказ!',
+    message: `${item.name} (${item.price} ₽) добавлен в корзину`,
+    type: 'gold'
+  })
 }
 
 const products = [
